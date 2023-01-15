@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>开屏广告</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/fileinput/fileinput.min.css" rel="stylesheet">
+  <link href="../static/js/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+  
+  
+  <link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+  <!-- 表单部分 开始 -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>开屏广告</h5>
+        </div>
+        <div class="ibox-content">
+          <form method="post" class="form-horizontal" id="form">
+          <input type="hidden" id="id" name="id">
+          <input type="hidden" id="fileName" name="picture">
+          <input type="hidden" id="fileWXName" name="wxPicture">
+            <table class="table table-bordered">
+              <tbody>
+              
+               <tr>
+           	
+           		 <td class="input-group-addon">开屏广告</td>
+                <td>
+                  <label class="checkbox-inline i-checks">
+                    <input type="radio" value="1"  class="validate[required] radio"id="trueone" name="isShow" > <i></i> 开启</label>
+                  <label class="checkbox-inline i-checks">
+                    <input type="radio" value="0"  class="validate[required] radio"id="falseone" name="isShow" > <i></i> 关闭</label>
+                  <label class="checkbox-inline i-checks"></label>
+                    
+                </td>
+           	</tr>	
+              
+              <tr>
+          
+                 <td class="input-group-addon">名称</td>
+                <td>
+                  <input type="text"  class="form-control validate[required]"  data-errormessage-value-missing="名称不能为空"  name="titile" id="titile">
+                </td>
+                
+              </tr>
+               <tr>
+
+                   <td class="input-group-addon">权重</td>
+                   <td>
+                       <input type="text"  class="form-control validate[required]"  data-errormessage-value-missing="名称不能为空"  name="weight" id="weight">
+                   </td>
+
+               </tr>
+              
+               <tr>
+                <td class="input-group-addon" width="50%" height="100px"  >描述:</td>
+                
+                <td colspan="2">
+                <textarea  style="width:100%;height:100% " id="body" name="body" > 
+                 
+                </textarea>
+              </td>
+    
+             	
+           		 <tr>
+                <td class="input-group-addon"><em>*</em>图片</td>
+                <td colspan="3" >
+                  <div class="fileupload fileupload-new" data-provides="fileupload">
+                  <span class="btn btn-primary btn-file"><span class="fileupload-new">选择文件</span><input type="file" id="file"></span><span
+                    class="fileupload-preview"></span>
+                    <em>(单张上传图片大小不超过500KB)</em>
+                    <button class="close fileupload-exists" data-dismiss="fileupload" style="float:none"
+                            type="button">&times;</button>
+                  </div>
+              	<img alt="图片上传中"  src="" id="picture" >
+                </td>
+              </tr>
+				<tr>
+          
+                 <td class="input-group-addon">微信缩略图名称</td>
+                <td>
+                  <input type="text"  class="form-control" name="wxTitle" id="wxTitle">
+                </td>
+                
+              </tr>                
+                
+               <tr>
+                <td class="input-group-addon"><em>*</em>微信分享缩略图</td>
+                <td colspan="3" >
+                  <div class="fileupload fileupload-new" data-provides="fileupload">
+                  <span class="btn btn-primary btn-file"><span class="fileupload-new">选择文件</span><input type="file" id="wxfile"></span><span
+                    class="fileupload-preview"></span>
+                    <em>(单张上传图片大小不超过10KB)</em>
+                    <button class="close fileupload-exists" data-dismiss="fileupload" style="float:none"
+                            type="button">&times;</button>
+                  </div>
+              	<img alt="图片上传中"  src="" id="picture1" >
+                </td>
+                
+              </tr>
+              <tr>
+                <td class="input-group-addon" width="50%" height="100px"  >微信分享:</td>
+                
+                <td colspan="2">
+                <textarea  style="width:100%;height:100% " id="wxBody" name="wxBody" > 
+                 
+                </textarea>
+              </td>
+            </tr>
+            	  <tr>
+           	
+           		 <td class="input-group-addon">跳转内容</td>
+                <td>
+                  <label class="checkbox-inline i-checks">
+                    <input type="radio" value="1"  class="validate[required] radio"  name="button" id="LinkButoon" checked="checked" > <i></i>链接</label>
+                  <label class="checkbox-inline i-checks">
+                    <input type="radio" value="0"  class="validate[required] radio" name="button" id="APPButoon"> <i></i>APP内页</label>
+                  <label class="checkbox-inline i-checks"></label>
+                    
+                </td>
+           	</tr>	
+           
+              <tr id="linkTr">
+               
+                <td class="input-group-addon"><em>*</em>链接</td>
+                <td>
+                  <input type="text"     name="link" id="link" class="form-control validate[required]"  placeholder="链接或页面ID有一项不能为空" data-errormessage-value-missing="链接不能为空">
+                </td>
+               
+              </tr>  
+               <tr id="pageId">
+               
+                <td class="input-group-addon"><em>*</em>页面ID</td>
+                 <td>
+                <input type="text"    name="innerPage" id="innerPage" class="form-control validate[required]"  placeholder="链接或页面ID有一项不能为空" data-errormessage-value-missing="页面ID不能为空" >
+               </td>
+              </tr> 
+             	<!-- <tr>
+            	 <td class="input-group-addon">有效时间</td>
+                 <td>
+                  <input placeholder="开始日期"  class="laydate-icon form-control layer-date validate[required]" id="availableTimeBefore" disabled="">
+                  <input placeholder="结束日期"  class="laydate-icon form-control layer-date validate[required]" id="availableTimeAfter" disabled="">
+                </td> -->
+           
+           
+           
+               <tr id="pageId">
+               
+                <td class="input-group-addon"><em>*</em>显示最小概率</td>
+                 <td>
+                <input type="text"    name="extra1" id="extra1" class="form-control validate[required,custom[onlyNumberSp]],min[1],max[100]"  data-errormessage-value-missing="最小概率不能为空" >
+               </td>
+              </tr>
+           	<tr>
+           	
+           	
+           	<tr id="pageId">
+               
+                <td class="input-group-addon"><em>*</em>显示最大概率</td>
+                 <td>
+                <input type="text"    name="extra2" id="extra2" class="form-control validate[required,custom[onlyNumberSp]],min[1],max[100]"  data-errormessage-value-missing="最大概率不能为空" >
+               </td>
+              </tr>
+           	<tr>
+           </tr>  
+              
+              </tbody>
+            </table>
+            <div class="ibox-footer" style="text-align: center">
+              <!--操作按钮 开始-->
+              <div class="ibox-btns">
+                <!-- <button class="btn btn-primary" type="button" onclick="submitBanner()">保存</button> -->
+               <button  type="button" class="btn btn-primary" onclick="UploadFile()">上传banner图</button>
+               <button  type="button" class="btn btn-primary" onclick="UploadWXFile()">上传微信缩略图</button>
+               <button  type="button" id="save" class="btn btn-primary" onclick="submitBannerInfoTwo()">保存</button>
+                <button class="btn btn-white" type="button" onclick="history.go(-1)">返回</button>
+              </div>
+              <!--操作按钮 开始-->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 表单部分 结束 -->
+
+
+
+
+</div>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/fileinput/fileinput.min.js"></script>
+<script src="../static/js/plugins/fileinput/zh.js"></script>
+<script src="../static/js/plugins/fancybox/jquery.fancybox.js"></script>
+
+
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+
+
+<!-- JS页面 -->
+<script src="../static/js/pages/web_mgt/w_opten_app_banner_edit.js"></script>
+
+<script src="../static/js/pages/web_mgt/w_opten_app_banner_updatFile.js"></script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winsmoney.jajaying.boss.dao.mapper.StaffMapper">
+    <resultMap id="BaseResultMap" type="com.winsmoney.jajaying.boss.dao.po.StaffPo">
+        <id column="C_ID" jdbcType="VARCHAR" property="id" />
+        <id column="C_DEPARTMENT_ID" jdbcType="VARCHAR" property="departmentId" />
+        <id column="C_ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+        <id column="C_USER_ID" jdbcType="VARCHAR" property="userId" />
+        <id column="C_PASSWORD" jdbcType="VARCHAR" property="password" />
+        <id column="C_STAFF_NAME" jdbcType="VARCHAR" property="staffName" />
+        <id column="C_SEX" jdbcType="VARCHAR" property="sex" />
+        <id column="C_REAL_NAME" jdbcType="VARCHAR" property="realName" />
+        <id column="C_EMAIL" jdbcType="VARCHAR" property="email" />
+        <id column="C_MOBILE" jdbcType="VARCHAR" property="mobile" />
+        <id column="C_PHONE" jdbcType="VARCHAR" property="phone" />
+        <id column="C_AGE" jdbcType="INTEGER" property="age" />
+        <id column="C_BIRTHDAY" jdbcType="VARCHAR" property="birthday" />
+        <id column="C_ID_CARD" jdbcType="VARCHAR" property="idCard" />
+        <id column="C_QQ" jdbcType="VARCHAR" property="qq" />
+        <id column="C_LOWEST" jdbcType="INTEGER" property="lowest" />
+        <id column="C_HIGHEST" jdbcType="INTEGER" property="highest" />
+        <id column="C_FIRST_TASK_NO" jdbcType="INTEGER" property="firstTaskNo" />
+        <id column="C_SECOND_TASK_NO" jdbcType="INTEGER" property="secondTaskNo" />
+        <id column="C_X509SKEY_ID" jdbcType="VARCHAR" property="x509skeyId" />
+        <id column="C_DELETED" jdbcType="INTEGER" property="deleted" />
+        <id column="C_STATUS" jdbcType="VARCHAR" property="status" />
+        <id column="C_EDITED_BY" jdbcType="VARCHAR" property="editedBy" />
+        <id column="C_CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+        <id column="C_MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    </resultMap>
+     <sql id="Base_Column_List">
+        `C_ID`,
+        `C_DEPARTMENT_ID`,
+        `C_ROLE_ID`,
+        `C_USER_ID`,
+        `C_PASSWORD`,
+        `C_STAFF_NAME`,
+        `C_SEX`,
+        `C_REAL_NAME`,
+        `C_EMAIL`,
+        `C_MOBILE`,
+        `C_PHONE`,
+        `C_AGE`,
+        `C_BIRTHDAY`,
+        `C_ID_CARD`,
+        `C_QQ`,
+        `C_LOWEST`,
+        `C_HIGHEST`,
+        `C_FIRST_TASK_NO`,
+        `C_SECOND_TASK_NO`,
+        `C_X509SKEY_ID`,
+        `C_DELETED`,
+        `C_STATUS`,
+        `C_EDITED_BY`,
+        `C_CREATE_TIME`,
+        `C_MODIFY_TIME`
+    </sql>
+
+    <sql id="Base_Insert_Values">
+        #{id,jdbcType=VARCHAR},
+        #{departmentId,jdbcType=VARCHAR},
+        #{roleId,jdbcType=VARCHAR},
+        #{userId,jdbcType=VARCHAR},
+        #{password,jdbcType=VARCHAR},
+        #{staffName,jdbcType=VARCHAR},
+        #{sex,jdbcType=VARCHAR},
+        #{realName,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR},
+        #{mobile,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR},
+        #{age,jdbcType=INTEGER},
+        #{birthday,jdbcType=VARCHAR},
+        #{idCard,jdbcType=VARCHAR},
+        #{qq,jdbcType=VARCHAR},
+        #{lowest,jdbcType=INTEGER},
+        #{highest,jdbcType=INTEGER},
+        #{firstTaskNo,jdbcType=INTEGER},
+        #{secondTaskNo,jdbcType=INTEGER},
+        #{x509skeyId,jdbcType=VARCHAR},
+        #{deleted,jdbcType=INTEGER},
+        #{status,jdbcType=VARCHAR},
+        #{editedBy,jdbcType=VARCHAR},
+        sysdate(),
+        sysdate()
+    </sql>
+
+    <sql id="Base_Where_Condition">
+            `C_DELETED` = 0
+        <if test="id != null">
+            AND `C_ID` = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="departmentId != null">
+            AND `C_DEPARTMENT_ID` = #{departmentId,jdbcType=VARCHAR}
+        </if>
+        <if test="roleId != null">
+            AND `C_ROLE_ID` = #{roleId,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null">
+            AND `C_USER_ID` = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="password != null">
+            AND `C_PASSWORD` = #{password,jdbcType=VARCHAR}
+        </if>
+        <if test="staffName != null">
+            AND `C_STAFF_NAME` = #{staffName,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null">
+            AND `C_SEX` = #{sex,jdbcType=VARCHAR}
+        </if>
+        <if test="realName != null">
+            AND `C_REAL_NAME` = #{realName,jdbcType=VARCHAR}
+        </if>
+        <if test="email != null">
+            AND `C_EMAIL` = #{email,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null">
+            AND `C_MOBILE` = #{mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="phone != null">
+            AND `C_PHONE` = #{phone,jdbcType=VARCHAR}
+        </if>
+        <if test="age != null">
+            AND `C_AGE` = #{age,jdbcType=INTEGER}
+        </if>
+        <if test="birthday != null">
+            AND `C_BIRTHDAY` = #{birthday,jdbcType=VARCHAR}
+        </if>
+        <if test="idCard != null">
+            AND `C_ID_CARD` = #{idCard,jdbcType=VARCHAR}
+        </if>
+        <if test="qq != null">
+            AND `C_QQ` = #{qq,jdbcType=VARCHAR}
+        </if>
+        <if test="lowest != null">
+            AND `C_LOWEST` = #{lowest,jdbcType=INTEGER}
+        </if>
+        <if test="highest != null">
+            AND `C_HIGHEST` = #{highest,jdbcType=INTEGER}
+        </if>
+        <if test="firstTaskNo != null">
+            AND `C_FIRST_TASK_NO` = #{firstTaskNo,jdbcType=INTEGER}
+        </if>
+        <if test="secondTaskNo != null">
+            AND `C_SECOND_TASK_NO` = #{secondTaskNo,jdbcType=INTEGER}
+        </if>
+        <if test="x509skeyId != null">
+            AND `C_X509SKEY_ID` = #{x509skeyId,jdbcType=VARCHAR}
+        </if>
+    </sql>
+
+    <!-- 根据id查找 -->
+    <select id="getById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_STAFF
+        where `C_ID` = #{id,jdbcType=VARCHAR} AND `C_DELETED` = 0
+        LIMIT 1
+    </select>
+
+    <!-- 查询 -->
+    <select id="get" parameterType="com.winsmoney.jajaying.boss.dao.po.StaffPo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_STAFF
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+        LIMIT 1
+    </select>
+
+    <!-- 统计 -->
+    <select id="count" resultType="Integer" parameterType="com.winsmoney.jajaying.boss.dao.po.StaffPo">
+        select count(*) from T_STAFF
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+    </select>
+
+    <!-- 列表 -->
+    <select id="list" parameterType="com.winsmoney.jajaying.boss.dao.po.StaffPo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_STAFF
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+        order by C_MODIFY_TIME desc
+    </select>
+
+    <!-- 插入记录 -->
+    <insert id="insert" parameterType="com.winsmoney.jajaying.boss.dao.po.StaffPo">
+        insert into T_STAFF (<include refid="Base_Column_List" />)
+        values
+        (<include refid="Base_Insert_Values" />)
+    </insert>
+
+    <!-- 更新记录 -->
+    <update id="update" parameterType="com.winsmoney.jajaying.boss.dao.po.StaffPo">
+        update T_STAFF
+        <set>
+              <if test="departmentId != null">
+                `C_DEPARTMENT_ID` = #{departmentId,jdbcType=VARCHAR},
+            </if>
+             <if test="roleId != null">
+                `C_ROLE_ID` = #{roleId,jdbcType=VARCHAR},
+            </if>
+             <if test="userId != null">
+                `C_USER_ID` = #{userId,jdbcType=VARCHAR},
+            </if>
+             <if test="password != null">
+                `C_PASSWORD` = #{password,jdbcType=VARCHAR},
+            </if>
+             <if test="staffName != null">
+                `C_STAFF_NAME` = #{staffName,jdbcType=VARCHAR},
+            </if>
+             <if test="sex != null">
+                `C_SEX` = #{sex,jdbcType=VARCHAR},
+            </if>
+             <if test="realName != null">
+                `C_REAL_NAME` = #{realName,jdbcType=VARCHAR},
+            </if>
+             <if test="email != null">
+                `C_EMAIL` = #{email,jdbcType=VARCHAR},
+            </if>
+             <if test="mobile != null">
+                `C_MOBILE` = #{mobile,jdbcType=VARCHAR},
+            </if>
+             <if test="phone != null">
+                `C_PHONE` = #{phone,jdbcType=VARCHAR},
+            </if>
+             <if test="age != null">
+                `C_AGE` = #{age,jdbcType=INTEGER},
+            </if>
+             <if test="birthday != null">
+                `C_BIRTHDAY` = #{birthday,jdbcType=VARCHAR},
+            </if>
+             <if test="idCard != null">
+                `C_ID_CARD` = #{idCard,jdbcType=VARCHAR},
+            </if>
+             <if test="qq != null">
+                `C_QQ` = #{qq,jdbcType=VARCHAR},
+            </if>
+             <if test="lowest != null">
+                `C_LOWEST` = #{lowest,jdbcType=INT jdbcType=INTEGER},
+            </if>
+             <if test="highest != null">
+                `C_HIGHEST` = #{highest,jdbcType=INTEGER},
+            </if>
+             <if test="firstTaskNo != null">
+                `C_FIRST_TASK_NO` = #{firstTaskNo,jdbcType=INTEGER},
+            </if>
+             <if test="secondTaskNo != null">
+                `C_SECOND_TASK_NO` = #{secondTaskNo,jdbcType=INTEGER},
+            </if>
+             <if test="x509skeyId != null">
+                `C_X509SKEY_ID` = #{x509skeyId,jdbcType=VARCHAR},
+            </if>
+             <if test="deleted != null">
+                `C_DELETED` = #{deleted,jdbcType=INTEGER},
+            </if>
+             <if test="status != null">
+                `C_STATUS` = #{status,jdbcType=VARCHAR},
+            </if>
+             <if test="editedBy != null">
+                `C_EDITED_BY` = #{editedBy,jdbcType=VARCHAR},
+            </if>
+             <if test="createTime != null">
+                `C_CREATE_TIME` = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+                `C_MODIFY_TIME` = now(),
+        </set>
+        where `C_ID` = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 删除记录 逻辑删除 -->
+    <update id="delete" parameterType="java.lang.String">
+        update T_STAFF set `C_DELETED` = 1, `C_MODIFY_TIME` = now() where `C_ID` = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- ///自定义命令//// -->
+
+    <select id="getStaffByStaffName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_STAFF
+        where `C_STAFF_NAME` = #{staffName,jdbcType=VARCHAR} AND `C_DELETED` = 0
+        LIMIT 1
+    </select>
+    
+        <select id="getStaffByIdCard" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_STAFF
+        where `C_ID_CARD` = #{idCard,jdbcType=VARCHAR} AND `C_DELETED` = 0
+        LIMIT 1
+    </select>
+
+
+
+</mapper>

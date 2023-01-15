@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd"
+	default-lazy-init="false">
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/META-INF/config.properties</value>
+				<value>classpath:/META-INF/uuid.properties</value>
+			</list>
+		</property>
+	</bean>
+  
+	<context:annotation-config />
+	<!-- 扫描注解，除controller以外 -->
+	<context:component-scan base-package="com.winsmoney.jajaying.boss">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<!-- 基础数据工具 -->
+	<context:component-scan base-package="com.winsmoney.jajaying.basedata.service.client"/>
+
+	<import resource="spring-datasource-slave.xml"/>
+	<import resource="spring-datasource-master.xml"/>
+	<import resource="uuid-bean.xml"/>
+
+	<!-- dubbo服务配置 -->
+	<import resource="dubbo-service.xml"/>
+	<!-- redis 配置 -->
+	<import resource="classpath:/bean/framework-redis-bean.xml"/>
+	<!-- 日志配置 -->
+	<import resource="framework-aop.xml"/>
+
+</beans>

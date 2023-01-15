@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>银行返回码添加页面</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+  <link href="../static/css/plugins/bootstrap-fileupload/bootstrap-fileupload.css" rel="stylesheet">
+<link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+  <!-- 表单部分 开始 -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>渠道管理</h5>
+        </div>
+        <div class="ibox-content">
+          <form method="post" class="form-horizontal" id="form">
+            <table class="table table-bordered">
+              <tbody>
+              <tr>
+                <td class="input-group-addon" width="20%"><em>*</em>渠道名称</td>
+                <td width="30%">
+                <input type="hidden" name="id" id="id1"/>
+                  <input type="text" class="form-control validate[required,maxSize[32]]" 
+                  data-errormessage-value-missing="渠道名称不能为空" data-errormessage-range-overflow="渠道名称不能多于32个字" 
+                  name="channelName" id="channelName"/>
+                </td> 
+                 <td class="input-group-addon" width="20%"><em>*</em>渠道编号</td>
+                <td width="30%">
+                  <input type="text" class="form-control validate[required,maxSize[32]]" 
+                  data-errormessage-value-missing="渠道编号不能为空" data-errormessage-range-overflow="渠道编号不能多于32个字" 
+                  name="channelCode" id="channelCode"/>
+                </td>              
+              </tr>
+				<tr>
+					<td class="input-group-addon">业务类型</td> 
+						 <td width="25%"> 
+						<select class="form-control" name="business" id="business"> 
+						<option value="NetBank">网银业务</option> 
+					    <option value="Quick">快捷业务</option> 
+						<option value="POS">POS刷卡</option> 
+						<option value="Withdraw">提现</option>
+						
+						<option value="BindCard">绑卡认证</option>
+						</select> 
+					</td> 
+					<td class="input-group-addon">事务类型</td> 
+					<td> 
+						<select class="form-control" name="transaction" id="transaction"> 
+						<option value="Pay">支付</option> 
+					    <option value="BindCard">绑卡</option> 
+						</select> 
+					</td>
+				
+				</tr>
+				<tr>
+                <td class="input-group-addon" width="20%"><em>*</em>商户</td>
+                <td width="30%">
+                  <input type="text" class="form-control validate[required,maxSize[32]]" 
+                  data-errormessage-value-missing="商户不能为空" data-errormessage-range-overflow="商户不能多于32个字" 
+                  name="merchant" id="merchant"/>
+                </td> 
+                 <td class="input-group-addon" width="20%"><em>*</em>发送短验方式</td>
+                	 <td width="25%"> 
+						<select class="form-control" name="needSms" id="needSms"> 
+						<option value="System">系统发送</option> 
+					    <option value="Channel">通道发送</option> 
+						</select>
+					</td>             
+              </tr>
+              <tr>
+                <td class="input-group-addon" width="20%"><em>*</em>单笔限额</td>
+                <td width="30%">
+                	<div class="input-group">   
+                  <input type="text" class="form-control validate[required,maxSize[32],custom[number]]" 
+                  data-errormessage-value-missing="单笔限额不能为空" data-errormessage-range-overflow="单笔限额不能多于32个字" data-errormessage-custom-error="单笔限额只能为数字"
+                  name="singleQuota" id="singleQuota"/><span class="input-group-addon">元</span>
+                </div>
+                </td> 
+                 <td class="input-group-addon" width="20%"><em>*</em>单日限额</td>
+                <td width="30%">
+                  <div class="input-group"> 
+                  <input type="text" class="form-control validate[required,maxSize[32],custom[number]]" 
+                  data-errormessage-value-missing="单日限额不能为空" data-errormessage-range-overflow="单日限额不能多于32个字" data-errormessage-custom-error="单日限额只能为数字"
+                  name="dayQuota" id="dayQuota"/><span class="input-group-addon">元</span>
+                </div>
+                </td>              
+              </tr>
+              <tr>  
+                <td class="input-group-addon" width="20%"><em>*</em>单月限额</td>
+                <td width="30%">
+                  <div class="input-group">
+                  <input type="text" class="form-control validate[required,maxSize[32],custom[number]]" 
+                  data-errormessage-value-missing="单月限额不能为空" data-errormessage-range-overflow="单月限额不能多于32个字" data-errormessage-custom-error="单月限额只能为数字"
+                  name="monthQuota" id="monthQuota"/><span class="input-group-addon">元</span>
+                	</div>
+                </td> 
+                 <td class="input-group-addon" width="20%"><em>*</em>限额文字描述</td>
+                <td width="30%">
+                  <input type="text" class="form-control validate[required,maxSize[512]]" 
+                  data-errormessage-value-missing="限额文字描述不能为空" data-errormessage-range-overflow="限额文字描述不能多于512个字" 
+                  name="quotaDesc" id="quotaDesc"/>
+                </td>              
+              </tr>
+				<tr>
+				<td class="input-group-addon" width="20%"><em>*</em>配置文件</td>
+                <td width="30%">
+                  <input type="text" class="form-control validate[required,maxSize[200]]" 
+                  data-errormessage-value-missing="配置文件不能为空" data-errormessage-range-overflow="配置文件不能多于200个字" 
+                  name="configFile" id="configFile"/>
+                </td>
+					<td class="input-group-addon"><em>*</em>是否可用</td>
+                	<td >
+                  		<label class="checkbox-inline i-checks">
+                        <input type="radio" name="available" value="1" id="open" checked="checked">是</label>
+                        <label class="checkbox-inline i-checks">
+                        <input type="radio" name="available" value="0" id="close">否</label>
+                	</td>	
+				</tr>
+               </tbody>
+            </table>
+            <div class="ibox-footer" style="text-align: center">
+              <!--操作按钮 开始-->
+              <div class="ibox-btns">
+                <button class="btn btn-primary" type="button" onclick="submitedit1()">保存</button>
+                <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+              </div>
+              <!--操作按钮 开始-->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 表单部分 结束 -->
+</div>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<!-- 编辑器配置文件 -->
+<script src="../static/js/plugins/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script src="../static/js/plugins/ueditor/ueditor.all.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+
+<!-- JS页面 -->
+<script src="../static/js/pages/pay/channelConfigUpdate.js"></script>
+
+</body>
+</html>

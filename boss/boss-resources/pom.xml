@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>boss-resources</artifactId>
+	<version>${module.version}</version>
+	<name>${project.artifactId}</name>
+	<packaging>war</packaging>
+	<parent>
+		<groupId>com.winsmoney.jajaying</groupId>
+		<artifactId>boss-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<dependencies>
+		<!-- 基础依赖 -->
+		<dependency>
+			<groupId>com.winsmoney.framework</groupId>
+			<artifactId>framework-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.framework</groupId>
+			<artifactId>framework-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.framework</groupId>
+			<artifactId>framework-log</artifactId>
+		</dependency>
+		<!-- end 基础依赖 -->
+		<!-- 项目依赖 -->
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>boss-dao</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>javax.el-api</artifactId>
+					<groupId>javax.el</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>zookeeper</artifactId>
+					<groupId>org.apache.zookeeper</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>boss-domain</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>javax.el-api</artifactId>
+					<groupId>javax.el</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>zookeeper</artifactId>
+					<groupId>org.apache.zookeeper</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>boss-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>boss-service.impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>boss-controller</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>zookeeper</artifactId>
+					<groupId>org.apache.zookeeper</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>gson</artifactId>
+					<groupId>com.google.code.gson</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- end 项目依赖 -->
+		<!-- spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<!-- end spring -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>zookeeper</artifactId>
+					<groupId>org.apache.zookeeper</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+	<dependency>
+		<groupId>com.dangdang</groupId>
+		<artifactId>elastic-job-lite-core</artifactId>
+		<exclusions>
+			<exclusion>
+				<artifactId>javax.servlet</artifactId>
+				<groupId>org.eclipse.jetty.orbit</groupId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+
+	<!-- 使用springframework自定义命名空间时引入 -->
+	<dependency>
+		<groupId>com.dangdang</groupId>
+		<artifactId>elastic-job-lite-spring</artifactId>
+	</dependency>
+			
+		<!-- log -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+		</dependency>
+
+		<!-- servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+<!-- 			<scope>provided</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+<!-- 			<scope>provided</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+		</dependency>
+		<!-- for web server test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- 自动生成代码 -->
+		<dependency>
+			<groupId>com.winsmoney</groupId>
+			<artifactId>autocode</artifactId>
+			<version>1.0.2-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<!--<finalName>${module.war.name}-${project.version}</finalName>-->
+		<finalName>${module.war.name}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<webappDirectory>${project.build.directory}/${module.war.name}</webappDirectory>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+					<webResources>
+						<resource>
+							<directory>src/main/resources/META-INF</directory>
+							<filtering>true</filtering>
+							<targetPath>WEB-INF/classes/META-INF</targetPath>
+							<includes>
+								<include>*.properties</include>
+							</includes>
+						</resource>
+						<resource>
+							<directory>src/main/resources</directory>
+							<filtering>true</filtering>
+							<targetPath>WEB-INF/classes</targetPath>
+							<includes>
+								<include>log4j2.xml</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default-war</id>
+						<phase>package</phase>
+						<goals>
+							<goal>war</goal>
+						</goals>
+						<configuration></configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

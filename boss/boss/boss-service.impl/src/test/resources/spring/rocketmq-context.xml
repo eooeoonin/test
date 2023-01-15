@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" 
+	default-lazy-init="false">
+
+	 <!--生产者 -->
+	<bean id="defaultWinsMoneyMQProducer" class="com.winsmoney.platform.framework.mq.producer.impl.DefaultWinsMoneyMQProducer"  init-method="init" destroy-method="destroy">
+		<property name="namesrvAddr" value="${rocketmq.namesrv.addr}" />
+		<property name="instanceName" value="${rocketmq.producer.instance.name}" />
+		<property name="group" value="${rocketmq.producer.group}" />
+	</bean>
+
+	<bean id="activityRequestMq" class="com.winsmoney.jajaying.boss.service.impl.mq.ActivityRequestMq"  init-method="init" destroy-method="destroy">
+		<property name="namesrvAddr" value="${rocketmq.namesrv.addr}"></property>
+		<property name="instanceName" value="${rocketmq.consumer.instance.name}"></property>
+		<property name="pullIntervalInMillis" value="${rocketmq.consumer.pullIntervalInMillis}"></property>
+	</bean>
+
+</beans>

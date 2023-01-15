@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.winsmoney.jajaying</groupId>
+        <artifactId>boss</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>boss-controller</artifactId>
+    <version>${module.version}</version>
+    <name>${project.artifactId}</name>
+    <packaging>jar</packaging>
+    <dependencies>
+        <!-- base -->
+        <dependency>
+            <groupId>com.winsmoney.framework</groupId>
+            <artifactId>framework-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.winsmoney.framework</groupId>
+            <artifactId>framework-page</artifactId>
+        </dependency>
+        <!-- end base -->
+        <!-- reconciliation -->
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>reconciliation-service</artifactId>
+        </dependency>		
+        
+        <!-- award -->
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>award-service</artifactId>
+        </dependency>
+        <!-- protocol -->
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>protocol-service</artifactId>
+        </dependency>
+        <!-- award -->
+		<dependency>
+   <groupId>net.coobird</groupId>
+   <artifactId>thumbnailator</artifactId>
+</dependency>
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>activity-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>deposit-service</artifactId>
+        </dependency>
+
+        <!-- checkaccount -->
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>checkaccount-service</artifactId>
+        </dependency>
+        <!-- checkaccount -->
+
+        <!-- clearpart -->
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>clearpart-service</artifactId>
+        </dependency>
+        <!-- clearpart -->
+
+        <!-- project -->
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>boss-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>user-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>trade-service</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>msgcenter-service</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.winsmoney.framework</groupId>
+                    <artifactId>framework-redis</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+<!-- 
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>account-service</artifactId>
+        </dependency> -->
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>pay-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>crowdfunding-service</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.winsmoney.jajaying</groupId>
+            <artifactId>offline-service</artifactId>
+        </dependency>
+
+        <!-- end project -->
+        <!--spring-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <!-- 	<dependency> -->
+        <!-- 		<groupId>com.winsmoney</groupId> -->
+        <!-- 		<artifactId>ueditor</artifactId> -->
+        <!-- 	</dependency> -->
+        <!-- servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- crowdfunding -->
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>5.5.1</version>
+        </dependency>
+        <!-- crowdfunding -->
+
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20070829</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.winsmoney.framework</groupId>
+            <artifactId>framework-uuid</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.14</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+
+
+        <!-- test start -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
+        <!-- test end -->
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

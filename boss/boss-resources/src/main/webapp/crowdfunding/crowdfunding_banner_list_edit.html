@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>APP信息</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/fileinput/fileinput.min.css" rel="stylesheet">
+  <link href="../static/js/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+
+	<link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg" >
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+  <!-- 表单部分 开始 -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>APP信息</h5>
+        </div>
+        <div class="ibox-content" >
+          <form method="post" class="form-horizontal" id="form"  >
+          <input type="hidden" id="id" name="id">
+          <input type="hidden" id="fileName" name="picture">
+         	<table class="table table-bordered" >
+              <tbody >
+              	
+              
+              <tr>
+          		 <td class="input-group-addon">banner名称</td>
+                <td>
+                  <input type="text"  class="form-control validate[required] maxSize[10]" data-errormessage-value-missing="banner名称不能为空"  placeholder="最多十个字.." name="name" id="name">
+                </td>
+                
+              </tr>
+              
+                <tr>
+               
+                <td class="input-group-addon">链接地址</td>
+                <td>
+                  <input type="text" placeholder="需加http://" class="form-control" name="url" id="url">
+                </td>
+               
+              </tr>
+    
+             	      
+   		     <tr>
+               
+        	    <td class="input-group-addon">是否首页显示</td>
+                <td >
+                  <select class="form-control" title="" name="homeShow" id="homeShow">
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                    
+                  </select>
+                </td>
+              </tr>
+               <tr>
+               
+        	    <td class="input-group-addon">是否使用APP内跳(输入项目ID) </td>
+                <td >
+                  <select class="form-control" title="" name="innerGo" id="innerGo">
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                   
+                  </select>
+                </td>
+              </tr>
+               <tr>
+               
+                <td class="input-group-addon">项目ID</td>
+                <td>
+                  <input type="text"  class="form-control" name="itemId" id="itemId">
+                </td>
+               
+              </tr>
+           	   <tr>
+          
+                 <td class="input-group-addon">排序</td>
+                <td>
+                  <input type="text"   name="orders" id="orders" class="form-control validate[required] " data-errormessage-value-missing="此处不能为空白">
+                </td>
+                
+              </tr>
+           
+           	<tr>
+                <td class="input-group-addon" ><em>*</em>banner图<em></em>
+                	
+                </td>
+                <td colspan="3" >
+                  <div class="fileupload fileupload-new" data-provides="fileupload">
+                  <span class="btn btn-primary btn-file"><span class="fileupload-new">选择文件</span><input type="file" id="file"></span><span
+                    class="fileupload-preview"></span>
+                    
+                    <button class="close fileupload-exists" data-dismiss="fileupload" style="float:none"
+                            type="button">&times;</button>
+                  </div>
+              	<img alt="图片上传中"  src="" id="picture" >
+                </td>
+              </tr>
+              <tr>
+               <td class="input-group-addon"><em>*</em>提醒:</td>
+                <td colspan="3" >
+             <em > *暂不支持上传中文名图片</em>
+			<em>*为了首页banner显示的最佳效果,建议统一图片尺寸为:750*750，大小不超过500k</em>
+				</td>
+ 			</tr>
+
+           
+              
+              </tbody>
+            </table>
+            <div class="ibox-footer" style="text-align: center">
+              <!--操作按钮 开始-->
+              <div class="ibox-btns">
+                <!-- <button class="btn btn-primary" type="button" onclick="submitBanner()">保存</button> -->
+               <button  type="button" class="btn btn-primary" onclick="UploadFile()">上传banner图</button>
+               
+               <button  type="button" id="save" class="btn btn-primary" onclick="submitBannerInfoTwo()">保存</button>
+                <button class="btn btn-white" type="button" onclick="history.go(-1)">返回</button>
+              </div>
+              <!--操作按钮 开始-->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 表单部分 结束 -->
+
+
+
+
+</div>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/fileinput/fileinput.min.js"></script>
+<script src="../static/js/plugins/fileinput/zh.js"></script>
+<script src="../static/js/plugins/fancybox/jquery.fancybox.js"></script>
+
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+
+
+<!-- JS页面 -->
+<script src="../static/js/pages/crowdfunding/crowdfunding_banner_edit.js"></script>
+
+<script src="../static/js/pages/web_mgt/w_app_banner_updatFile.js"></script>
+</body>
+</html>

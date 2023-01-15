@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>家家盈－生活财富盈家</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+  <link href="../static/css/plugins/validation/form.min.css" rel="stylesheet">
+
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+  <!-- 表单部分 开始 -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>普通表单元素</h5>
+        </div>
+        <div class="ibox-content">
+          <form method="post" class="form-horizontal" id="form"  enctype="multipart/form-data">
+            <table class="table table-bordered">
+              <tbody>
+              <tr>
+                <td class="input-group-addon" width="20%">验证说明:</td>
+                <td colspan="3">
+                  1、引用相关的验证JS和CSS文件；<br>
+                  2、在input标签的class中配置参数；<br>
+                  如：validate[required,custom[number],minSize[2],maxSize[10]]<br>
+                  required         表示必填项<br>
+                  custom[number]   表示类型验证 number 为验证数字<br>
+                  minSize[2]       最少输入字符数<br>
+                  maxSize[10]      最多输入字符数<br>
+                  详细参数说明见：<a href="http://code.ciaoca.com/jquery/validation-engine/">查看详情参数说明</a><br>
+                  3、在input标签中配置提示文本属性；<br>
+                  data-errormessage-value-missing   为 required 的提示文本<br>
+                  data-errormessage-custom-error   为 custom 的提示文本<br>
+                  data-errormessage-range-underflow   为 minSize 的提示文本<br>
+                  data-errormessage-range-overflow   为 maxSize 的提示文本<br>
+                  4、示例:<br>
+                  <xmp style="width:100%; white-space:normal"><input type="text" name="text1" class="form-control validate[required,custom[number],minSize[2],maxSize[10]]" data-errormessage-value-missing="***不能为空" data-errormessage-custom-error="请输入数字" data-errormessage-range-underflow="不能少于2位数字" data-errormessage-range-overflow="不能少于10位数字" placeholder="文本框默认提示文字" class="form-control"></xmp>
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon" width="20%"><em>*</em>普通</td>
+                <td width="30%">
+                  <input type="text" name="text1" class="form-control validate[required,custom[number],minSize[2],maxSize[10]]" data-errormessage-value-missing="***不能为空" data-errormessage-custom-error="请输入数字" data-errormessage-range-underflow="不能少于2位数字" data-errormessage-range-overflow="不能少于10位数字" placeholder="文本框默认提示文字" class="form-control">
+                </td>
+                <td class="input-group-addon" width="20%"><em>*</em>带说明信息</td>
+                <td width="30%">
+                  <input type="text" name="text2" placeholder="提示信息" class="form-control validate[required]"> <span class="help-block m-b-none">帮助文本，可能会超过一行，以块级元素显示</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon"><em>*</em>后带单位文本框</td>
+                <td>
+                  <div class="input-group">
+                    <input type="text" name="text3" class="form-control validate[required]"> <span class="input-group-addon">元</span>
+                  </div>
+                </td>
+                <td class="input-group-addon"><em>*</em>Select</td>
+                <td>
+                  <select class="form-control validate[required]" name="select">
+                    <option value="1">选项 1</option>
+                    <option value="2">选项 2</option>
+                    <option value="3">选项 3</option>
+                    <option value="4">选项 4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon">禁用</td>
+                <td>
+                  <input type="text" name="text4" disabled="" placeholder="已被禁用" class="form-control">
+                </td>
+                <td class="input-group-addon">静态文字</td>
+                <td>
+                  <p class="form-control-static">文字</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon"><em>*</em>时间</td>
+                <td>
+                  <input placeholder="选择日期" name="date1" class="laydate-icon form-control layer-date validate[required]" id="date1">
+                </td>
+                <td class="input-group-addon"><em>*</em>时间段</td>
+                <td>
+                  <input placeholder="开始日期" name="date2" class="laydate-icon form-control layer-date validate[required]" id="start">
+                  <input placeholder="结束日期" name="date3" class="laydate-icon form-control layer-date validate[required]" id="end">
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon"><em>*</em>复选框</td>
+                <td>
+                  <label class="checkbox-inline i-checks">
+                    <input type="checkbox" value="1" name="group" class="validate[required] checkbox"> <i></i> 选项1</label>
+                  <label class="checkbox-inline i-checks">
+                    <input type="checkbox" value="2" name="group" class="validate[required] checkbox"> <i></i> 选项2</label>
+                  <label class="checkbox-inline i-checks">
+                    <input type="checkbox" value="3" name="group" class="validate[required] checkbox"> <i></i> 选项3</label>
+                </td>
+                <td class="input-group-addon"><em>*</em>单选框</td>
+                <td>
+                  <label class="checkbox-inline i-checks">
+                    <input type="radio" value="option1" name="group2" class="validate[required] radio"> <i></i> 选项1</label>
+                  <label class="checkbox-inline i-checks">
+                    <input type="radio" value="option2" name="group2" class="validate[required] radio"> <i></i> 选项2</label>
+                  <label class="checkbox-inline i-checks">
+                    <input type="radio" value="option3" name="group2" class="validate[required] radio"> <i></i> 选项3</label>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="ibox-footer" style="text-align: center">
+              <!--操作按钮 开始-->
+              <div class="ibox-btns">
+                <button class="btn btn-primary" type="button" id="submitBtn">正常提交类按钮</button>
+                <button class="btn btn-danger" type="button">异常类提交按钮</button>
+                <button class="btn btn-white" type="button">取消、返回类按钮</button>
+              </div>
+              <!--操作按钮 开始-->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 表单部分 结束 -->
+</div>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<!-- 复选框、单选框插件 -->
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<!-- 时间插件 -->
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<!-- 表单验证插件 -->
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+
+
+<!-- JS页面 -->
+<script src="../static/js/pages/example/examle2.js"></script>
+
+</body>
+</html>

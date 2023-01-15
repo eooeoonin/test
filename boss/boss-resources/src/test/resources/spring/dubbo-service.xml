@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd 
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+	default-autowire="byName" default-lazy-init="false">
+
+	<dubbo:annotation package="com.winsmoney.jajaying.service" />
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="boss" />
+	<!-- 使用zookeeper注册中心暴露服务地址 -->
+	<dubbo:registry protocol="zookeeper" address="${boss.dubbo.registry}" file="dubbo-registry.cache" />
+	<!-- 用dubbo协议暴露服务 -->
+	<dubbo:protocol name="dubbo" port="${boss.dubbo.service.port}" server="netty" client="netty" serialization="java" charset="UTF-8" threadpool="fixed" threads="200" />
+
+	<!--提供的服务定义-->
+	<!--<dubbo:service interface="com.winsmoney.jajaying.service.IbossService" timeout="20000" version="${boss.dubbo.version}" delay="-1" ref="bossService"/>-->
+
+	<!-- 使用的dubbo服务-->
+	<!--错误码服务-->
+	<dubbo:reference protocol="dubbo" id="errorCodeService" version="${dubbo.service.errorcode.version}"
+					 interface="com.winsmoney.jajaying.basedata.service.IErrorCodeService" timeout="10000"
+					 check="false" retries="0" />
+
+</beans>

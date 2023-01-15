@@ -1,0 +1,21 @@
+.span1{
+	float:left;
+	height:35px;
+	width:55px;
+	line-height:21px;
+	font-size:14px;
+}
+.input1{
+	 box-sizing: border-box;
+	 border:1px solid #e5e6e7;
+	 float:left;
+	 margin-left:-2px;
+	 height:35px;
+	 padding-left:10px;
+}
+.span2{
+  float:left;
+  height:35px;
+  line-height:35px;
+  padding-left:10px;	
+}

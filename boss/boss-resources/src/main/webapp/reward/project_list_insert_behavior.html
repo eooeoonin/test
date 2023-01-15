@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>新增行为</title>
+
+    <!-- CSS核心 -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../static/css/animate.min.css" rel="stylesheet">
+
+    <!-- CSS插件 -->
+    <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+    <link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+    <!-- CSS页面 -->
+    <link href="../static/css/style.min.css" rel="stylesheet">
+
+</head>
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <!-- 表单部分 开始 -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5 id="titior">新增行为</h5>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" class="form-horizontal" id="behaviorForm">
+                        <table class="table table-bordered" >
+                            <tbody>
+                            <tr>
+                                <td class="input-group-addon" width="20%"> <em>*</em>项目名称</td>
+                                <td width="30%">
+                                    <input type="text"  class="form-control" readonly id="proName">
+                                </td>
+                                <td class="input-group-addon" width="20%"> <em>*</em>策略名称</td>
+                                <td width="30%">
+                                    <input type="text"  class="form-control" readonly id="strName">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="input-group-addon" width="20%"> <em>*</em>行为分类</td>
+                                <td width="30%">
+                                    <select class="form-control" name="actCode" id="actCode">
+                                        <option value="REGISTER">注册</option>
+                                        <option value="LOGIN">登录</option>
+                                        <option value="BANK_CARD">绑卡</option>
+                                        <option value="RECHARGE">充值</option>
+                                        <option value="WITHDRAW">提现</option>
+                                        <option value="INVEST">出借</option>
+                                        <option value="FIRST_INVEST" id="investFirst">首次出借</option>
+                                        <option value="INVITE">邀请</option>
+                                        <option value="WINNING">中奖</option>
+                                        <option value="REPAY">回款</option>
+                                    </select>
+                                </td>
+                                <input type="hidden" name="first"  id = "first" value="false"/>
+                            </tr>
+                            <tr>
+                                <td class="input-group-addon">关联类型</td>
+                                <td>
+                                    <select class="form-control" name="associationType" id="associationType">
+                                        <option value="">请选择</option>
+                                        <option value="ACTIVITY">活动</option>
+                                        <option value="CHANNEL">渠道</option>
+                                    </select>
+                                </td>
+                                <td class="input-group-addon" width="20%"> <em>*</em>会员等级</td>
+                                <td width="30%">
+                                    <select class="form-control" name="userGrade" id="userGrade">
+                                        <option value="1">普通会员</option>
+                                        <option value="2">VIP</option>
+                                        <option value="3">SVIP</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id = "_activity_show" style="display: none">
+                                <td class="input-group-addon"> 活动编号</td>
+                                <td><button type="button" class="btn btn-primary" id="checkActivity">选择活动</button>
+                                    <span style = "margin-left:100px" id="activitySelected"></span> <input type="hidden" id="activitySelectedCode" name="activityCode">
+                                </td>
+                            </tr>
+
+                            <tr id = "_channel_show" style="display: none">
+                                <td class="input-group-addon"> 渠道编号</td>
+                                <td><button type="button" class="btn btn-primary" id="checkChannel">选择渠道</button>
+                                    <span style = "margin-left:100px" id="channelSelected"></span> <input type = "hidden" id="channelSelectedCode" name="channelCode"/>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="input-group-addon" width="20%"> <em>*</em>单次／累计</td>
+                                <td width="30%">
+                                    <select class="form-control" name="single" id="single">
+                                        <option value="true">单次</option>
+                                        <option value="false">累计</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="ycben">
+                                <td class="input-group-addon"> <em>*</em>受益人</td>
+                                <td>
+                                    <select class="form-control" name="beneficiary" id="beneficiary">
+                                        <option value="ONESELF">本人</option>
+                                        <option value="INVITER1">一级邀请</option>
+                                        <option value="INVITER2">二级邀请</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="ycmax">
+                                <td class="input-group-addon"><em>*</em>最小值</td>
+                                <td>
+                                    <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="最小值不能为空" name="min" id="min">
+                                </td>
+                                <td class="input-group-addon" width="20%"> <em>*</em>最大值</td>
+                                <td width="30%">
+                                    <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="最大值不能为空" name="max" id="max">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div id="singleMax" class="ibox-content">
+                            <h4>单次行为<button class="btn btn-primary" type="button" style="float: right;margin-right: 2%" id="addDanCi" onclick="firstAdd()"> <i class="fa fa-plus"></i></button></h4>
+                            <hr style="height:1px;border:none;border-top:1px ridge black;" >
+                            <table class="table table-bordered" id="xingwei">
+                                <tbody>
+                                <tr id="fmin" >
+                                    <td class="input-group-addon"> <em>*</em>受益人</td>
+                                    <td>
+                                        <select class="form-control" name="behaviorInfo[0].shouyiren" id="shouyiren">
+                                            <option value="ONESELF">本人</option>
+                                            <option value="INVITER1">一级邀请</option>
+                                            <option value="INVITER2">二级邀请</option>
+                                        </select>
+                                    </td>
+
+                                    <td class="input-group-addon"><em>*</em>单次最小值</td>
+                                    <td>
+                                        <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="最小值不能为空" name="behaviorInfo[0].zuixiao" id="zuixiao">
+                                    </td>
+                                    <td class="input-group-addon" width="20%"> <em>*</em>单次最大值</td>
+                                    <td width="30%">
+                                        <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="最大值不能为空" name="behaviorInfo[0].zuida" id="zuida">
+                                    </td>
+                                    <td colspan="2" align="right"><button onclick="firstMin('fmin')"  class="btn btn-primary subChanges" style="float: right;margin-right: 21%" type="button"> <i class="fa fa-minus"></i></button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <input type = "hidden" name = "id" id="id"/>
+                        <input type = "hidden" name = "strategyId" id="strategyId"/>
+                        <input type = "hidden" name = "projectId" id="projectId"/>
+                        <div class="ibox-footer" style="text-align: center">
+                            <!--操作按钮 开始-->
+                            <div class="ibox-btns">
+                                <button class="btn btn-primary" type="button" id="behaviorSubmit">确认</button>
+                                <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                            </div>
+                            <!--操作按钮 开始-->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 表单部分 结束 -->
+
+
+    <!-- 选择活动－模态窗口 开始 -->
+    <div class="modal inmodal fade" id="activityModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">选择一个活动</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- 查询部分 开始 -->
+                    <div class="ibox-content" style="padding:0; border-top:none;">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form class="form-horizontal" id="activity_QueryForm">
+                                    <table class="table table-bordered" style="margin-bottom: 0;">
+                                        <tbody>
+                                        <tr>
+                                            <td class="input-group-addon" width="15%">活动名称</td>
+                                            <td width="25%">
+                                                <input type="text" name="name" class="form-control" id="name" placeholder="输入活动名称">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="panel-footer clear">
+                                        <div class="pull-right">
+                                            <button class="btn btn-primary btn-xs" type="button" id="activity_srhSmtBtn">
+                                                <i class="fa fa-search-plus"></i>&nbsp;查询
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 查询部分 结束 -->
+
+                    <!-- 表格部分 开始 -->
+                    <table id="activity_table" class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th data-width="60">选择</th>
+                            <th>活动名称</th>
+                            <th>活动编号</th>
+                            <th>模板类型</th>
+                            <th>模板名称</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- JS输出JOSN数据 -->
+                        </tbody>
+                    </table>
+                    <!-- 表格部分 结束 -->
+                </div>
+
+                <div class="modal-footer clear">
+                    <div class="pull-left">
+                        <!--分页 开始-->
+                        <div class="tcdPageCode" style="padding:0;"></div>
+                        <!--分页 结束-->
+                    </div>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="choose">选择</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 选择活动－模态窗口 结束 -->
+
+
+    <!-- 选择渠道－模态窗口 开始 -->
+    <div class="modal inmodal fade" id="channelModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">选择渠道</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- 查询部分 开始 -->
+                    <div class="ibox-content" style="padding:0; border-top:none;">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form class="form-horizontal" id="channel_QueryForm">
+                                    <table class="table table-bordered" style="margin-bottom: 0;">
+                                        <tbody>
+                                        <tr>
+                                            <td class="input-group-addon" width="20%">渠道类型</td>
+                                            <td width="30%"><select class="form-control" name="channelType" id="channelType">
+                                                <option value="">全部</option>
+                                            </select></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 查询部分 结束 -->
+
+                    <!-- 表格部分 开始 -->
+                    <table id="channel_table" class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th width="30"><label class="checkbox-inline i-checks"> <input type="checkbox" id="jCheckAll"></label></th>
+                            <th>渠道号</th>
+                            <th>渠道名称</th>
+                            <th>渠道分类</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- JS输出JOSN数据 -->
+                        </tbody>
+                    </table>
+                    <!-- 表格部分 结束 -->
+                </div>
+
+                <div class="modal-footer clear">
+                    <div class="pull-left">
+
+                    </div>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="chooseChannel">选择</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 选择渠道－模态窗口 结束 -->
+
+
+
+
+</div>
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../static/js/plugins/pages/jquery.page.js"></script>
+<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+<!-- JS页面 -->
+<script src="../static/js/pages/reward/project_list_insert_behavior.js"></script>
+
+</body>
+</html>

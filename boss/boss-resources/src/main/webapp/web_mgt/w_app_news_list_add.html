@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新闻列表</title>
+
+<!-- CSS核心 -->
+<link href="../static/css/bootstrap.min.css" rel="stylesheet">
+<link href="../static/css/font-awesome.min.css" rel="stylesheet">
+<link href="../static/css/animate.min.css" rel="stylesheet">
+
+<!-- CSS插件 -->
+<link href="../static/css/plugins/validation/form.min.css" rel="stylesheet">
+<link href="../static/css/plugins/fileinput/fileinput.min.css" rel="stylesheet">
+<link href="../static/js/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+  <link href="../static/css/plugins/validation/form.min.css" rel="stylesheet">
+<!-- CSS页面 -->
+<link href="../static/css/style.min.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+	<div class="wrapper wrapper-content animated fadeIn">
+
+		<!-- 表单部分 开始 -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>添加热点新闻</h5>
+					</div>
+					<div class="ibox-content">
+						<form method="post" class="form-horizontal" id="form"
+							enctype="multipart/form-data">
+							<input type="hidden" id="id" name="id">
+					        <input type="hidden" id="fileName" name="picture">
+					        <input type="hidden" id="fileWXName" name="wxPicture">
+					        <input type="hidden" id="rootDir" name="rootDir">
+					        <!-- <input type="hidden" id="bizeCode" name="htmlbizeCode"> -->
+							<table class="table table-bordered">
+								<tbody>
+									<tr>
+										<td class="input-group-addon" width="20%"><em>*</em> 名称</td>
+										<td colspan="3"><input type="text" name="titile" id="titile"
+											class="form-control validate[required]" data-errormessage-value-missing="名称不能为空"></td>
+									</tr>
+									<tr>
+										<td class="input-group-addon" width="20%"><em>*</em>权重</td>
+										<td colspan="3"><input type="text" name="weight" id="weight"
+															   class="form-control validate[required]" data-errormessage-value-missing="权重不能为空不能重复"></td>
+									</tr>
+									<tr>
+										<td class="input-group-addon"><em>*</em> 描述</td>
+										<td colspan="3">
+											<textarea type="text" name="preview" id="preview" class="form-control validate[required,maxSize[25]]" data-errormessage-value-missing="描述不能为空"
+												data-errormessage-range-overflow="不能多于25个字"	placeholder="不能超过25个字" style="height:100px;"></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td class="input-group-addon"><em>*</em>新闻配图</td>
+		                                <td>
+						                  <form class="form-horizontal" enctype="multipart/form-data" method="post"  id="uploadForm2">
+						                    <input id="picture" name="file" multiple type="file" class="file-loading">
+						                  </form>
+		                                </td>
+		                                <td class="input-group-addon"><em>*</em>微信分享缩略图</td>
+		                                <td>
+						                  <form class="form-horizontal" enctype="multipart/form-data" method="post"  id="uploadForm2">
+						                    <input id="wxPicture" name="file" multiple type="file" class="file-loading">
+						                  </form>
+		                                </td>
+									</tr>
+									<tr>
+										<td colspan="6">
+											<div id="errorBlock" class="help-block"></div>
+										</td>
+									</tr>
+									<tr>
+										<td class="input-group-addon">缩略图查看</td>
+
+										<td colspan="3">
+
+											<div class="file-box bln">
+												<div class="file">
+													<span class="corner"></span>
+													<div class="image">
+														<a id="filethumbnail" class="fancybox img-responsive"
+															href="../static/img/noimage.gif" title="新闻配图"> <img
+															alt="image" src="../static/img/noimage.gif" /> <input
+															type="hidden" id="businessLicenseFile" name="businessLicenseFile">
+														</a>
+													</div>
+													<div class="file-name">
+														<small>新闻配图 </small>
+													</div>
+												</div>
+											</div>
+
+											<div class="file-box txid">
+												<div class="file">
+													<span class="corner"></span>
+													<div class="image">
+														<a id="wxfilethumbnail" class="fancybox img-responsive"
+															href="../static/img/noimage.gif" title="微信分享缩略图"> <img
+															alt="image" src="../static/img/noimage.gif" /> <input
+															type="hidden" id="taxFile" name="taxFile">
+														</a>
+													</div>
+													<div class="file-name">
+														<small>微信分享缩略图</small>
+													</div>
+												</div>
+											</div>
+
+										</td>
+									</tr>
+									<tr>
+										<td class="input-group-addon"><em>*</em> 微信名称</td>
+										<td colspan="3">
+											<input type="text" name="wxTitle" id="wxTitle" class="form-control validate[required,maxSize[25]]" data-errormessage-value-missing="微信不能为空"
+											data-errormessage-range-overflow="不能多于25个字">
+										</td>
+									</tr>
+									<tr>
+										<td class="input-group-addon"><em>*</em> 微信分享</td>
+										<td  colspan="3">
+											<textarea type="text" name="wxBody" id="wxBody" class="form-control validate[required,maxSize[50]]" data-errormessage-value-missing="内容不能为空"
+													data-errormessage-range-overflow="不能多于50个字" placeholder="输入微信分享正文" style="height:100px;"></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td class="input-group-addon"><em>*</em>新闻正文</td>
+										<td colspan="3">
+											<script id="content" type="text/plain" style="width: 100%; height: 250px;" name="content"  data-errormessage-value-missing="内容不能为空" ></script>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="ibox-footer" style="text-align: center">
+								<!--操作按钮 开始-->
+								<div class="ibox-btns">
+									<button class="btn btn-primary" type="button" id="submitBtn">保存</button>
+								</div>
+								<!--操作按钮 开始-->
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 表单部分 结束 -->
+	</div>
+
+
+	<!-- JS核心 -->
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/content.min.js"></script>
+	
+	<!-- JS插件 -->
+	<script src="../static/js/plugins/fileinput/fileinput.min.js"></script>
+	<script src="../static/js/plugins/fileinput/zh.js"></script>
+	<script src="../static/js/plugins/fancybox/jquery.fancybox.js"></script>
+	<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+	
+	<!-- 编辑器配置文件 -->
+	<script src="../static/js/plugins/ueditor/ueditor.config.js"></script>
+	<script src="../static/js/plugins/ueditor/ueditor.all.js"></script>
+	
+	<script src="../static/js/pages/web_mgt/w_app_news_list_add.js"></script>
+	<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+	<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+
+</body>
+</html>

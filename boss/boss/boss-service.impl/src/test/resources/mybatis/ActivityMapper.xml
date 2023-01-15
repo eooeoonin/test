@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winsmoney.jajaying.boss.dao.mapper.ActivityMapper">
+    <resultMap id="BaseResultMap" type="com.winsmoney.jajaying.boss.dao.po.ActivityPo">
+        <id column="C_ID" jdbcType="VARCHAR" property="id" />
+        <id column="C_DELETED" jdbcType="INTEGER" property="deleted" />
+        <id column="C_STATUS" jdbcType="VARCHAR" property="status" />
+        <id column="C_CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+        <id column="C_EDITED_BY" jdbcType="VARCHAR" property="editedBy" />
+        <id column="C_CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+        <id column="C_MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+        <id column="C_NAME" jdbcType="VARCHAR" property="name" />
+        <id column="C_BODY" jdbcType="VARCHAR" property="body" />
+        <id column="C_DESC" jdbcType="VARCHAR" property="desc" />
+        <id column="C_START_TIME" jdbcType="TIMESTAMP" property="startTime" />
+        <id column="C_END_TIME" jdbcType="TIMESTAMP" property="endTime" />
+        <id column="C_TEMPLATE_ID" jdbcType="VARCHAR" property="templateId" />
+        <id column="C_PIC1" jdbcType="VARCHAR" property="pic1" />
+        <id column="C_PIC2" jdbcType="VARCHAR" property="pic2" />
+        <id column="C_PIC3" jdbcType="VARCHAR" property="pic3" />
+        <id column="C_PIC4" jdbcType="VARCHAR" property="pic4" />
+        <id column="C_PIC5" jdbcType="VARCHAR" property="pic5" />
+        <id column="C_RULE1" jdbcType="VARCHAR" property="rule1" />
+        <id column="C_RULE2" jdbcType="VARCHAR" property="rule2" />
+        <id column="C_RULE3" jdbcType="VARCHAR" property="rule3" />
+        <id column="C_WX_NAME" jdbcType="VARCHAR" property="wxName" />
+        <id column="C_WX_DESC" jdbcType="VARCHAR" property="wxDesc" />
+        <id column="C_WX_PIC" jdbcType="VARCHAR" property="wxPic" />
+        <id column="C_CODE" jdbcType="INTEGER" property="code" />
+        <id column="C_STANDARD_AMOUNT" jdbcType="DECIMAL" property="standardAmount" />
+        <id column="C_CONVERSION_RATIO" jdbcType="DECIMAL" property="conversionRatio" />
+        <id column="C_TOTAL_AMOUNT" jdbcType="DECIMAL" property="totalAmount" />
+        <id column="C_START_NUM" jdbcType="DECIMAL" property="startNum" />
+        <id column="C_END_NUM" jdbcType="DECIMAL" property="endNum" />
+    </resultMap>
+     <sql id="Base_Column_List">
+        `C_ID`,
+        `C_CREATED_BY`,
+        `C_NAME`,
+        `C_BODY`,
+        `C_DESC`,
+        `C_START_TIME`,
+        `C_END_TIME`,
+        `C_TEMPLATE_ID`,
+        `C_PIC1`,
+        `C_PIC2`,
+        `C_PIC3`,
+        `C_PIC4`,
+        `C_PIC5`,
+        `C_RULE1`,
+        `C_RULE2`,
+        `C_RULE3`,
+        `C_WX_NAME`,
+        `C_WX_DESC`,
+        `C_WX_PIC`,
+        `C_CODE`,
+        `C_STANDARD_AMOUNT`,
+        `C_CONVERSION_RATIO`,
+        `C_TOTAL_AMOUNT`,
+        `C_START_NUM`,
+        `C_END_NUM`,
+        `C_DELETED`,
+        `C_STATUS`,
+        `C_EDITED_BY`,
+        `C_CREATE_TIME`,
+        `C_MODIFY_TIME`
+    </sql>
+
+    <sql id="Base_Insert_Values">
+        #{id,jdbcType=VARCHAR},
+        #{createdBy,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR},
+        #{body,jdbcType=VARCHAR},
+        #{desc,jdbcType=VARCHAR},
+        #{startTime,jdbcType=TIMESTAMP},
+        #{endTime,jdbcType=TIMESTAMP},
+        #{templateId,jdbcType=VARCHAR},
+        #{pic1,jdbcType=VARCHAR},
+        #{pic2,jdbcType=VARCHAR},
+        #{pic3,jdbcType=VARCHAR},
+        #{pic4,jdbcType=VARCHAR},
+        #{pic5,jdbcType=VARCHAR},
+        #{rule1,jdbcType=VARCHAR},
+        #{rule2,jdbcType=VARCHAR},
+        #{rule3,jdbcType=VARCHAR},
+        #{wxName,jdbcType=VARCHAR},
+        #{wxDesc,jdbcType=VARCHAR},
+        #{wxPic,jdbcType=VARCHAR},
+        #{code,jdbcType=INTEGER},
+        #{standardAmount,jdbcType=DECIMAL},
+        #{conversionRatio,jdbcType=DECIMAL},
+        #{totalAmount,jdbcType=DECIMAL},
+        #{startNum,jdbcType=DECIMAL},
+        #{endNum,jdbcType=DECIMAL},
+        #{deleted,jdbcType=INTEGER},
+        #{status,jdbcType=VARCHAR},
+        #{editedBy,jdbcType=VARCHAR},
+        sysdate(),
+        sysdate()
+    </sql>
+
+    <sql id="Base_Insert_List_Values">
+        #{item.id,jdbcType=VARCHAR},
+        #{item.createdBy,jdbcType=VARCHAR},
+        #{item.name,jdbcType=VARCHAR},
+        #{item.body,jdbcType=VARCHAR},
+        #{item.desc,jdbcType=VARCHAR},
+        #{item.startTime,jdbcType=TIMESTAMP},
+        #{item.endTime,jdbcType=TIMESTAMP},
+        #{item.templateId,jdbcType=VARCHAR},
+        #{item.pic1,jdbcType=VARCHAR},
+        #{item.pic2,jdbcType=VARCHAR},
+        #{item.pic3,jdbcType=VARCHAR},
+        #{item.pic4,jdbcType=VARCHAR},
+        #{item.pic5,jdbcType=VARCHAR},
+        #{item.rule1,jdbcType=VARCHAR},
+        #{item.rule2,jdbcType=VARCHAR},
+        #{item.rule3,jdbcType=VARCHAR},
+        #{item.wxName,jdbcType=VARCHAR},
+        #{item.wxDesc,jdbcType=VARCHAR},
+        #{item.wxPic,jdbcType=VARCHAR},
+        #{item.code,jdbcType=INTEGER},
+        #{item.standardAmount,jdbcType=DECIMAL},
+        #{item.conversionRatio,jdbcType=DECIMAL},
+        #{item.totalAmount,jdbcType=DECIMAL},
+        #{item.startNum,jdbcType=DECIMAL},
+        #{item.endNum,jdbcType=DECIMAL},
+        #{item.deleted,jdbcType=INTEGER},
+        #{item.status,jdbcType=VARCHAR},
+        #{item.editedBy,jdbcType=VARCHAR},
+        sysdate(),
+        sysdate()
+    </sql>
+
+    <sql id="Base_Where_Condition">
+            `C_DELETED` = 0
+        <if test="id != null">
+            AND `C_ID` = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND `C_STATUS` = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="createdBy != null">
+            AND `C_CREATED_BY` = #{createdBy,jdbcType=VARCHAR}
+        </if>
+        <if test="editedBy != null">
+            AND `C_EDITED_BY` = #{editedBy,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            AND `C_NAME` like "%"#{name,jdbcType=VARCHAR}"%"
+        </if>
+        <if test="body != null">
+            AND `C_BODY` = #{body,jdbcType=VARCHAR}
+        </if>
+        <if test="desc != null">
+            AND `C_DESC` = #{desc,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null">
+            AND `C_START_TIME` = #{startTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="endTime != null">
+            AND `C_END_TIME` = #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="templateId != null">
+            AND `C_TEMPLATE_ID` = #{templateId,jdbcType=VARCHAR}
+        </if>
+        <if test="pic1 != null">
+            AND `C_PIC1` = #{pic1,jdbcType=VARCHAR}
+        </if>
+        <if test="pic2 != null">
+            AND `C_PIC2` = #{pic2,jdbcType=VARCHAR}
+        </if>
+        <if test="pic3 != null">
+            AND `C_PIC3` = #{pic3,jdbcType=VARCHAR}
+        </if>
+        <if test="pic4 != null">
+            AND `C_PIC4` = #{pic4,jdbcType=VARCHAR}
+        </if>
+        <if test="pic5 != null">
+            AND `C_PIC5` = #{pic5,jdbcType=VARCHAR}
+        </if>
+        <if test="rule1 != null">
+            AND `C_RULE1` = #{rule1,jdbcType=VARCHAR}
+        </if>
+        <if test="rule2 != null">
+            AND `C_RULE2` = #{rule2,jdbcType=VARCHAR}
+        </if>
+        <if test="rule3 != null">
+            AND `C_RULE3` = #{rule3,jdbcType=VARCHAR}
+        </if>
+        <if test="wxName != null">
+            AND `C_WX_NAME` = #{wxName,jdbcType=VARCHAR}
+        </if>
+        <if test="wxDesc != null">
+            AND `C_WX_DESC` = #{wxDesc,jdbcType=VARCHAR}
+        </if>
+        <if test="wxPic != null">
+            AND `C_WX_PIC` = #{wxPic,jdbcType=VARCHAR}
+        </if>
+        <if test="code != null">
+            AND `C_CODE` = #{code,jdbcType=INTEGER}
+        </if>
+        <if test="standardAmount != null">
+            AND `C_STANDARD_AMOUNT` = #{standardAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="conversionRatio != null">
+            AND `C_CONVERSION_RATIO` = #{conversionRatio,jdbcType=DECIMAL}
+        </if>
+        <if test="totalAmount != null">
+            AND `C_TOTAL_AMOUNT` = #{totalAmount,jdbcType=DECIMAL}
+        </if>
+        <if test="startNum != null">
+            AND `C_START_NUM` = #{startNum,jdbcType=DECIMAL}
+        </if>
+        <if test="endNum != null">
+            AND `C_END_NUM` = #{endNum,jdbcType=DECIMAL}
+        </if>
+    </sql>
+
+    <!-- 根据id查找 -->
+    <select id="getById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_ACTIVITY
+        where `C_ID` = #{id,jdbcType=VARCHAR} AND `C_DELETED` = 0
+        LIMIT 1
+    </select>
+
+    <!-- 查询 -->
+    <select id="get" parameterType="com.winsmoney.jajaying.boss.dao.po.ActivityPo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_ACTIVITY
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+        LIMIT 1
+    </select>
+
+    <!-- 统计 -->
+    <select id="count" resultType="Integer" parameterType="com.winsmoney.jajaying.boss.dao.po.ActivityPo">
+        select count(*) from T_ACTIVITY
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+    </select>
+
+    <!-- 列表 -->
+    <select id="list" parameterType="com.winsmoney.jajaying.boss.dao.po.ActivityPo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_ACTIVITY
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+    </select>
+
+    <!-- 插入记录 -->
+    <insert id="insert" parameterType="com.winsmoney.jajaying.boss.dao.po.ActivityPo">
+        INSERT INTO T_ACTIVITY (<include refid="Base_Column_List" />)
+        VALUES
+        (<include refid="Base_Insert_Values" />)
+    </insert>
+
+    <!-- 批量插入记录 -->
+    <insert id="insertList" parameterType="java.util.List">
+        INSERT INTO T_ACTIVITY (<include refid="Base_Column_List" />)
+        VALUES
+        <foreach collection="list" item="item" index="index" open="" separator="," close="">
+            (<include refid="Base_Insert_List_Values" />)
+        </foreach>
+    </insert>
+
+    <!-- 更新记录 -->
+    <update id="update" parameterType="com.winsmoney.jajaying.boss.dao.po.ActivityPo">
+        update T_ACTIVITY
+        <set>
+              <if test="deleted != null">
+                `C_DELETED` = #{deleted,jdbcType=INTEGER},
+            </if>
+             <if test="status != null">
+                `C_STATUS` = #{status,jdbcType=VARCHAR},
+            </if>
+             <if test="createdBy != null">
+                `C_CREATED_BY` = #{createdBy,jdbcType=VARCHAR},
+            </if>
+             <if test="editedBy != null">
+                `C_EDITED_BY` = #{editedBy,jdbcType=VARCHAR},
+            </if>
+             <if test="createTime != null">
+                `C_CREATE_TIME` = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+                `C_MODIFY_TIME` = now(),
+             <if test="name != null">
+                `C_NAME` = #{name,jdbcType=VARCHAR},
+            </if>
+             <if test="body != null">
+                `C_BODY` = #{body,jdbcType=VARCHAR},
+            </if>
+             <if test="desc != null">
+                `C_DESC` = #{desc,jdbcType=VARCHAR},
+            </if>
+             <if test="startTime != null">
+                `C_START_TIME` = #{startTime,jdbcType=TIMESTAMP},
+            </if>
+             <if test="endTime != null">
+                `C_END_TIME` = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+             <if test="templateId != null">
+                `C_TEMPLATE_ID` = #{templateId,jdbcType=VARCHAR},
+            </if>
+             <if test="pic1 != null">
+                `C_PIC1` = #{pic1,jdbcType=VARCHAR},
+            </if>
+             <if test="pic2 != null">
+                `C_PIC2` = #{pic2,jdbcType=VARCHAR},
+            </if>
+             <if test="pic3 != null">
+                `C_PIC3` = #{pic3,jdbcType=VARCHAR},
+            </if>
+             <if test="pic4 != null">
+                `C_PIC4` = #{pic4,jdbcType=VARCHAR},
+            </if>
+             <if test="pic5 != null">
+                `C_PIC5` = #{pic5,jdbcType=VARCHAR},
+            </if>
+             <if test="rule1 != null">
+                `C_RULE1` = #{rule1,jdbcType=VARCHAR},
+            </if>
+             <if test="rule2 != null">
+                `C_RULE2` = #{rule2,jdbcType=VARCHAR},
+            </if>
+             <if test="rule3 != null">
+                `C_RULE3` = #{rule3,jdbcType=VARCHAR},
+            </if>
+             <if test="wxName != null">
+                `C_WX_NAME` = #{wxName,jdbcType=VARCHAR},
+            </if>
+             <if test="wxDesc != null">
+                `C_WX_DESC` = #{wxDesc,jdbcType=VARCHAR},
+            </if>
+             <if test="wxPic != null">
+                `C_WX_PIC` = #{wxPic,jdbcType=VARCHAR},
+            </if>
+             <if test="code != null">
+                `C_CODE` = #{code,jdbcType=INTEGER},
+            </if>
+             <if test="standardAmount != null">
+                `C_STANDARD_AMOUNT` = #{standardAmount,jdbcType=DECIMAL},
+            </if>
+             <if test="conversionRatio != null">
+                `C_CONVERSION_RATIO` = #{conversionRatio,jdbcType=DECIMAL},
+            </if>
+             <if test="totalAmount != null">
+                `C_TOTAL_AMOUNT` = #{totalAmount,jdbcType=DECIMAL},
+            </if>
+             <if test="startNum != null">
+                `C_START_NUM` = #{startNum,jdbcType=DECIMAL},
+            </if>
+             <if test="endNum != null">
+                `C_END_NUM` = #{endNum,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where `C_ID` = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 批量更新记录 -->
+    <update id="updateList" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            UPDATE T_ACTIVITY
+            <set>
+                  <if test="deleted != null">
+                    `C_DELETED` = #{deleted,jdbcType=INTEGER},
+                </if>
+                 <if test="status != null">
+                    `C_STATUS` = #{status,jdbcType=VARCHAR},
+                </if>
+                 <if test="createdBy != null">
+                    `C_CREATED_BY` = #{createdBy,jdbcType=VARCHAR},
+                </if>
+                 <if test="editedBy != null">
+                    `C_EDITED_BY` = #{editedBy,jdbcType=VARCHAR},
+                </if>
+                 <if test="createTime != null">
+                    `C_CREATE_TIME` = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                `C_MODIFY_TIME` = now(),
+                 <if test="name != null">
+                    `C_NAME` = #{name,jdbcType=VARCHAR},
+                </if>
+                 <if test="body != null">
+                    `C_BODY` = #{body,jdbcType=VARCHAR},
+                </if>
+                 <if test="desc != null">
+                    `C_DESC` = #{desc,jdbcType=VARCHAR},
+                </if>
+                 <if test="startTime != null">
+                    `C_START_TIME` = #{startTime,jdbcType=TIMESTAMP},
+                </if>
+                 <if test="endTime != null">
+                    `C_END_TIME` = #{endTime,jdbcType=TIMESTAMP},
+                </if>
+                 <if test="templateId != null">
+                    `C_TEMPLATE_ID` = #{templateId,jdbcType=VARCHAR},
+                </if>
+                 <if test="pic1 != null">
+                    `C_PIC1` = #{pic1,jdbcType=VARCHAR},
+                </if>
+                 <if test="pic2 != null">
+                    `C_PIC2` = #{pic2,jdbcType=VARCHAR},
+                </if>
+                 <if test="pic3 != null">
+                    `C_PIC3` = #{pic3,jdbcType=VARCHAR},
+                </if>
+                 <if test="pic4 != null">
+                    `C_PIC4` = #{pic4,jdbcType=VARCHAR},
+                </if>
+                 <if test="pic5 != null">
+                    `C_PIC5` = #{pic5,jdbcType=VARCHAR},
+                </if>
+                 <if test="rule1 != null">
+                    `C_RULE1` = #{rule1,jdbcType=VARCHAR},
+                </if>
+                 <if test="rule2 != null">
+                    `C_RULE2` = #{rule2,jdbcType=VARCHAR},
+                </if>
+                 <if test="rule3 != null">
+                    `C_RULE3` = #{rule3,jdbcType=VARCHAR},
+                </if>
+                 <if test="wxName != null">
+                    `C_WX_NAME` = #{wxName,jdbcType=VARCHAR},
+                </if>
+                 <if test="wxDesc != null">
+                    `C_WX_DESC` = #{wxDesc,jdbcType=VARCHAR},
+                </if>
+                 <if test="wxPic != null">
+                    `C_WX_PIC` = #{wxPic,jdbcType=VARCHAR},
+                </if>
+                 <if test="code != null">
+                    `C_CODE` = #{code,jdbcType=INTEGER},
+                </if>
+                 <if test="standardAmount != null">
+                    `C_STANDARD_AMOUNT` = #{standardAmount,jdbcType=DECIMAL},
+                </if>
+                 <if test="conversionRatio != null">
+                    `C_CONVERSION_RATIO` = #{conversionRatio,jdbcType=DECIMAL},
+                </if>
+                 <if test="totalAmount != null">
+                    `C_TOTAL_AMOUNT` = #{totalAmount,jdbcType=DECIMAL},
+                </if>
+                 <if test="startNum != null">
+                    `C_START_NUM` = #{startNum,jdbcType=DECIMAL},
+                </if>
+                 <if test="endNum != null">
+                    `C_END_NUM` = #{endNum,jdbcType=DECIMAL},
+                </if>
+            </set>
+            where `C_ID` = #{item.id,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+
+    <!-- 删除记录 逻辑删除 -->
+    <update id="delete" parameterType="java.lang.String">
+        update T_ACTIVITY set `C_DELETED` = 1, `C_MODIFY_TIME` = now() where `C_ID` = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- ///自定义命令//// -->
+
+    <select id="activityList" parameterType="java.util.Date" resultMap="BaseResultMap">
+        select tb1.`C_ID`, tb1.`C_CREATED_BY`,tb1.`C_NAME`,tb1.`C_BODY`,tb1.`C_DESC`, tb1.`C_START_TIME`,tb1.`C_END_TIME`, tb1.`C_TEMPLATE_ID`,tb1.`C_PIC1`, tb1.`C_PIC2`,tb1.`C_PIC3`, tb1.`C_PIC4`,tb1.`C_PIC5`, tb1.`C_RULE1`,tb1.`C_RULE2`, tb1.`C_RULE3`,tb1.`C_WX_NAME`, tb1.`C_WX_DESC`,tb1.`C_WX_PIC`, tb1.`C_CODE`,tb1.`C_STANDARD_AMOUNT`, tb1.`C_CONVERSION_RATIO`,tb1.`C_TOTAL_AMOUNT`,tb1.`C_START_NUM`,tb1.`C_END_NUM`, tb1.`C_DELETED`,tb1.`C_STATUS`, tb1.`C_EDITED_BY`,tb1.`C_CREATE_TIME`, tb1.`C_MODIFY_TIME`
+        from T_ACTIVITY tb1 left join t_template tb2 on tb1.c_template_id = tb2.c_id
+        where tb1.c_start_time &lt;= #{tradeTime,jdbcType=TIMESTAMP}  and tb1.c_end_time &gt;= #{tradeTime,jdbcType=TIMESTAMP}
+        and tb2.c_type = 3
+    </select>
+
+
+</mapper>

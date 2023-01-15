@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+    <meta name="keywords" content="your keywords">
+    <meta name="description" content="your description">
+    <meta name="author" content="author,email address">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <title>${entity.title}</title>
+    <style>
+        html {
+            -webkit-text-size-adjust: none;
+            -ms-text-size-adjust: 100%;
+            font-size: 100%;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        body, button, dd, div, dl, dt, h1, h2, h3, h4, h5, h6, hr, img, input, li, ol, p, pre, select, td, textarea, th, ul {
+            margin: 0;
+            padding: 0
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 400
+        }
+
+        body {
+            font-family: Tahoma, Helvetica, Arial, "\5FAE\8F6F\96C5\9ED1", sans-serif;
+            font-size: 14px;
+            color: #333;
+            background-color: #fff
+        }
+
+        ol, ul {
+            list-style: none
+        }
+
+        a {
+            color: #333;
+            -webkit-touch-callout: none
+        }
+
+        a, button, input, label, option, select {
+            outline: 0;
+            text-decoration: none;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+        }
+
+        img {
+            border: none;
+            display: block
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        .clr:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: "";
+            clear: both;
+            height: 0
+        }
+
+        .clr {
+            *zoom: 1
+        }
+
+        .clear {
+            clear: both;
+            width: 0;
+            height: 0;
+            font-size: 0;
+            line-height: 0;
+            margin: 0;
+            padding: 0;
+            overflow: hidden
+        }
+
+        .tpl_body {
+            text-align: left;
+            width: 1176px;
+		    margin: 0 auto;
+    		padding: 20px 0;
+        }
+
+        .tpl_body p {
+            line-height: 200%
+        }
+
+        .tpl_body .p {
+            padding: 1em 1.5em 0
+        }
+
+        .tpl_body .p:last-child {
+            padding-bottom: 1em
+        }
+
+        .tpl_body img {
+            width: 100%
+        }
+
+        @media only screen and (min-device-width: 320px) {
+            body {
+                font-size: 12px
+            }
+        }
+
+        @media only screen and (min-device-width: 375px) {
+            body {
+                font-size: 12px
+            }
+        }
+
+        @media only screen and (min-device-width: 414px) {
+            body {
+                font-size: 14px
+            }
+        }
+
+        @media only screen and (min-device-width: 768px) {
+            body {
+                font-size: 16px
+            }
+        }
+
+        .tpl_body img {
+            width: auto !important;
+            margin: 10px auto !important;
+            max-width: 906px;
+        }
+	</style>
+</head>
+<body>
+	<div class="tpl_body">${entity.body}</div>
+	<script>
+		document.domain = 'jajaying.com';
+		function calcPageHeight(doc) {
+			var cHeight = Math.max(doc.body.clientHeight, doc.documentElement.clientHeight);
+			var sHeight = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
+			var height = Math.max(cHeight, sHeight);
+			return height
+		}
+		window.onload = function () {
+			var height = calcPageHeight(document);
+			parent.document.getElementById('external-frame').style.height = height + 'px';
+		}
+	</script>
+</body>
+</html>

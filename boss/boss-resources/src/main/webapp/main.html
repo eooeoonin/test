@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>家家盈－生活财富盈家-首页</title>
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!--[if lt IE 9]>
+  <meta http-equiv="refresh" content="0;ie.html"/>
+  <![endif]-->
+
+  <!-- CSS核心 -->
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+
+  <!-- CSS页面 -->
+  <link href="static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="widget lazur-bg no-padding">
+        <div class="p-m">
+          <h1 class="m-xs" id="addLoginNumber"></h1>
+
+          <h3 class="font-bold no-margins">
+            今日新增用户量
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="widget yellow-bg no-padding">
+        <div class="p-m">
+          <h1 class="m-xs" id="loginNumber"></h1>
+
+          <h3 class="font-bold no-margins">
+            今日登录用户量
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="widget navy-bg no-padding">
+        <div class="p-m">
+          <h1 class="m-xs" id="borrowingPen"></h1>
+
+          <h3 class="font-bold no-margins">
+            借款申请笔数（今日累计）
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="widget red-bg no-padding">
+        <div class="p-m">
+          <h1 class="m-xs" id="numberofPresentpen"></h1>
+          <h3 class="font-bold no-margins">
+            提现笔数（今日累计）
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="widget yellow-bg no-padding">
+        <div class="p-m">
+          <h1 class="m-xs" id="totalborrowings"></h1>
+
+          <h3 class="font-bold no-margins">
+            借款总额（今日累计）元
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>每日新增出借笔数／金额</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="close-link">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div id="tz-bar-chart" style="height: 450px;padding:15px 25px 0 0;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>每日新增借款申请笔数／金额</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="close-link">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div id="jk-bar-chart" style="height: 450px;padding:15px 25px 0 0;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- JS核心 -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/content.min.js"></script>
+
+
+<!-- JS插件 -->
+<script src="static/js/plugins/echars/1.4.1/src/esl/esl.js"></script>
+
+
+<!-- JS页面 -->
+<script src="static/js/pages/main.js"></script>
+
+</body>
+</html>

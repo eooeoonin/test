@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>卡bin</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+  <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+  <link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>会员详情列表</h5>
+        </div>
+        <div class="ibox-content" style="padding-bottom:0;">
+          <div class="row">
+            <div class="col-sm-12">
+            
+             
+   <!-- 表格部分 开始 -->
+    <div class="col-md-12" id = "info_tab">
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a data-toggle="tab" href="#tab_1">平台信息</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_2" onclick="userextend()">扩展信息</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_3" onclick="userbindback()">绑卡信息</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_4" onclick="wxuser()">微信信息</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_5">联系人信息</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_6">历史借款</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_7">出借记录</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_8">喜好设置</a>
+        </li>
+<!--         <li class="pull-right">
+          <button id="loan" class="btn btn-primary">申 请 借 款</button>
+        </li> -->
+        
+      </ul>
+      
+      <div class="box-header">
+	  	  <table>
+		  	 <tr>
+		  	 	<td>
+			  		<h3 class="box-title" >用户ID:</h3>
+			  	</td>
+			  	<td>	
+			  		<input class="box-title" id="userid" style="width:250px;border:none" readonly="readonly"/>
+			  	</td>	
+		  	</tr>	
+		  </table>	
+	 </div>
+	 
+      <div class="tab-content">
+        <div id="tab_1" class="tab-pane active">
+          <div class="box box-primary">
+			  <div class="box-body">
+			  	<table class="table table-bordered">
+			  		<tr>
+		          		<td>姓名</td>
+		          		<td>
+		          			<input class="box-title" id="realName" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>性别</td>
+		          		<td>
+		          			<input class="box-title" id="gender" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>注册手机</td>
+		          		<td>
+							<input class="box-title" id="registerMobile" style="border:none" readonly="readonly"/>
+						</td>
+		          	</tr>
+		          	<tr>
+		          		<td>会员类型</td>
+		          		<td>
+		          			<input class="box-title" id="userType" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>用户组</td>
+		          		<td>
+		          			<input class="box-title" id="group" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>证件类型</td>
+		          		<td>
+							<input class="box-title" id="certType" style="border:none" readonly="readonly"/>
+						</td>
+		          	</tr>
+		          	<tr>
+		          		<td>证件号</td>
+		          		<td><input class="box-title" id="certNo" style="border:none" readonly="readonly"/></td>
+		          		<td>认证状态</td>
+		          		<td><input class="box-title" id="authState" style="border:none" readonly="readonly"/></td>
+		          		<td>用户激活状态</td>
+		          		<td><input class="box-title" id="userState" style="border:none" readonly="readonly"/></td>
+		          	</tr>
+		          	<tr>
+		          		<td>用户等级</td>
+		          		<td><input class="box-title" id="grade" style="border:none" readonly="readonly"/></td>
+		          		<td>出借代理人</td>
+		          		<td><input class="box-title" id="agent" style="border:none" readonly="readonly"/></td>
+		          		<td>来源</td>
+		          		<td><input class="box-title" id="from" style="border:none" readonly="readonly"/></td>
+		          	</tr>
+		          	<tr>
+		          		<td>邀请码</td>
+		          		<td><input class="box-title" id="inviteCode" style="border:none" readonly="readonly"/></td>
+		          		<td>直接邀请人</td>
+		          		<td><input class="box-title" id="referrer1" style="border:none" readonly="readonly"/></td>
+		          		<td>间接邀请人</td>
+		          		<td><input class="box-title" id="referrer2" style="border:none" readonly="readonly"/></td>
+		          	</tr>
+		          	<tr>
+		          		<td>设备ID</td>
+		          		<td><input class="box-title" id="deviceId" style="border:none" readonly="readonly"/></td>
+		          		<td>备注</td>
+		          		<td><input class="box-title" id="remark" style="border:none" readonly="readonly"/></td>
+		          		<td>添加时间</td>
+		          		<td><input class="box-title" id="createTime" style="border:none" readonly="readonly"/></td>
+		          	</tr>
+	            </table>
+	            
+	            <table class="table table-bordered" style="margin-top: 20px;">
+		          	<tr>
+		          		<td>积分</td>
+		          		<td width="200px">
+		          		40</td>
+                  <td>VIP等级</td>
+                  <td></td>
+		          		<td>红包个数</td>
+		          		<td>0个</td>
+		          		<td></td>
+		          		<td></td>
+<!-- 		          		<td>红包个数</td> -->
+<!-- 		          		<td>红包金额(合计)</td> -->
+<!-- 		          		<td>红包金额</td> -->
+<!-- 		          	</tr> -->
+<!-- 		          	<tr> -->
+<!-- 		          		<td>红包说明</td> -->
+<!-- 		          		<td colspan="7"> -->
+<!-- 						</td> -->
+<!-- <!-- 		          		<td colspan="5">*元*个，*元*个，，*元*个</td> --> -->
+<!-- 		          	</tr> -->
+	            </table>
+			  </div>
+		  </div>
+        </div>
+        
+        <!-- 会员扩展信息 -->
+        <div id="tab_2" class="tab-pane activea">
+          <div class="box box-primarya">
+			  <div class="box-bodya">
+		           <table  class="table table-bordered">
+		                <thead>
+			               <tr>
+			                  <th width="25%">邮件</th>
+			                  <th width="25%">
+			                  	<input class="box-title" id="email" style="border:none" readonly="readonly"/>
+			                  </th>
+			                  <th width="25%">邮政编码</th>
+			                  <th width="25%">
+			                  	<input class="box-title" id="zipCode" style="border:none" readonly="readonly"/>
+			                  </th>
+			               </tr>
+			               <tr>  
+			                  <th>省</th>
+			                  <th>
+			                  	<input class="box-title" id="province" style="border:none" readonly="readonly"/>
+			                  </th>
+			                  <th>市</th>
+			                  <th>
+			                  	<input class="box-title" id="city" style="border:none" readonly="readonly"/>
+			                  </th>
+			               </tr>
+			               <tr>   
+			                  <th>地址</th>
+			                  <th>
+			                  	<input class="box-title" id="address" style="border:none" readonly="readonly"/>
+			                  </th>
+			                  <th>电话</th>
+			                  <th>
+			                  	<input class="box-title" id="phone" style="border:none" readonly="readonly"/>
+			                  </th>
+			               </tr>
+			               <tr>   
+			                  <th>公司名称</th>
+			                  <th>
+			                  	<input class="box-title" id="job" style="border:none" readonly="readonly"/>
+			                  </th>
+			                  <th>备注</th>
+			                  <th>
+			                  	<input class="box-title" id="remark" style="border:none" readonly="readonly"/>
+			                  </th>
+			                </tr>
+		                </thead>
+               		 <tbody>
+                <!-- JS输出JOSN数据 -->
+               
+                </tbody>
+              </table>
+			  </div>
+		  </div>
+        </div>
+        
+        <div id="tab_3" class="tab-pane">
+          <div class="box box-primary">
+			  <div class="box-body">
+			  	<table class="table table-bordered">
+		          	<tr>
+		          		<td width="15%">银行编码</td>
+		          		<td>
+		          			<input class="box-title" id="bankCode" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>开户行</td>
+		          		<td>
+		          			<input class="box-title" id="bankName" style="border:none" readonly="readonly"/>
+						</td>
+		          	</tr>
+		          	<tr>
+		          		<td >银行预留手机号</td>
+		          		<td>
+		          			<input class="box-title" id="bankMobile" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>银行卡号</td>
+		          		<td>
+		          			<input class="box-title" id="bankCardNo" style="border:none" readonly="readonly"/>
+					    </td>
+		          	</tr>
+		          	<tr>
+		          		<td>卡类型</td>
+		          		<td>
+		          	   		<input class="box-title" id="cardType" style="border:none" readonly="readonly"/>
+		          	    </td>
+		          		<td>真实姓名</td>
+		          		<td>
+		          			<input class="box-title" id="realName" style="border:none" readonly="readonly"/>
+		          		</td>
+		          	</tr>
+		          	<tr>
+		          		<td>证件类型</td>
+		          		<td>
+		          			<input class="box-title" id="certType" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>证件号</td>
+		          		<td>
+		          			<input class="box-title" id="certNo" style="border:none" readonly="readonly"/>
+		          		</td>
+		          	</tr>
+		          	 <tr>
+		          		<td>商户来源</td>
+		          		<td>
+		          			<input class="box-title" id="merchant" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>绑定状态</td>
+		          		<td>
+		          			<input class="box-title" id="bindState" style="border:none" readonly="readonly"/>
+		          		</td>
+		          	</tr>
+		          	<tr>
+		          		<td>绑定结果编码</td>
+		          		<td>
+		          			<input class="box-title" id="code" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>绑定结果信息</td>
+		          		<td>
+		          			<input class="box-title" id="message" style="border:none" readonly="readonly"/>
+		          		</td>
+		          	</tr>
+	            </table>
+			  </div>
+		  </div>
+        </div>
+        
+        <div id="tab_4" class="tab-pane">
+          <div class="box box-primary">
+			  <div class="box-body">
+			  	<table class="table table-bordered">
+		          	<tr>
+		          		<td>注册手机号</td>
+		          		<td>
+		          			mobile
+		          		</td>
+		          		<td>昵称</td>
+		          		<td>
+		          			nickname
+		          		</td>
+		          		<td>性别</td>
+		          		<td>
+		          			sex
+		         		 </td>
+		          	</tr>
+		          	<tr>
+		          		<td>省份</td>
+		          		<td>
+		          			province
+		          	    </td>
+		          		<td>城市</td>
+		          		<td>
+		          			city
+		          		</td>
+		          		<td>国家</td>
+		          		<td>
+		          			country
+		          		</td>
+		          	</tr>
+		          	<tr>
+		          		<td>用户头像</td>
+		          		<td>
+		          			headimgurl
+		          		</td>
+		          		<td>用户特权信息</td>
+		          		<td>
+		          			privilege
+			          	</td>
+		          		<td>汽车品牌</td>
+		          		<td></td>
+		          	</tr>
+		          	<tr>
+		          		<td>汽车价值</td>
+		          		<td>
+		          			</td>
+		          		<td>购车年份</td>
+		          		<td></td>
+		          		<td>汽车月供</td>
+		          		<td>元</td>
+		          	</tr>
+		          	<tr>
+		          	<td>名下有无证券</td>
+		          		<td>
+			          		 无</td>
+		          		<td>证券价值</td>
+		          		<td>元</td>
+		          		<td></td>
+		          		<td></td>
+		          	</tr>
+	            </table>
+			  </div>
+		  </div>
+        </div>
+        
+        <div id="tab_5" class="tab-pane">
+          <div class="box box-primary">
+			  <div class="box-body">
+			  	<table class="table table-bordered">
+			  		<thead>
+			          	<tr>
+			          		<td>借款者ID</td>
+			          		<td>联系人中文姓名</td>
+			          		<td>关系</td>
+			          		<td>联系人手机</td>
+			          		<td>联系人固定电话</td>
+			          		<td>联系人地址</td>
+			          		
+			          		<td>备注</td>
+			          		<td>是否显示</td>
+			          	</tr>
+		          	</thead>
+		          	<tbody>
+		          	<tr>
+	                      <td class="text-center" colspan="9">没有找到数据</td>
+	                    </tr>
+                    </tbody>
+	            </table>
+			  </div>
+		  </div>
+        </div>
+        
+        
+        <div id="tab_6" class="tab-pane">
+          
+        </div>
+        
+        
+        <div id="tab_7" class="tab-pane">
+          
+        </div>
+        
+        
+        <div id="tab_8" class="tab-pane">
+        	<table class="table table-hover table-debt panel panel-default">
+		      <thead>
+		        <tr class="active">
+					<td>借款人等级</td>
+					<td>金额范围</td>
+					<td>期限范围</td>
+					<td>利率范围</td>
+					<td>是否推送</td>
+					<td>推送方式</td>
+		        </tr>
+		      </thead>
+		      <tbody>
+		      	<tr>
+			        	<td colspan="6" style="text-align: center;">没有数据</td>
+			        </tr>
+		      	</tbody>
+    		</table>
+        </div>
+        
+      </div>
+    </div>
+                <!-- JS输出JOSN数据 -->
+               
+                </tbody>
+              </table>
+              <!-- 表格部分 结束 -->
+              <div class="ibox-footer clear">
+                <div class="pull-right">
+                  <!--分页 开始-->
+                  <div class="tcdPageCode"></div>
+                  <!--分页 结束-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<!-- <script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script> -->
+<!-- <script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script> -->
+<!-- <script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script> -->
+<!-- <script src="../static/js/plugins/pages/jquery.page.js"></script> -->
+
+
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../static/js/plugins/pages/jquery.page.js"></script>
+
+
+<!-- JS页面 -->
+<!-- <script src="../static/js/pages/logn_mgt/l_firstinstance_list.js"></script> -->
+<script src="../static/js/pages/user/user_detailedinformation.js"></script>
+
+</body>
+</html>

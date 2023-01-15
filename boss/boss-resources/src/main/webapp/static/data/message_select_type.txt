@@ -1,0 +1,17 @@
+[
+  {
+    "type": ""
+  },
+  {
+    "type": "SMS"
+  },
+   {
+    "type": "PUSH"
+   },
+   {
+    "type": "EMAIL"
+   },
+   {
+    "type": "INNER_MESSAGE"
+   }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "accountType": "RECHARGE",
+        "accountTypeCn": "充值"
+    },
+    {
+        "accountType": "ADJUST_ADD_ACCOUNT",
+        "accountTypeCn": "调账增加"
+    },
+    {
+        "accountType": "WITHDRAW",
+        "accountTypeCn": "提现"
+    },
+    {
+        "accountType": "ADJUST_SUBTRACT_ACCOUNT",
+        "accountTypeCn": "调帐减少"
+    },
+    {
+        "accountType": "UNFREEZE_ADD_ACCOUNT",
+        "accountTypeCn": "解冻并加帐"
+    },
+    {
+        "accountType": "UNFREEZE_SUBTRACT_ACCOUNT",
+        "accountTypeCn": "解冻并减帐"
+    },
+    {
+        "accountType": "UNFREEZE_WITHDRAW",
+        "accountTypeCn": "解冻并提现"
+    },
+    {
+        "accountType": "RECYCLE_PRINCIPAL",
+        "accountTypeCn": "投资人回收本金"
+    },
+    {
+        "accountType": "RECYCLE_INTEREST",
+        "accountTypeCn": "投资人回收利息"
+    },
+    {
+        "accountType": "RECYCLE_PENALTY",
+        "accountTypeCn": "投资人回收罚息"
+    },
+    {
+        "accountType": "ADD_AGENT_REBATE",
+        "accountTypeCn": "代理人返利"
+    }
+]

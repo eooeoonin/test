@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>短信通道管理</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/fileinput/fileinput.min.css" rel="stylesheet">
+  <link href="../static/js/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+  <link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+  <!-- 表单部分 开始 -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>短信通道管理</h5>
+        </div>
+        <div class="ibox-content">
+          <form method="post" class="form-horizontal" id="form">
+            <table class="table table-bordered">
+              <tbody>
+             <tr>
+          	<td class="input-group-addon" width="20%">商户号</td>
+                <td width="30%">
+                 <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="商户号不能为空" name="merchant" id="merchant">
+                </td>
+                 <td class="input-group-addon">名称</td>
+                <td>
+                  <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空"  name="name" id="name">
+                </td>
+                
+              </tr>
+              <tr>
+               
+                  <td class="input-group-addon">用户名</td>
+                <td>
+                  <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="用户名不能为空"  name="username" id="username">
+                </td>
+                <td class="input-group-addon">密码</td>
+                <td>
+                  <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="密码不能为空" name="password" id="password">
+                </td>
+                
+                
+               
+                
+              </tr>
+              <tr>
+              
+     			<td class="input-group-addon">签名</td>
+                <td>
+                  <input type="text"  class="form-control"  name="sign" id="sign">
+                </td>
+                <td class="input-group-addon">类型</td>
+                <td >
+                  <select class="form-control" title="" name="type" id="type">
+                    <option value="SMS">SMS</option>
+                    <option value="EMAIL">EMAIL</option>  
+                    <option value="PUSH">PUSH</option>
+                  </select>
+                </td>
+                	
+              </tr>
+            
+                
+             
+             
+              <tr>
+               	 <td class="input-group-addon">短信类型</td>
+                <td>
+                  <input type="text"  class="form-control"  name="smsType" id="smsType">
+                </td>
+                <td class="input-group-addon">渠道编码</td>
+                <td>
+                  <input type="text"  class="form-control"  name="channelCode" id="channelCode">
+                </td>
+              </tr>
+			<tr>
+			
+			  <td class="input-group-addon">请求地址</td>
+                <td>
+                  <input type="text"  class="form-control "   name="url" id="url">
+                  
+                </td>
+				
+				
+				  <td class="input-group-addon">key</td>
+                <td>
+                  <input type="text"  class="form-control "   name="key" id="key">
+                  
+                </td>
+				
+			</tr>                
+                
+             <tr>
+             
+               <td class="input-group-addon">端口</td>
+                <td>
+                  <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="端口能为空(不需要可用0补充)"  name="port" id="port">
+                  
+                </td>
+               <td class="input-group-addon">是否开放</td>
+                <td >
+                  <select class="form-control" title="" name="open" id="open">
+                    <option value="1">开放</option>
+                    <option value="0">关闭</option>
+                  </select>
+                </td>
+             </tr>
+                
+           
+              
+              </tbody>
+            </table>
+            <div class="ibox-footer" style="text-align: center">
+              <!--操作按钮 开始-->
+              <div class="ibox-btns">
+                <!-- <button class="btn btn-primary" type="button" onclick="submitCard()">保存</button> -->
+               <button  type="button" class="btn btn-primary" onclick="submitCardBin()">保存</button>
+                <button class="btn btn-white" type="button" onclick="history.go(-1)">返回</button>
+              </div>
+              <!--操作按钮 开始-->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 表单部分 结束 -->
+
+
+
+
+</div>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/fileinput/fileinput.min.js"></script>
+<script src="../static/js/plugins/fileinput/zh.js"></script>
+<script src="../static/js/plugins/fancybox/jquery.fancybox.js"></script>
+
+
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+
+
+<!-- JS页面 -->
+<script src="../static/js/pages/basedata_mgt/sms_channel_list_add.js"></script>
+
+</body>
+</html>

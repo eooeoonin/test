@@ -1,0 +1,34 @@
+[
+  {
+    "id": "错误码1",
+    "system_code": "测试20",
+    "system_name": "1",
+    "code": "C07000001",
+    "message": "测试20",
+    "level": "1",
+    "result": "1",
+    "extend": "公告1",
+    "version": "测试20",
+    "deleted": "1",
+    "status": 20,
+    "edited_by": "测试20",
+    "create_time": "1",
+    "modify_time": "1"
+  },
+   {
+    "id": "错误码2",
+    "system_code": "测试20",
+    "system_name": "1",
+    "code": "C07100000",
+    "message": "测试20",
+    "level": "1",
+    "result": "1",
+    "extend": "公告1",
+    "version": "测试20",
+    "deleted": "1",
+    "status": 20,
+    "edited_by": "测试20",
+    "create_time": "1",
+    "modify_time": "1"
+  }
+]

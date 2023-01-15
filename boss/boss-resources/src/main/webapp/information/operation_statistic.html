@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>公告</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+  <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+  <link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>运营披露数据统计表</h5>
+        </div>
+        <div class="ibox-content" style="padding-bottom:0;">
+          <div class="row">
+            <div class="col-sm-12">
+              <!-- 表格部分 开始 -->
+              <table id="table">
+                <thead>
+                <tr>
+<!--                   <th>ID</th> -->
+                  
+                  <th>统计月份</th>
+                  <th>历史累计交易总额</th>
+ 			      <th>历史累计交易笔数</th>
+ 			      <th>借贷余额</th>
+ 			      <th>当期借贷笔数</th>
+                  <th>累计出借人数量</th>
+                  <th>累计借款人数量</th>
+                  <th>当期出借人数量</th>
+                  <th>当期借款人数量</th>
+                  <th>前十大借款人待还金额占比%</th>
+                  <th>最大单一借款人待还金额占比%</th>
+                  <th>更新时间</th>
+                  <th>操作</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                <!-- JS输出JOSN数据 -->
+               
+                </tbody>
+              </table>
+              <!-- 表格部分 结束 -->
+              <div class="ibox-footer clear">
+              
+              <div class="ibox-thead clear">
+              	<h5>注： 1.所有涉及金额的单位均为万元；2.报表中所有数据截止时间等于上月最后1天。</h5>	
+                <div class="pull-right">
+                  <!--操作按钮 开始-->
+                  <div class="ibox-btns" style="margin-top:0;">
+                    <button class="btn btn-primary btn-xs" type="button"  id="exportExcel">导出</button>
+                  </div>
+                  <!--操作按钮 开始-->
+                </div>
+              </div>   
+                       
+                <div class="pull-right">
+                  <!--分页 开始-->
+                  <div class="tcdPageCode"></div>
+                  <!--分页 结束-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<!-- <script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script> -->
+<!-- <script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script> -->
+<!-- <script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script> -->
+<!-- <script src="../static/js/plugins/pages/jquery.page.js"></script> -->
+
+
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../static/js/plugins/pages/jquery.page.js"></script>
+<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+<script src="../static/js/plugins/zclip/jquery.zclip.min.js"></script>
+
+
+<!-- JS页面 -->
+<!-- <script src="../static/js/pages/logn_mgt/l_firstinstance_list.js"></script> -->
+<script src="../static/js/pages/information/operation_statistic.js"></script>
+
+</body>
+</html>

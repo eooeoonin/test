@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>借款人信息</title>
+
+    <!-- CSS核心 -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../static/css/animate.min.css" rel="stylesheet">
+    <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+    <!-- CSS插件 -->
+	<link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+	<link href="../static/css/plugins/fileinput/fileinput.min.css" rel="stylesheet">
+	<link href="../static/js/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+	<link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	<link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <!-- 表单部分 开始 -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>借款人信息</h5>
+                </div>
+      <div class="ibox-content">
+        <div id="errorBlock" class="help-block"></div>
+        <form method="post" class="form-horizontal" id="addBorrowerForm">
+          <input type="hidden" name="id" id="bwId" />
+          <input type="hidden" name="userId" id="userId" />
+          <input type="hidden" name="legalPersonMobile" id="legalPersonMobile" />
+          <table class="table table-bordered">
+            <tbody>
+            <tr>
+              <td class="input-group-addon" width="20%">用户名</td>
+              <td width="30%" class="in_p">
+                <input type="text" disabled="disabled"  class="form-control" id="userName" name="userName">
+              </td>
+              <td class="input-group-addon" width="20%">邮箱</td>
+              <td width="30%" class="in_p">
+                <input type="text" disabled="disabled" placeholder="输入邮箱" class="form-control validate[required,custom[email]]" data-errormessage-value-missing="邮箱不能为空" data-errormessage-custom-error="邮箱不正确" name="email" id="email">
+              </td>
+            </tr>
+             <tr>
+              <td class="input-group-addon" width="20%">用户角色</td>
+              <td width="30%" class="in_p">
+               <select class="jins form-control"   name="userRole" id="userRole">
+               		<option value="BORROW">借款人</option>
+				    <option value="GUARANTEE">担保人</option>
+               </select>
+              </td>
+              <td class="input-group-addon" width="20%">用户属性</td>
+              <td width="30%" class="in_p">
+                <input type="text" disabled="disabled"  class="form-control "  name="userAtt" id="userAtt">
+              </td>
+            </tr>
+            <tr>
+              <td class="input-group-addon">企业联系人</td>
+              <td  class="in_p">
+                <input type="text" placeholder="输入企业联系人" class="form-control validate[required]" data-errormessage-value-missing="企业联系人不能为空"  name="enterpriseContact" id="enterpriseContact">
+              </td>
+              <td class="input-group-addon" width="20%">联系人手机号</td>
+              <td width="30%" class="in_p">
+                <input type="text"  class="form-control validate[required,custom[mobilephone]]" maxlength="11" placeholder="输入联系人手机号" data-errormessage-custom-error="手机号码不正确" data-errormessage-value-missing="联系人手机号不能为空" name="corporateContactsMobile" id="corporateContactsMobile">
+              </td>
+            </tr>
+            <tr>
+              <td class="input-group-addon">法人姓名</td>
+              <td class="in_p">
+                <input type="text" placeholder="输入法人姓名" class= "jin form-control validate[required]" data-errormessage-value-missing="法人姓名不能为空" name="legalPersonName" id="legalPersonName">
+              </td>
+              <td class="input-group-addon">企业名称</td>
+              <td class="in_p">
+                <input type="text" placeholder="输入借款企业或借款人名称" class="jin form-control validate[required]" data-errormessage-value-missing="企业名称不能为空" name="enterpriseName" id="enterpriseName">
+              </td>
+            </tr>
+            <tr>
+              <td class="input-group-addon">法人身份证号</td>
+              <td class="in_p">
+                <input type="text" placeholder="输入法人身份证号" class="jin form-control validate[required,custom[chinaIdLoose]]" data-errormessage-custom-error="法人身份证号不合法" data-errormessage-value-missing="法人身份证号不能为空" name="legalPersonCertNo" id="legalPersonCertNo">
+              </td>
+              <td class="input-group-addon">注册资金</td>
+              <td class="in_p">
+                <div class="input-group">
+                  <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" placeholder="输入注册资金" data-errormessage-custom-error="注册资金只能为数字或小数" data-errormessage-value-missing="注册资金不能为空" name="registeredCapital" id="registeredCapital"> <span class="input-group-addon">万元</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="input-group-addon">法人身份证复印件</td>
+              <td colspan="3" class="in_p">
+                <form class=" form-horizontal" enctype="multipart/form-data" method="post" id="uploadForm">
+                  <input id="fileinput" name="file" multiple type="file" class=" file-loading legalPersonCertNoFm">
+                </form>
+                <div class="legalPersonCertNoFile validate[required]" data-errormessage-value-missing="法人身份证复印件不能为空">
+                  <input type="hidden" class="" name="legalPersonCertNoFile" id="legalPersonCertNoFile" value="">
+                </div>
+                <input type="hidden" name="legalPersonCertNoFileName" id="legalPersonCertNoFileName" value="">
+              </td>
+            </tr>
+            <tr>
+              <td class="input-group-addon">企业注册时间</td>
+              <td colspan="3" class="in_p">
+                <input placeholder="输入日期" class="laydate-icon  layer-date form-control validate[required]" data-errormessage-value-missing="企业注册时间不能为空" id="date1" name="establishedTime">
+              </td>
+            </tr>
+            <tr>
+              <td class="input-group-addon">注册类型</td>
+              <td colspan="3" class="in_p">
+                <div class="col-sm-10">
+                  <label class="checkbox-inline i-checks">
+                    <div class="iradio_square-green" style="position: relative;">
+                      <input type="radio" name="registerCertType" value="THREE" id="THREE" checked="checked" class = "jins licenseRadio" style="position: absolute; opacity: 0;" >
+                    </div>三证</label>
+                  <label class="checkbox-inline i-checks">
+                    <div class="iradio_square-green" style="position: relative;">
+                      <input type="radio" name="registerCertType" value="ONE" id="ONE" class = "jins licenseRadio" style="position: absolute; opacity: 0;">
+                    </div>三证合一</label>
+                </div>
+              </td>
+            </tr>
+            <tr class="bln" id="threeNo">
+              <td class="input-group-addon">营业执照号</td>
+              <td class="in_p">
+                <input type="text" placeholder="输入营业执照号" class="jin form-control"  name="businessLicenseNo" id="businessLicenseNo">
+              </td>
+              <td class="input-group-addon">营业执照上传</td>
+              <td class="in_p">
+                <form class="form-horizontal" enctype="multipart/form-data" method="post"  id="uploadForm2">
+                  <input id="fileinput2" name="file" multiple type="file" class="file-loading businessLicenseFm">
+                </form>
+                <div class="businessLicenseFile" data-errormessage-value-missing="营业执照复印件不能为空">
+                  <input type="hidden" class="" name="businessLicenseFile" id="businessLicenseFile" value="">
+                </div>
+                <input type="hidden" name="businessLicenseFileName" id="businessLicenseFileName" value="">
+              </td>
+            </tr>
+            <tr id="oneNo"  class="bln">
+              <td class="input-group-addon">企业统一社会信用代码</td>
+              <td class="in_p">
+                <input type="text" placeholder="企业统一社会信用代码" class="jin form-control"  name="unifiedSocialCreditCode" id="unifiedSocialCreditCode">
+              </td>
+              <td class="input-group-addon">营业执照上传</td>
+              <td class="in_p">
+                <form class="form-horizontal" enctype="multipart/form-data" method="post"  id="uploadForm22">
+                  <input id="fileinput6" name="file" multiple type="file" class="file-loading businessLicenseFm">
+                </form>
+                <div class="businessLicenseFile " >
+                </div>
+              </td>
+            </tr>
+
+            <tr class="txid">
+              <td class="input-group-addon">税务登记证号</td>
+              <td class="in_p">
+                <input type="text" placeholder="输入税务登记证号" class="jin form-control" data-errormessage-value-missing="税务登记证号不能为空"  name="taxId" id="taxId">
+              </td>
+              <td class="input-group-addon">税务登记证</td>
+              <td class="in_p">
+                <form class="form-horizontal" enctype="multipart/form-data" method="post"  id="uploadForm3">
+                  <input id="fileinput3" name="file" multiple type="file" class="file-loading taxFm">
+                </form>
+                <div class="taxFile" >
+                  <input type="hidden" class="" name="taxFile" id="taxFile" value="">
+                </div>
+                <input type="hidden" name="taxFileName" id="taxFileName" value="">
+              </td>
+            </tr>
+            <tr class="oicd">
+              <td class="input-group-addon">组织机构代码证号</td>
+              <td class="in_p">
+                <input type="text" placeholder="输入组织机构代码证号" class="jin form-control"  name="organizingCode" id="organizingCode">
+              </td>
+              <td class="input-group-addon">组织机构代码证</td>
+              <td class="in_p">
+                <form class="form-horizontal" enctype="multipart/form-data" method="post"  id="uploadForm4">
+                  <input id="fileinput4" name="file" multiple type="file" class="file-loading organizingCodeFm">
+                </form>
+                <div class="jin organizingCodeFile " >
+                  <input type="hidden" class="" name="organizingCodeFile" id="organizingCodeFile" value="">
+                </div>
+                <input type="hidden" name="organizingCodeFileName" id="organizingCodeFileName" value="">
+              </td>
+            </tr>
+            <tr>
+              <td class="input-group-addon">企业银行账号</td>
+              <td class="in_p">
+                <input type="text" placeholder="输入企业银行账号" class="jin form-control" data-errormessage-value-missing="企业银行账号不能为空" name="bankAccount" id="bankAccount">
+              </td>
+              <td class="input-group-addon">银行开户证明</td>
+              <td class="in_p">
+                <form class="form-horizontal" enctype="multipart/form-data" method="post" id="uploadForm5">
+                  <input id="fileinput5" name="file" multiple type="file" class="file-loading bankAccountFm">
+                </form>
+                <div class="bankAccountFile" data-errormessage-value-missing="银行开户证明复印件不能为空">
+                  <input type="hidden" class="" name="bankAccountFile" id="bankAccountFile" value="">
+                </div>
+                <input type="hidden" name="bankAccountFileName" id="bankAccountFileName" value="">
+              </td>
+            </tr>
+            <tr>
+              <td class="input-group-addon">企业银行账户名</td>
+              <td class="in_p">
+                <input type="text" placeholder="输入企业银行账户名" class="jin form-control" name="bankAccountName" id="bankAccountName">
+              </td>
+              <td class="input-group-addon">开户银行</td>
+              <td class="in_p">
+                <select class="jins form-control " data-errormessage-value-missing="开户银行不能为空" name="openAccountBank" id="openAccountBankSelect"></select>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="input-group-addon">支行</td>
+              <td class="in_p">
+                <input type="text" placeholder="输入支行名称" class="form-control" data-errormessage-value-missing="支行名称不能为空" name="branchBank" id="branchBank">
+              </td>
+              <td class="input-group-addon">开户银行许可证号</td>
+              <td colspan="3" class="in_p">
+                <input type="text" placeholder="输入开户银行许可证号" class="jin form-control" data-errormessage-value-missing="开户银行许可证号不能为空" name="openingBankPermit" id="openingBankPermit">
+              </td>
+            </tr>
+            <tr>
+              <td class="input-group-addon">办公地址</td>
+              <td colspan="3" class="in_p">
+                <input type="text" placeholder="输入办公地址名称" class="form-control" data-errormessage-value-missing="办公地址不能为空" name="officeAddress" id="officeAddress">
+              </td>
+            </tr>
+            <tr>
+              <td class="input-group-addon">证件查看</td>
+              <td colspan="3">
+
+                <table id="fileTable">
+                  <tbody id="fileImgs">
+
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="ibox-footer" style="text-align: center">
+            <!--操作按钮 开始-->
+            <div class="ibox-btns">
+              <!-- <button class="btn btn-primary" type="button" id="borrowerSubmit">提交</button> -->
+                  	<button class="btn btn-white" type="button" onclick="history.go(-1)">返回</button>
+            </div>
+            <!--操作按钮 开始-->
+          </div>
+        </form>
+      </div>
+            </div>
+        </div>
+    </div>
+    <!-- 表单部分 结束 -->
+
+</div>
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../static/js/plugins/pages/jquery.page.js"></script>
+<script src="/static/js/plugins/bootbox/bootbox.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+<script src="../static/js/jquery.cookie.js"></script>
+<script src="../static/js/plugins/date/moment.js"></script>
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<!-- 编辑器配置文件 -->
+<script src="../static/js/plugins/ueditor/ueditor.config.js"></script>
+<script src="../static/js/plugins/ueditor/ueditor.all.js"></script>
+<!-- file上传插件 -->
+<script src="../static/js/plugins/fileinput/fileinput.min.js"></script>
+<script src="../static/js/plugins/fileinput/zh.js"></script>
+<script src="../static/js/plugins/fancybox/jquery.fancybox.js"></script>
+
+<!-- JS页面 -->
+<script src="../static/js/pages/borrower_mgt/borrowerlist_applyinfo.js"></script>
+
+
+</body>
+</html>

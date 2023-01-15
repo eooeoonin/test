@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>卡bin</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+  <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+  <link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+  <link href="../static/css/plugins/validation/form.min.css" rel="stylesheet">
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>客服管理</h5>
+        </div>
+        <div class="ibox-content" style="padding-bottom:0;">
+          <div class="row">
+            <div class="col-sm-12">
+            
+             
+   <!-- 表格部分 开始 -->
+    <div class="col-md-12" id = "info_tab">
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a data-toggle="tab" href="#tab_1" onclick="platform()">会员信息</a>
+        </li>
+     
+        <li class="">
+          <a data-toggle="tab" href="#tab_2" onclick="inviteFriends()">邀请记录</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_3" onclick="rechargeRecord()">充值记录</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_4" onclick="withdrawals()">提现记录</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_5" onclick="call()">出借记录</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_6" onclick="redmoneyrecord()">红包记录</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#tab_7" onclick="bindRecord()">绑定记录</a>
+        </li>
+      </ul>
+      
+    
+	 
+	  <div class="box-header" id="inviteMoney">
+	  	  <table class="table table-hover table-debt panel panel-default">
+		  	 	<tr>
+					<td>邀请人数量</td>
+					<td>
+						<input type="text"  id="invitePeopleAcount" readonly="readonly" style="border:none"/>
+					</td>
+					<td>奖励总金额</td>
+					<td>
+						<input type="text" id="rewardMoney" readonly="readonly" style="border:none"/>
+					</td>
+				</tr>
+		  </table>	
+	 </div>
+	 
+	      <div class="box-header" id="LoanInvestorMoney">
+	  	  <table class="table table-hover table-debt panel panel-default">
+		  	 	<tr>
+					<td>出借总额</td>
+					<td>
+						<input type="text"  id="totalMoney" readonly="readonly" style="border:none"/>
+					</td>
+					
+				</tr>
+		  </table>	
+	 </div>
+	 
+	   <div class="box-header" id="Accountname">
+	  	  <table class="table table-hover table-debt panel panel-default">
+		  	 	<tr>
+					<td>账户名</td>
+					<td>
+						<input type="text"  id="accountRealName" readonly="readonly" style="border:none"/>
+					</td>
+					<td>账户</td>
+					<td>
+						<input type="text"  id="cardNo" readonly="readonly" style="border:none"/>
+					</td>
+					
+					<td>支行名称</td>
+					<td>
+						<input type="text"  id="accountBankName" readonly="readonly" style="border:none"/>
+					</td>
+					<td>账户类型</td>
+					<td>
+						<input type="text"  id="accountType" readonly="readonly" style="border:none"/>
+					</td>
+					
+				</tr>
+		  </table>	
+	 </div>
+	 <!--会员信息-->
+      <div class="tab-content">
+        <div id="tab_1" class="tab-pane active">
+          <div class="box box-primary">
+			  <div class="box-body">
+			  	<table class="table table-bordered">
+			  	
+			  		<tr><td colspan="7" ><b>基本信息</b></td></tr>
+			  		<tr>
+			  		
+			  		<td>注册手机</td>
+		          		<td>
+							<input class="box-title" id="registerMobile" style="border:none" readonly="readonly"/><button onclick="regaccFun()">更换</button>&nbsp;&nbsp;&nbsp;<button onclick="regaccFun2()">解锁</button><!-- &nbsp;&nbsp;&nbsp;<button onclick="regaccFun3()">解绑身份</button> -->
+						</td>
+		          		
+		          		
+		          		<td>姓名</td>
+		          		<td>
+		          			<input class="box-title" id="realName" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		
+		          		<td>微信昵称</td>
+		          		<td>
+		          			<input class="box-title" id="nickName" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		
+		          		
+		          	</tr>
+		          	<tr>
+		          
+		          		<td>证件类型</td>
+		          		<td>
+							<input class="box-title" id="certType" style="border:none" readonly="readonly"/>
+						</td>
+							<td>证件号</td>
+		          		<td><input class="box-title" id="certNo" style="border:none" readonly="readonly"/></td>
+		          		
+		        	 		<td >注册时间</td>
+		          		<td ><input class="box-title" id="createTime" style="border:none" readonly="readonly"/></td>
+					 	</tr>
+		          	
+		          	<tr>
+		          	 	<td>用户类型</td>
+		          		<td>
+		          			<input class="box-title" id="userType" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>用户组</td>
+		          		<td>
+		          			<input class="box-title" id="group" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>用户等级</td>
+		          		<td><input class="box-title" id="grade" style="border:none" readonly="readonly"/></td>
+		          	</tr>
+					<tr>
+										<td>最后登陆时间</td>
+		          		<td><input class="box-title" id="lastLoginTime" style="border:none" readonly="readonly"/></td>
+					
+									<td>用户ID</td>
+		          		<td colspan="2"><input class="box-title" id="userid" style="border:none;width:100%" readonly="readonly"/></td>
+						<td>性别</td>
+						<td>
+							<input class="box-title" id="gender" style="border:none" readonly="readonly"/>
+						</td>
+		          	
+					</tr>	
+					
+					
+					<tr><td colspan="7"><b>账户信息</b></td></tr>
+					
+					<tr>
+		        	<td>可用余额</td>
+		          		<td>
+		          			<input class="box-title" id="balance" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>冻结金额</td>
+		          		<td>
+		          			<input class="box-title" id="freezeAmount" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>红包余额</td>
+		          		<td>
+							<input class="box-title" id="redMoneyBalance" style="border:none" readonly="readonly"/>
+						</td> 	</tr>  
+		          	
+		          	<tr><td colspan="7"><b>银行卡信息</b></td></tr>
+		          		<tr>
+		          	 	<td>账户名</td>
+		          		<td>
+		          			<input class="box-title" id="realNames" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>银行卡号</td>
+		          		<td>
+		          			<input class="box-title" id="bankCardNo" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>所属银行</td>
+		          		<td><input class="box-title" id="bankName"" style="border:none" readonly="readonly"/></td>
+		          	</tr>  
+		          	
+		          		
+		          		<tr>
+		          	 	<td>预留手机</td>
+		          		<td>
+		          			<input class="box-title" id="bankMobile" style="border:none" readonly="readonly"/>
+		          		</td>
+		          		<td>绑卡时间</td>
+		          		<td>
+		          			<input class="box-title" id="bindTime" style="border:none" readonly="readonly"/>
+		          		</td>
+		          	</tr>       
+						<tr><td colspan="7"><b>设备信息</b></td></tr>
+		          		<tr>
+		          	 	 		<td>来源</td>
+		          		<td><input class="box-title" id="from" style="border:none" readonly="readonly"/></td>
+		          		<td>设备ID</td>
+		          		<td colspan="2"><input class="box-title" id="deviceId" style="border:none;width:100%" readonly="readonly"/></td>
+		          		
+		          	</tr>  
+		          		<tr><td colspan="7"><b>邀请信息</b></td></tr>
+		          		<tr>
+		          	 	<td>邀请码</td>
+		          		<td><input class="box-title" id="inviteCode" style="border:none" readonly="readonly"/></td>
+		          		<td>直接邀请人</td>
+		          		<td><input class="box-title" id="referrer1" style="border:none;width:100%" readonly="readonly"/></td>
+		          		<td>间接邀请人</td>
+		          		<td><input class="box-title" id="referrer2" style="border:none;width:100%" readonly="readonly"/></td>
+		          	</tr>  	    
+		          	<tr>
+		          		<td>出借代理人</td>
+		          		<td><input class="box-title" id="agent" style="border:none" readonly="readonly"/></td>
+		          	</tr>
+		         	<tr><td colspan="7"><b>微信信息</b></td></tr>
+		          	<tr>
+		          		<td>注册手机号</td>
+		          		<td><input class="box-title" id="mobile" style="border:none;width:100%" readonly="readonly"/></td>
+		          		<td>国家</td>
+		          		<td><input class="box-title" id="country" style="border:none" readonly="readonly"/></td>
+		          		<td>省份</td>
+		          		<td><input class="box-title" id="provinces" style="border:none" readonly="readonly"/></td>
+		          	</tr>
+		          		<tr>
+		          		<td>城市</td>
+		          		<td><input class="box-title" id="citys" style="border:none;width:100%" readonly="readonly"/></td>
+		          		<td>昵称</td>
+		          		<td><input class="box-title" id="nickname" style="border:none" readonly="readonly"/></td>
+		          		
+		          	</tr>
+		          	<tr><td colspan="7"><b>风险调查</b></td></tr>
+		          	<tr>
+		          		<td>风险评级</td>
+		          		<td><input class="box-title" id="riskRating" style="border:none;width:100%" readonly="readonly"/></td>
+		          		<td>调查评分</td>
+		          		<td><input class="box-title" id="riskScore" style="border:none;width:100%" readonly="readonly"/></td>
+		          	</tr>
+	            </table>
+			  </div>
+		  </div>
+        </div>
+        
+      
+        <!--邀请记录-->
+	 <div id="tab_2" class="tab-pane">
+       	<div class="box box-primary">
+		  <div class="box-body">
+          <table class="table table-hover table-debt panel panel-default">
+         	 <thead>
+				<tr>	
+					<td>手机号</td>
+					<td>微信昵称</td>
+					<td>奖励金额</td>
+					<td>邀请时间</td>
+		        </tr>
+		      </thead>
+		      <tbody>
+		      <!-- JS输出JOSN数据 -->
+		      	
+		      </tbody>
+    	</table>
+    	</div>
+    	</div>
+       </div>
+     
+         <!--充值记录-->
+        <div id="tab_3" class="tab-pane">
+        <div class="box box-primary">
+			  <div class="box-body">
+          <table class="table table-hover table-debt panel panel-default">
+		      <thead>
+		        <tr class="active">
+					<td>充值时间</td>
+					<td>金额</td>
+					<td>外部订单号</td>
+					<td>支付类型</td>
+					<td>状态</td>
+					<td>操作</td>
+					
+		        </tr>
+		      </thead>
+		      
+		      <tbody>
+	      	  <!-- JS输出JOSN数据 -->
+	      		
+	      	</tbody>
+	      
+    	</table>
+    	</div>
+    	</div>
+      </div>
+        <!--提现记录-->
+      <div id="tab_4" class="tab-pane">
+          <div class="box box-primary">
+			  <div class="box-body">
+			  	<table class="table table-hover table-debt panel panel-default">
+			  <thead>
+		        <tr class="active">
+					
+		          		<td>申请时间</td>
+		          		<td>金额</td>
+		          		<td>外部订单号</td>
+		          		<td>状态</td>
+		          		<td>失败原因</td>
+		          		
+				</tr>
+				</thead>
+				 <tbody>
+	      	  <!-- JS输出JOSN数据 -->
+	      		
+	      	</tbody>
+    	</table>
+    	</div>
+    	</div>
+      </div>
+       <!--出借记录-->
+      
+        <div id="tab_5" class="tab-pane">
+        <div class="box box-primary">
+			  <div class="box-body">
+          <table class="table table-hover table-debt panel panel-default">
+		      <thead>
+		        <tr class="active">
+					<td>项目名称</td>
+					<td>利率</td>
+					<td>出借周期</td>
+					<td>出借时间</td>
+					<td>使用红包</td>
+					<td>实际支付</td>
+					<td>出借金额</td>
+					<td>出借状态</td>
+					<td>项目状态</td>
+		        </tr>
+		      </thead>
+		      
+		      <tbody>
+	      	  <!-- JS输出JOSN数据 -->
+	      		
+	      	</tbody>
+	      
+    	</table>
+    	</div>
+    	</div>
+      </div>
+      
+      <!--红包记录-->
+      
+        <div id="tab_6" class="tab-pane">
+        <div class="box box-primary">
+			  <div class="box-body">
+          <table class="table table-hover table-debt panel panel-default">
+		      <thead>
+		        <tr class="active">
+					<td>时间</td>
+					<td>金额</td>
+					<td>收支类型</td>
+					
+				
+		        </tr>
+		      </thead>
+		      
+		      <tbody>
+	      	  <!-- JS输出JOSN数据 -->
+	      		
+	      	</tbody>
+	      
+    	</table>
+    	</div>
+    	</div>
+      </div>
+      
+      <!--绑定记录-->
+		<div id="tab_7" class="tab-pane">
+			<div class="row">
+				<form method="post" class="form-horizontal">
+					<table class="table table-bordered" id="table">
+						<thead>
+							<tr>
+								<td width="20%">绑定账号记录</td>
+								<td width="20%">状态</td>
+								<td width="20%">是否合并</td>
+								<td width="20%">原用户ID</td>
+								<td width="20%">时间</td>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+        
+      </div>
+    </div>
+                <!-- JS输出JOSN数据 -->
+               
+                </tbody>
+              </table>
+              <!-- 表格部分 结束 -->
+              <div class="ibox-footer clear">
+                <div class="pull-right">
+                  <!--分页 开始-->
+                  <div class="tcdPageCode" id="tcdPageCodehide"></div>
+                  <!--分页 结束-->
+                </div>
+              </div>
+            </div>
+            
+   <!-- 更换手机号－模态窗口 开始 -->
+		<div class="modal inmodal fade" id="myModal" tabindex="-1"
+			role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">更换手机号</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 表格部分 开始 -->
+						<form id="modal_form" method="post">
+						<table id="modaltable">
+							<tbody>
+								<tr >
+									<td class="input-group-addon" width="30%">原手机号:</td>
+									<td width="30%">
+										<input type="text" class="form-control"
+										id="modal_orginMobile" name="orginMobile" readonly="readonly">
+									</td>
+								</tr>
+									<tr >
+									<td class="input-group-addon" width="30%">新手机号:</td>
+									<td width="30%">
+										<input type="text" class="form-control validate[required,minSize[11],maxSize[11]]"  data-errormessage-value-missing="新手机号不能为空"
+	                    									 data-errormessage="请输入十一位手机号码"
+										id="modal_newMobile" name="newMobile">
+									</td>
+								</tr>
+								<tr >
+									<td class="input-group-addon" width="30%">再次输入:</td>
+									<td width="30%">
+										<input type="text" class="form-control validate[required,minSize[11],maxSize[11],equals[modal_newMobile]]" data-errormessage-value-missing="请再次输入" data-errormessage-pattern-mismatch="两次输入的手机号不一致"
+	                    								 	data-errormessage="请输入十一位手机号码" 
+										id="modal_newMobile2" name="newMobile2">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</form>
+						<!-- 表格部分 结束 -->
+					</div>
+					<div class="modal-footer clear">
+						<div class="pull-right">
+							<input type="button" class="btn btn-white" data-dismiss="modal" value="取消">
+							<button type="button" class="btn btn-primary" id="modal_save">确定</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 更换手机号－模态窗口 结束 -->
+		
+		
+		
+	<!-- 解锁手机号－模态窗口 开始 -->
+		<div class="modal inmodal fade" id="myModal2" tabindex="-1"
+			role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">解锁手机号</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 表格部分 开始 -->
+						<form id="modal_form2" method="post">
+						<table id="modaltable2">
+							<tbody>
+								<tr >
+									<td class="input-group-addon" width="30%">原手机号:</td>
+									<td width="30%">
+										<input type="text" class="form-control"
+										id="modal_orginMobile2" name="mobile" readonly="readonly">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</form>
+						<!-- 表格部分 结束 -->
+					</div>
+
+					<div class="modal-footer clear">
+						<div class="pull-right">
+							<input type="button" class="btn btn-white" data-dismiss="modal" value="取消">
+							<button type="button" class="btn btn-primary" id="modal_save2">确定</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 解锁手机号－模态窗口 结束 -->
+		
+		
+		
+		<!-- 解绑身份验证－模态窗口 开始 -->
+		<div class="modal inmodal fade" id="myModal3" tabindex="-1"
+			role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">解绑身份</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 表格部分 开始 -->
+						<form id="modal_form3" method="post">
+						<table id="modaltable3">
+							<tbody>
+								<tr >
+									<td class="input-group-addon" width="30%">输入身份证号:</td>
+									<td width="30%">
+										<input type="text" class="form-control validate[required,custom[chinaId]]" id="cer" name="certNo" data-errormessage-custom-error="身份证号不合法" data-errormessage-value-missing="身份证号不能为空">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</form>
+						<!-- 表格部分 结束 -->
+					</div>
+
+					<div class="modal-footer clear">
+						<div class="pull-right">
+							<input type="button" class="btn btn-white" data-dismiss="modal" value="取消">
+							<button type="button" class="btn btn-primary" id="modal_save3">验证并解锁</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 解绑身份验证－模态窗口 结束 -->
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<!-- <script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script> -->
+<!-- <script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script> -->
+<!-- <script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script> -->
+<!-- <script src="../static/js/plugins/pages/jquery.page.js"></script> -->
+
+
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../static/js/plugins/pages/jquery.page.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+<!-- JS页面 -->
+<!-- <script src="../static/js/pages/logn_mgt/l_firstinstance_list.js"></script> -->
+<script src="../static/js/pages/customer/customer_user_detailedinformation.js"></script>
+
+</body>
+</html>

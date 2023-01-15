@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+        SYSTEM "/config/code-generator-config.dtd"  >
+<generatorConfiguration>
+    <context id="context1">
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.1.151:3306/"
+                        schemas="boss"
+                        userId="system"
+                        password="Aa12345678">
+        </jdbcConnection>
+
+        <!-- 数据表 -->
+        <!--<table tableName="t_test_interface"></table>-->
+        <!--- // 配置 //////////////////////////////////////-->
+
+        <!-- 项目名称 -->
+        <property name="projectName" value="account" />
+        <!-- 默认前置包路径 -->
+        <property name="prefixPackage" value="com.winsmoney.jajaying" />
+        <!-- 输出根目录 -->
+        <property name="targetRootPath" value="..\\" />
+
+        <!-- 模板 ////////////////////////// -->
+        <!-- 输出根目录 -->
+        <property name="templatePath" value="template/default/" />
+
+        <!-- dao -->
+        <template name="DaoPo" info="dao的po定义"
+                  file="dao_po.vm" targetFileName="${entity.classNameUpCase}Po.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-dao\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\dao\po\"/>
+        <template name="DaoMapper" info="dao的mapper定义"
+                  file="dao_mapper.vm" targetFileName="${entity.classNameUpCase}Mapper.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-dao\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\dao\mapper\"/>
+        <template name="ResourceXML" info="resources 下是的mapper的xml配置文件"
+                  file="dao_xml.vm" targetFileName="${entity.classNameUpCase}Mapper.xml"
+                  targetPath="${project.targetRootPath}\\${project.projectName}-resources\src\main\resources\mybatis\"/>
+        <template name="ServiceImplXML" info="resources 下是的mapper的xml配置文件"
+                  file="dao_xml.vm" targetFileName="${entity.classNameUpCase}Mapper.xml"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-service.impl\src\test\resources\mybatis\"/>
+        <!-- domain -->
+        <template name="DomainModel" info=" domain 的model定义"
+                  file="domain_model.vm" targetFileName="${entity.classNameUpCase}.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-domain\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\domain\model\"/>
+        <template name="DomainManager" info=" domain 的manager定义"
+                  file="domain_manager.vm" targetFileName="${entity.classNameUpCase}Manager.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-domain\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\domain\manager\"/>
+        <!--<template name="DomainInterface" info=" domain 的接口类"-->
+        <!--file="domain_interface2.vm" targetFileName="I${entity.classNameUpCase}Domain.java"-->
+        <!--targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-domain\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\domain\"/>-->
+        <template name="Domain" info=" domain 的实现类"
+                  file="domain_impl.vm" targetFileName="${entity.classNameUpCase}Domain.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-domain\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\domain\"/>
+
+        <!-- service -->
+        <template name="ServiceInterface" info="service的接口定义"
+                  file="service_interface.vm" targetFileName="I${entity.classNameUpCase}Service.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-service\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\service\"/>
+        <template name="ServiceImpl" info="service的接口实现"
+                  file="service_impl.vm" targetFileName="${entity.classNameUpCase}Service.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-service.impl\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\service\impl\"/>
+        <template name="ServiceRequest" info="service的请求参数"
+                  file="service_request.vm" targetFileName="${entity.classNameUpCase}ReqVo.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-service\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\service\request\"/>
+        <template name="ServiceResponse" info="service的响应结果"
+                  file="service_response.vm" targetFileName="${entity.classNameUpCase}ResVo.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-service\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\service\response\"/>
+
+        <template name="ServiceTest" info="service的单元测试"
+                  file="service_test.vm" targetFileName="${entity.classNameUpCase}ServiceTest.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-service.impl\src\test\java\\${project.prefixPackagePath}\\${project.projectName}\service\"/>
+
+        <!--通用代码模板-->
+        <!--通用代码模板-->
+        <template name="BaseManager" info="系统的内部错误码"
+                  file="base_manager.vm" targetFileName="BaseManager.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-domain\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\domain\manager\"/>
+        <template name="InnerErrorCode" info="系统的内部错误码"
+                  file="error_code.vm" targetFileName="${project.projectNameUpCase}ErrorCode.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-domain\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\domain\enums\"/>
+        <template name="RuntimeException" info="系统的自定义异常"
+                  file="exception.vm" targetFileName="${project.projectNameUpCase}RuntimeException.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-domain\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\domain\exception\"/>
+        <template name="ServiceCommonResult" info="service的通用结果"
+                  file="service_result.vm" targetFileName="${project.projectNameUpCase}CommonResult.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-service\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\service\response\"/>
+        <template name="CommonServiceInterface" info="通用服务接口定义"
+                  file="common_service_interface.vm" targetFileName="ICommonService.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-service\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\service\"/>
+        <template name="CommonService" info="service层基本服务类"
+                  file="common_service.vm" targetFileName="CommonService.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-service.impl\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\service\impl\"/>
+        <template name="BaseService" info="service层基本服务类"
+                  file="base_service.vm" targetFileName="BaseService.java"
+                  targetPath="${project.targetRootPath}\\${project.projectName}\\${project.projectName}-service.impl\src\main\java\\${project.prefixPackagePath}\\${project.projectName}\service\impl\"/>
+
+
+        <!-- 数据库和java类型映射 -->
+        <dataTypeMap jdbcType="VARCHAR" jdbcTypeId="12" javaType="java.lang.String"/>
+        <dataTypeMap jdbcType="TIMESTAMP" jdbcTypeId="93" javaType="java.util.Date"/>
+        <dataTypeMap jdbcType="INTEGER" jdbcTypeId="4" javaType="java.lang.Integer"/>
+        <dataTypeMap jdbcType="INT" jdbcTypeId="4" javaType="java.lang.Integer"/>
+        <dataTypeMap jdbcType="BIGINT" jdbcTypeId="-5" javaType="java.lang.Long"/>
+
+        <dataTypeMap jdbcType="ARRAY" jdbcTypeId="2003" javaType="java.lang.Object"/>
+        <dataTypeMap jdbcType="BINARY" jdbcTypeId="-2" javaType="byte[]"/>
+        <dataTypeMap jdbcType="BIT" jdbcTypeId="-7" javaType="java.lang.Boolean"/>
+        <dataTypeMap jdbcType="BLOB" jdbcTypeId="2004" javaType="byte[]"/>
+        <dataTypeMap jdbcType="BOOLEAN" jdbcTypeId="16" javaType="java.lang.Boolean"/>
+        <dataTypeMap jdbcType="CHAR" jdbcTypeId="1" javaType="java.lang.String"/>
+        <dataTypeMap jdbcType="TEXT" jdbcTypeId="1" javaType="java.lang.String"/>
+
+
+
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>家家盈－生活财富盈家</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+  <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+  <link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+  <link href="../static/css/plugins/validation/form.min.css" rel="stylesheet">
+
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+<!-- 还款 -->
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="tabs-container">
+      
+      <div class="ibox-title">
+	        <form class="form-horizontal" id="selected" name="selected">
+					<table class="table table-bordered" style="margin-bottom: 0;"> 
+					   <tbody> 
+					    <tr> 
+					     <td class="input-group-addon">清算时间</td> 
+					     <td width="30%">
+					     	<input class="laydate-icon form-control validate[required] layer-date" id="clearDate" name="clearDate">
+					     </td> 
+					     <td class="input-group-addon">业务类型</td> 
+					     <td width="30%">
+					     	<select class="form-control" id="type_select">
+					     			<option value="0">全部</option>
+					     			<option value="1">交易差异帐</option>
+					     			<option value="2">账务差异帐</option>
+					     	</select>
+					     </td>
+					      <td class="input-group-addon">状态</td> 
+					     <td width="30%">
+					     	<select class="form-control" id="inStatus">
+					     			<option value="1">未处理</option>
+					     			<option value="2">已处理</option>
+					     	</select>
+					     </td>  
+					     <td style="width:120px"> <button class="btn btn-primary btn-xs"  type="button" onclick="search()" id="sousuo"> <i class="fa fa-search-plus"></i>&nbsp;查询 </button> </td>
+					    </tr> 
+					    <tr> 
+					    </tr> 
+					   </tbody>  
+					  </table>
+				</form>
+        </div>
+      
+        <!-- 切换标签 开始 -->
+        <ul class="nav nav-tabs">
+          <li style="width:10%;text-align:center;"><a data-toggle="tab_1" aria-expanded="true" onclick="recharge()"> 充值</a></li>
+          <li style="width:10%;text-align:center;"><a data-toggle="tab_2" aria-expanded="false" onclick="withdraw()">提现</a></li>
+          <li style="width:10%;text-align:center;"><a data-toggle="tab_3" aria-expanded="false" onclick="invest()">出借</a></li>
+          <li style="width:10%;text-align:center;"><a data-toggle="tab_4" aria-expanded="false" onclick="killloan()">流标</a></li>
+          <li style="width:10%;text-align:center;"><a data-toggle="tab_5" aria-expanded="false" onclick="release()">放款</a></li>
+          <li class="active" style="width:10%;text-align:center;"><a data-toggle="tab_6" aria-expanded="false" onclick="repay()">还款</a></li>
+          <li style="width:10%;text-align:center;"><a data-toggle="tab_7" aria-expanded="false" onclick="inviteprofit()">邀请收益</a></li>
+          <li style="width:10%;text-align:center;"><a data-toggle="tab_8" aria-expanded="false" onclick="adjustment()">手动调账</a></li>
+        </ul>
+
+      </div>
+      
+      
+        <div id="tab_16" class="table table-hover">
+        <div class="box box-primary">
+			  <div class="box-body">
+          <table class="table table-hover">
+		      <thead>
+		        <tr style="font-weight:bold;">
+					<td>处理时间</td>
+	          		<td>交易编码</td>
+	          		<td>用户ID</td>
+	          		<td>借款人ID</td>
+	          		<td>现金金额</td>
+	          		<td>应还本金</td>
+	          		<td>应还利息</td>
+	          		<td>罚息</td>
+	          		<td>还款时间</td>
+	          		<td>操作</td>
+		        </tr>
+		      </thead>
+		      <tbody>
+	      	  <!-- JS输出JOSN数据 -->
+	      		
+	      	</tbody>
+    	</table>
+    	<div class="ibox-footer clear">
+                <div class="pull-right">
+                  <!--分页 开始-->
+                  <div class="tcdPageCode"  id="tcdPagehide"></div>
+                  <!--分页 结束-->
+                </div>
+              </div>
+    	</div>
+    	</div>
+      </div>
+	</div>
+  </div>
+
+</div>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/pages/jquery.page.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+
+<!-- JS页面 -->
+<script src="../static/js/pages/difference_account/difference_repay_handle_list.js"></script>
+
+</body>
+</html>

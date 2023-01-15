@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winsmoney.jajaying.boss.dao.mapper.DepartmentMapper">
+    <resultMap id="BaseResultMap" type="com.winsmoney.jajaying.boss.dao.po.DepartmentPo">
+        <id column="C_ID" jdbcType="VARCHAR" property="id" />
+        <id column="C_DEPARTMENT_TYPE" jdbcType="VARCHAR" property="departmentType" />
+        <id column="C_PARENT_DEPARTMENT_ID" jdbcType="VARCHAR" property="parentDepartmentId" />
+        <id column="C_IS_INHERIT" jdbcType="VARCHAR" property="isInherit" />
+        <id column="C_DEPARTMENT_NAME" jdbcType="VARCHAR" property="departmentName" />
+        <id column="C_DEPARTMENT_CODE" jdbcType="VARCHAR" property="departmentCode" />
+        <id column="C_DELETED" jdbcType="INTEGER" property="deleted" />
+        <id column="C_STATUS" jdbcType="VARCHAR" property="status" />
+        <id column="C_EDITED_BY" jdbcType="VARCHAR" property="editedBy" />
+        <id column="C_CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+        <id column="C_MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    </resultMap>
+     <sql id="Base_Column_List">
+        `C_ID`,
+        `C_DEPARTMENT_TYPE`,
+        `C_PARENT_DEPARTMENT_ID`,
+        `C_IS_INHERIT`,
+        `C_DEPARTMENT_NAME`,
+        `C_DEPARTMENT_CODE`,
+        `C_DELETED`,
+        `C_STATUS`,
+        `C_EDITED_BY`,
+        `C_CREATE_TIME`,
+        `C_MODIFY_TIME`
+    </sql>
+
+    <sql id="Base_Insert_Values">
+        #{id,jdbcType=VARCHAR},
+        #{departmentType,jdbcType=VARCHAR},
+        #{parentDepartmentId,jdbcType=VARCHAR},
+        #{isInherit,jdbcType=VARCHAR},
+        #{departmentName,jdbcType=VARCHAR},
+        #{departmentCode,jdbcType=VARCHAR},
+        #{deleted,jdbcType=INTEGER},
+        #{status,jdbcType=VARCHAR},
+        #{editedBy,jdbcType=VARCHAR},
+        sysdate(),
+        sysdate()
+    </sql>
+
+    <sql id="Base_Where_Condition">
+            `C_DELETED` = 0
+        <if test="id != null">
+            AND `C_ID` = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="departmentType != null">
+            AND `C_DEPARTMENT_TYPE` = #{departmentType,jdbcType=VARCHAR}
+        </if>
+        <if test="parentDepartmentId != null">
+            AND `C_PARENT_DEPARTMENT_ID` = #{parentDepartmentId,jdbcType=VARCHAR}
+        </if>
+        <if test="isInherit != null">
+            AND `C_IS_INHERIT` = #{isInherit,jdbcType=VARCHAR}
+        </if>
+        <if test="departmentName != null">
+            AND `C_DEPARTMENT_NAME` = #{departmentName,jdbcType=VARCHAR}
+        </if>
+        <if test="departmentCode != null">
+            AND `C_DEPARTMENT_CODE` = #{departmentCode,jdbcType=VARCHAR}
+        </if>
+    </sql>
+
+    <!-- 根据id查找 -->
+    <select id="getById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_DEPARTMENT
+        where `C_ID` = #{id,jdbcType=VARCHAR} AND `C_DELETED` = 0
+        LIMIT 1
+    </select>
+
+    <!-- 查询 -->
+    <select id="get" parameterType="com.winsmoney.jajaying.boss.dao.po.DepartmentPo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_DEPARTMENT
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+        LIMIT 1
+    </select>
+
+    <!-- 统计 -->
+    <select id="count" resultType="Integer" parameterType="com.winsmoney.jajaying.boss.dao.po.DepartmentPo">
+        select count(*) from T_DEPARTMENT
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+    </select>
+
+    <!-- 列表 -->
+    <select id="list" parameterType="com.winsmoney.jajaying.boss.dao.po.DepartmentPo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_DEPARTMENT
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+        order by C_MODIFY_TIME desc
+    </select>
+
+    <!-- 插入记录 -->
+    <insert id="insert" parameterType="com.winsmoney.jajaying.boss.dao.po.DepartmentPo">
+        insert into T_DEPARTMENT (<include refid="Base_Column_List" />)
+        values
+        (<include refid="Base_Insert_Values" />)
+    </insert>
+
+    <!-- 更新记录 -->
+    <update id="update" parameterType="com.winsmoney.jajaying.boss.dao.po.DepartmentPo">
+        update T_DEPARTMENT
+        <set>
+              <if test="departmentType != null">
+                `C_DEPARTMENT_TYPE` = #{departmentType,jdbcType=VARCHAR},
+            </if>
+             <if test="parentDepartmentId != null">
+                `C_PARENT_DEPARTMENT_ID` = #{parentDepartmentId,jdbcType=VARCHAR},
+            </if>
+             <if test="isInherit != null">
+                `C_IS_INHERIT` = #{isInherit,jdbcType=VARCHAR},
+            </if>
+             <if test="departmentName != null">
+                `C_DEPARTMENT_NAME` = #{departmentName,jdbcType=VARCHAR},
+            </if>
+             <if test="departmentCode != null">
+                `C_DEPARTMENT_CODE` = #{departmentCode,jdbcType=VARCHAR},
+            </if>
+             <if test="deleted != null">
+                `C_DELETED` = #{deleted,jdbcType=INTEGER},
+            </if>
+             <if test="status != null">
+                `C_STATUS` = #{status,jdbcType=VARCHAR},
+            </if>
+             <if test="editedBy != null">
+                `C_EDITED_BY` = #{editedBy,jdbcType=VARCHAR},
+            </if>
+             <if test="createTime != null">
+                `C_CREATE_TIME` = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+                `C_MODIFY_TIME` = now(),
+        </set>
+        where `C_ID` = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 删除记录 逻辑删除 -->
+    <update id="delete" parameterType="java.lang.String">
+        update T_DEPARTMENT set `C_DELETED` = 1, `C_MODIFY_TIME` = now() where `C_ID` = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- ///自定义命令//// -->
+
+	
+	
+
+    <select id="getDepartmentByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_DEPARTMENT
+        where `C_DEPARTMENT_NAME` = #{departmentName,jdbcType=VARCHAR} AND `C_DELETED` = 0
+        LIMIT 1
+    </select>
+    
+        <select id="getDepartmentByCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_DEPARTMENT
+        where `C_DEPARTMENT_CODE` = #{departmentCode,jdbcType=VARCHAR} AND `C_DELETED` = 0
+        LIMIT 1
+    </select>
+    
+
+</mapper>

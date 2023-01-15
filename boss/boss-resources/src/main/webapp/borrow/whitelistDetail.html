@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>借款基本信息</title>
+
+    <!-- CSS核心 -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../static/css/animate.min.css" rel="stylesheet">
+    <link href="../static/css/style.min.css" rel="stylesheet">
+  
+
+    <!-- CSS插件 -->
+  <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+  <link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+  <link href="../static/css/plugins/fileinput/fileinput.min.css" rel="stylesheet">
+  <link href="../static/js/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+
+    <!-- CSS页面 -->
+    <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <!-- 表单部分 开始 -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>借款基本信息</h5>
+                </div>
+                <div class="ibox-content">
+
+                    <div id="errorBlock" class="help-block"></div>
+                    <form method="post" class="form-horizontal" id="borrowerInfo">
+                        <table class="table table-bordered" >
+                            <tr>
+                            	<td colspan="4">借款基本信息</td>
+                            </tr>
+                            <tr>
+                               	<td class="input-group-addon" width="20%">借款名称</td>
+                                <td  width="30%">
+                                    <input type="text" class="form-control validate[required]" name="borrowTitle" id="borrowTitle" readonly="readonly">
+                                </td>
+                                <td class="input-group-addon" width="20%">借款方名称</td>
+                                <td width="30%">
+                                    <input type="text" class="form-control validate[required]" name="borrowUserName" id="borrowUserName" readonly="readonly">
+                                </td>
+                            </tr>
+                          	<tr>
+                                <td class="input-group-addon" width="20%">借款利率</td>
+                                <td width="30%">
+                                    <input type="text" class="form-control validate[required]" name="borrowRate" id="borrowRate" readonly="readonly">
+                                </td>
+                                <td class="input-group-addon" width="20%">出借周期</td>
+                                <td width="30%">
+                                     <input type="text"  class="form-control validate[required]" name="borrowTerm" id="borrowTerm" readonly="readonly"> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="input-group-addon" width="20%">借款总额</td>
+                                <td width="30%">
+                                    <input type="text" class="form-control validate[required]" name="borrowAmount" id="borrowAmount" readonly="readonly">
+                                </td>
+                                <td class="input-group-addon" width="20%">期数</td>
+                                <td width="30%">
+                                    <input type="text" class="form-control validate[required]" name="currentPhase" id="currentPhase" readonly="readonly">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="input-group-addon" width="20%">起息日</td>
+                                <td width="30%">
+                                    <input type="text" class="form-control validate[required]" name="lastReleaseTime" id="lastReleaseTime" readonly="readonly">
+                                </td>
+                                <td class="input-group-addon" width="20%">完成日</td>
+                                <td width="30%">
+                                    <input type="text" class="form-control validate[required]" name="lastRepayTime" id="lastRepayTime" readonly="readonly">
+                                </td>
+                            </tr>
+                          	<tr>
+                          		<td colspan="4">主担保基本信息</td>
+                          	</tr>
+                            <tr>
+                                <td class="input-group-addon danbao" width="20%">担保方名称</td>
+                                <td width="30%" class="danbao">
+                                    <input type="text" class="form-control validate[required]" name="guaranteeUserName" id="guaranteeUserName" readonly="readonly">
+                                </td>
+                                <td class="input-group-addon danbao" width="20%">证件号</td>
+                                <td width="30%" class="danbao">
+                                     <input type="text"  class="form-control validate[required]" name="guaranteeIdCard" id="guaranteeIdCard" readonly="readonly"> 
+                                </td>
+                            </tr>
+                           		<tr >
+                           			<td colspan="4">次级担保方信息</td>
+                           		</tr>
+                           	<tr>
+   								<td class="input-group-addon danbao" width="20%">担保方名称</td>
+                                <td width="30%" class="danbao">
+                                    <input type="text" class="form-control validate[required]" name="guaranteeUserName2" id="guaranteeUserName2" readonly="readonly">
+                                </td>
+                                <td class="input-group-addon danbao" width="20%">证件号</td>
+                                <td width="30%" class="danbao">
+                                     <input type="text"  class="form-control validate[required]" name="guaranteeIdCard2" id="guaranteeIdCard2" readonly="readonly"> 
+                                </td>
+                            </tr>
+                            <tr >
+                           	<td colspan="4">操作历史</td>
+                           </tr>
+                            	<tr>
+   								<td class="input-group-addon danbao" width="20%">操作</td>
+                                <td width="30%" class="danbao">
+                                    <input type="text" class="form-control validate[required]" value="允许提前还款（借款周期未过半）" readonly="readonly">
+                                </td>
+                            </tr>
+                            <tr>
+   								<td class="input-group-addon danbao" width="20%">备注</td>
+                                <td width="30%" class="danbao">
+                                    <input type="text" class="form-control validate[required]" name="mark" id="mark" readonly="readonly">
+                                </td>
+                            </tr>
+                             <tr>
+   								<td class="input-group-addon danbao" width="20%">操作人</td>
+                                <td width="30%" class="danbao">
+                                    <input type="text" class="form-control validate[required]" name="editedBy" id="editedBy" readonly="readonly">
+                                </td>
+                                <td class="input-group-addon danbao" width="20%">操作时间</td>
+                                <td width="30%" class="danbao">
+                                    <input type="text" class="form-control validate[required]" name="createTime" id="createTime" readonly="readonly">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="ibox-footer" style="text-align: center">
+			              <!--操作按钮 开始-->
+			              <div class="ibox-btns">
+			                <button class="btn btn-primary" type="button" id="delBtn">删除</button>
+			              </div>
+			              <!--操作按钮 开始-->
+			            </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 表单部分 结束 -->
+
+
+</div>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+<script src="../static/js/plugins/date/moment.js"></script>
+<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+<!-- 编辑器配置文件 -->
+<script src="../static/js/plugins/ueditor/ueditor.config.js"></script>
+<script src="../static/js/plugins/ueditor/ueditor.all.js"></script>
+<!-- file上传插件 -->
+<script src="../static/js/plugins/fileinput/fileinput.min.js"></script>
+<script src="../static/js/plugins/fileinput/zh.js"></script>
+<script src="../static/js/plugins/fancybox/jquery.fancybox.js"></script>
+
+<!-- JS页面 -->
+<script src="../static/js/pages/logn_mgt/whitelistDetail.js"></script>
+
+
+</body>
+</html>

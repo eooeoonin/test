@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>交易流水列表</title>
+
+    <!-- CSS核心 -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../static/css/animate.min.css" rel="stylesheet">
+    <link href="../static/css/plugins/validation/form.min.css" rel="stylesheet">
+    <!-- CSS插件 -->
+    <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+
+    <!-- CSS页面 -->
+    <link href="../static/css/style.min.css" rel="stylesheet">
+
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="ibox-title">
+            <h5>交易流水列表</h5>
+        </div>
+        <div class="ibox-content" style="padding-bottom:0;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox-thead clear">
+                        <div class="pull-left">
+                            <div class="ibox-btns" style="margin-top:0;">
+                                <button class="btn btn-primary btn-xs" type="button" id="applyBtn" data-toggle="modal" data-target="#applyModal">申请</button>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="table">
+                        <thead>
+                        <tr>
+                            <th>请求id</th>
+                            <th>用户id</th>
+                            <th>上送流水id</th>
+                            <th>信息</th>
+                            <th>请求时间</th>
+                            <th>响应时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="ibox-footer clear">
+                        <div class="pull-right">
+                            <div class="tcdPageCode"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" id="applyModal" role="dialog" aria-labelledby="applyModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">交易流水申请</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="applyForm">
+                        <div class="form-group row">
+                            <label for="userId" class="col-sm-2 col-form-label">用户id：</label>
+                            <div class="col-sm-10">
+                                <input id="userId" type="text" placeholder="请输入用户id" class="form-control validate[required]"
+                                       data-errormessage-value-missing="用户id不能为空">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="startDate" class="col-sm-2 col-form-label">开始时间：</label>
+                            <div class="col-sm-10">
+                                <input placeholder="请输入开始时间" class="laydate-icon form-control layer-date validate[required]" id="startDate">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="endDate" class="col-sm-2 col-form-label">结束时间：</label>
+                            <div class="col-sm-10">
+                                <input placeholder="请输入结束时间" class="laydate-icon form-control layer-date validate[required]" id="endDate">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="sequenceIds" class="col-sm-2 col-form-label">流水id：</label>
+                            <div class="col-sm-10">
+                            	<textarea  style="width:100%;height:200px "  name="sequenceIds" id="sequenceIds" placeholder="请输入交易流水id,空格或回车隔开,不超过100条"></textarea>
+                            </div>
+                        </div>
+                        <div id="applyResDiv" class="alert hidden" role="alert">
+                            <p class="text-center"></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="applySubmit">确认</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../static/js/plugins/pages/jquery.page.js"></script>
+<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/pages/trade/tradeStreamList.js"></script>
+</body>
+</html>

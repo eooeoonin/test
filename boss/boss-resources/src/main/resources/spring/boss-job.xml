@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:reg="http://www.dangdang.com/schema/ddframe/reg"
+	   xmlns:job="http://www.dangdang.com/schema/ddframe/job"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.dangdang.com/schema/ddframe/reg
+                        http://www.dangdang.com/schema/ddframe/reg/reg.xsd
+                        http://www.dangdang.com/schema/ddframe/job
+                        http://www.dangdang.com/schema/ddframe/job/job.xsd
+                        ">
+                        
+    <context:property-placeholder location="classpath:/META-INF/config.properties" />
+    <!--配置作业注册中心 -->
+    <reg:zookeeper id="regCenter" server-lists="${boss.dubbo.registry_quartz}" namespace="${batchSms.zkNamespace}" base-sleep-time-milliseconds="1000" max-sleep-time-milliseconds="3000" max-retries="3" />
+
+
+    <!-- 批量发送短信 -->
+    <job:dataflow id="${batchSms.jobName}" class="com.winsmoney.jajaying.boss.domain.job.SendSmsBatchJob"
+                  registry-center-ref="regCenter" cron="0 0 11 14 12 ? 2088"
+                  sharding-total-count="36" sharding-item-parameters="0=0,1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9,10=a,11=b,12=c,13=d,14=e,15=f,16=g,17=h,18=i,
+                    19=j,20=k,21=l,22=m,23=n,24=o,25=p,26=q,27=r,28=s,29=t,30=u,31=v,32=w,33=x,34=y,35=z"
+                  disabled="false" overwrite="true"/>
+                  
+</beans>

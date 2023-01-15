@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>家家盈－生活财富盈家</title>
+
+ <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+  <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+  <link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+  <link href="../static/css/plugins/validation/form.min.css" rel="stylesheet">
+
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+<!-- 充值 -->
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+
+  <div class="row">
+    <div class="col-sm-12">
+    
+    <div class="ibox-title">
+	        <form class="form-horizontal" id="selected" name="selected">
+					<table class="table table-bordered" style="margin-bottom: 0;"> 
+					   <tbody> 
+					    <tr> 
+					     <td class="input-group-addon">选择时间</td> 
+					     <td>
+					     	<input class="laydate-icon form-control validate[required] layer-date" id="clearDate" name="clearDate">
+					     </td> 
+					     <td> 
+					     	<button class="btn btn-primary btn-xs"  type="button" id="synchronization"> <i class="fa fa-search-plus"></i>&nbsp;同步 </button>
+					     	<button class="btn btn-primary btn-xs"  type="button" id="eliminate"> <i class="fa fa-search-plus"></i>&nbsp;清除 </button>
+					     	<button class="btn btn-primary btn-xs"  type="button" id="refreshall"> <i class="fa fa-search-plus"></i>&nbsp;刷新 </button>
+					    </td>
+					    </tr> 
+					    <tr> 
+					    </tr> 
+					   </tbody>  
+					  </table>
+				</form>
+        </div>
+    
+        <div class="table table-hover" style="padding-bottom:0;">
+        	<form id="modal_form" class="form-horizontal">
+			  	<table class="table table-hover" id="table">
+			  	   <thead>
+			  		<tr style="font-weight:bold;">
+			  			<th>选择</th>
+		          		<th>业务名称</th>
+		          		<th>同步日期</th>
+		          		<th>同步状态</th>
+		          		<th>操作</th>
+		          	</tr>
+		          	</thead>	
+		            <tbody>
+			         <!-- JS输出JOSN数据 -->
+			         
+			        </tbody>
+	            </table>
+	            </form>
+	            <!-- 表格部分 结束 -->
+		  </div>
+        </div>
+	</div>
+	
+	<!-- 清分详情－模态窗口 开始 -->
+		<div class="modal inmodal fade" id="myModal" tabindex="-1"
+			role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">清分详情</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 表格部分 开始 -->
+						<table class="table table-bordered" id="table2">
+			  	   <thead>
+			  		<tr>
+			  			<td>序号</td>
+		          		<td>业务名称</td>
+		          		<td>同步日期</td>
+		          		<td>同步状态</td>
+		          		<td>处理页数</td>
+		          		<td style="width:25%;">备注</td>
+		          		<td>创建时间</td>
+		          		<td>修改时间</td>
+		          	</tr>
+		          	</thead>	
+		            <tbody>
+			         <!-- JS输出JOSN数据 -->
+			      		
+			        </tbody>
+	            </table>
+						<!-- 表格部分 结束 -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 清分详情－模态窗口 结束 -->
+	
+	</div>
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/pages/jquery.page.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+
+<!-- JS页面 -->
+<script src="../static/js/pages/difference_account/difference_clearing.js"></script>
+</body>
+</html>

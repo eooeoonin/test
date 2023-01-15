@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+    <Properties>
+        <Property name="loggingRoot">/logs/jajaying</Property>
+        <Property name="loggingLevel">DEBUG</Property>
+    </Properties>
+    <appenders>
+        <Console name="STDOUT-APPENDER" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{SESSIONID}/%X{loginUserEmail}/%X{loginUserID}/%X{remoteAddr}/%X{clientId} - %X{requestURIWithQueryString}] - %-5p %c{1} - %m%n"/>
+        </Console>
+    </appenders>
+    <loggers>
+
+        <logger name="java.sql" additivity="false">
+            <level value="${loggingLevel}"/>
+        </logger>
+        <logger name="com.ibatis" additivity="false">
+            <level value="${loggingLevel}"/>
+        </logger>
+        <logger name="org.mybatis" additivity="false">
+            <level value="${loggingLevel}"/>
+        </logger>
+        <logger name="org.apache.ibatis" additivity="false">
+            <level value="${loggingLevel}"/>
+        </logger>
+        <!-- log4jdbc option  log the jdbc sqltiming -->
+        <logger name="jdbc.sqltiming" additivity="false">
+            <level value="${loggingLevel}"/>
+        </logger>
+        <!-- [公共业务日志] -->
+        <logger name="COMMON.BIZ" additivity="false">
+            <level value="INFO"/>
+        </logger>
+        <!-- [框架Logger] 数据 DAO -->
+        <logger name="com.winsmoney.jajaying.marketing.dao" additivity="false">
+            <level value="${loggingLevel}"/>
+        </logger>
+        <!-- mq日志输出 -->
+        <logger name="com.winsmoney.platform.framework.mq" additivity="false">
+            <level value="INFO"/>
+        </logger>
+        <logger name="Rocketmq" additivity="false">
+            <level value="ERROR"/>
+        </logger>
+        <logger name="com.alibaba.rocketmq" additivity="false">
+            <level value="ERROR"/>
+        </logger>
+        <root level="DEBUG">
+            <appender-ref ref="STDOUT-APPENDER"/>
+        </root>
+    </loggers>
+</configuration>
+

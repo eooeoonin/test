@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winsmoney.jajaying.boss.dao.mapper.OperLogMapper">
+    <!--<resultMap id="BaseResultMap" type="com.winsmoney.jajaying.boss.dao.po.OperLogPo">-->
+        <!--<id column="c_id" jdbcType="VARCHAR" property="id"/>-->
+        <!--<id column="c_oper_id" jdbcType="VARCHAR" property="operId"/>-->
+        <!--<id column="c_oper_name" jdbcType="VARCHAR" property="operName"/>-->
+        <!--<id column="c_oper_type" jdbcType="INTEGER" property="operType" typeHandler="com.winsmoney.jajaying.boss.dao.typehandler.OperTypeTypeHandler"/>-->
+        <!--<id column="c_oper_address" jdbcType="VARCHAR" property="operAddress"/>-->
+        <!--<id column="c_oper_time" jdbcType="TIMESTAMP" property="operTime"/>-->
+        <!--<id column="c_content" jdbcType="VARCHAR" property="content"/>-->
+        <!--<id column="c_code" jdbcType="VARCHAR" property="code"/>-->
+        <!--<id column="c_input_data" jdbcType="VARCHAR" property="inputData"/>-->
+        <!--<id column="c_output_data" jdbcType="VARCHAR" property="outputData"/>-->
+        <!--<id column="c_create_time" jdbcType="TIMESTAMP" property="createTime"/>-->
+    <!--</resultMap>-->
+    <sql id="Base_Column_List">
+        `c_id`,
+        `c_oper_id`,
+        `c_oper_name`,
+        `c_oper_type`,
+        `c_oper_address`,
+        `c_oper_time`,
+        `c_content`,
+        `c_code`,
+        `c_input_data`,
+        `c_output_data`,
+        `c_create_time`
+    </sql>
+
+    <sql id="Base_Insert_Values">
+        #{id,jdbcType=VARCHAR},
+        #{operId,jdbcType=VARCHAR},
+        #{operName,jdbcType=VARCHAR},
+        #{operType,jdbcType=TINYINT,typeHandler=com.winsmoney.jajaying.boss.dao.typehandler.OperTypeTypeHandler},
+        #{operAddress,jdbcType=VARCHAR},
+        #{operTime,jdbcType=TIMESTAMP},
+        #{content,jdbcType=VARCHAR},
+        #{code,jdbcType=INTEGER},
+        #{inputData,jdbcType=VARCHAR},
+        #{outputData,jdbcType=VARCHAR},
+        sysdate()
+    </sql>
+
+    <!-- 插入记录 -->
+    <insert id="insert" parameterType="com.winsmoney.jajaying.boss.dao.po.OperLogPo">
+        insert into t_operation_log (<include refid="Base_Column_List"/>)
+        values
+        (<include refid="Base_Insert_Values"/>)
+    </insert>
+</mapper>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>企业印章记录</title>
+
+<!-- CSS核心 -->
+<link href="../static/css/bootstrap.min.css" rel="stylesheet">
+<link href="../static/css/font-awesome.min.css" rel="stylesheet">
+<link href="../static/css/animate.min.css" rel="stylesheet">
+
+<!-- CSS插件 -->
+<link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link
+	href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css"
+	rel="stylesheet">
+<link href="../static/css/plugins/pages/jquery.page.css"
+	rel="stylesheet">
+
+<!-- CSS页面 -->
+<link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>企业印章记录</h5>
+        </div>
+        	<div class="ibox-content" style="padding:0; border-top:none;">
+          		<div class="tab-pane active">
+           		 	<div class="panel-body">
+	        			<!-- 查询部分 开始 -->
+              			<div class="ibox-content" style="padding:15px 0;">
+                			<div class="row">
+                  				<div class="col-sm-12">
+	            		<form class="form-horizontal" name="selected" id="selected">
+	              			<table class="table table-bordered"  >
+	                			<tbody>
+	               					<tr>
+	                 					<td class="input-group-addon">用户id</td>
+	                 					<td>
+	                    					<input type="text"  class="form-control" id="userId" placeholder="输入用户id" name="userId"/>
+	                 					</td>
+	                				</tr>
+	                			</tbody>
+	              			</table>
+	              			<div class="panel-footer clear">
+               					<div class="pull-right">
+                						<button class="btn btn-primary btn-xs" type="button" id="srhBtn"><i class="fa fa-search-plus"></i>&nbsp;查询</button>
+               					</div>
+	              			</div>
+	            		</form>
+	          		</div>
+	        	</div>			
+				</div>		
+				<div class="ibox-content" style="padding-bottom:0;word-wrap:normal">
+                  			<div class="row">	
+								<table class="table table-bordered"  id="table">
+									<thead>
+										<tr>
+											<th>其它系统请求时间</th>
+											<th>用户id</th>
+											<th>姓名/企业名称</th>
+											<th>响应编码</th>
+											<th>响应信息</th>
+											<th>印章类型</th>
+											<th>业务状态</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<!-- 表格部分 结束 -->
+								<div class="ibox-footer clear">
+									<div class="pull-right">
+										<!--分页 开始-->
+										<div class="tcdPageCode" id="tcdPageCode"></div>
+										<!--分页 结束-->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	<!-- JS核心 -->
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/content.min.js"></script>
+	<!-- JS插件 -->
+	<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+	<script
+		src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script
+		src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script
+		src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../static/js/plugins/pages/jquery.page.js"></script>
+	<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+	<!-- JS页面 -->
+	<script src="../static/js/pages/signet/enterprise_signet_record.js"></script>
+</body>
+</html>

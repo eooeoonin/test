@@ -1,0 +1,38 @@
+[
+    {
+        "accountType": "RECHARGE",
+        "accountTypeCn": "充值"
+    },
+    {
+        "accountType": "WITHDRAW",
+        "accountTypeCn": "提现"
+    },
+    {
+        "accountType": "RELEASE",
+        "accountTypeCn": "满标放款"
+    },
+    {
+        "accountType": "REPAY_PRINCIPAL",
+        "accountTypeCn": "到期回收本金"
+    },
+    {
+        "accountType": "REPAY_INTEREST",
+        "accountTypeCn": "到期回收利息"
+    },
+    {
+        "accountType": "REPAY_PENALTY",
+        "accountTypeCn": "到期回收罚息"
+    },
+    {
+        "accountType": "ADD",
+        "accountTypeCn": "调账增加"
+    },
+    {
+        "accountType": "SUB",
+        "accountTypeCn": "调账减少"
+    },
+    {
+        "accountType": "INVITE_PROFIT",
+        "accountTypeCn": "推荐人收益"
+    }
+]

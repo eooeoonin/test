@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>家家盈－生活财富盈家－修改密码</title>
+
+  <!-- CSS核心 -->
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="static/css/animate.min.css" rel="stylesheet">
+
+    <!-- CSS插件 -->
+  <link href="static/css/plugins/validation/form.min.css" rel="stylesheet">
+
+  <!-- CSS页面 -->
+  <link href="static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>修改密码</h5>
+        </div>
+        <div class="ibox-content">
+          <form method="post" class="form-horizontal" id="changePasswordForm">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">旧密码</label>
+              <div class="col-sm-10">
+                <input type="password" placeholder="请输入旧密码" class="form-control validate[required]"  data-errormessage-value-missing="原密码不能为空" id="originPassword">
+              </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">新密码</label>
+              <div class="col-sm-10">
+                <input type="password" placeholder="请输入新密码" class="form-control validate[required]" data-errormessage-value-missing="新密码必须包含大写字母,小写字母,字母以及特殊符号" data-errormessage-range-underflow="新密码不能少于6位数字"  id="newPassword">
+              </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">确认新密码</label>
+              <div class="col-sm-10">
+                <input type="password" placeholder="确认新密码" class="form-control validate[required,equals[newPassword]]"  data-errormessage-value-missing="确认密码必须与新密码相同" id="newPasswordConfirm">
+              </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+              <div class="col-sm-4 col-sm-offset-2">
+                <button class="btn btn-primary" type="button" id="changePassword">确认</button>
+              </div>
+            </div>
+            <div class="er_prm" style="text-align:center; color:#f00; font-size:12px; "></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- JS核心 -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/content.min.js"></script>
+
+
+
+
+<!-- JS插件 -->
+<script src="static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+<script src="static/js/plugins/bootbox/bootbox.js"></script>
+
+<!-- JS页面 -->
+<script src="static/js/pages/change_pwd.js"></script>
+</body>
+</html>

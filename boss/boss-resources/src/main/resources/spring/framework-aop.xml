@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+       default-lazy-init="true">
+    <!-- 拦截链路 -->
+    <bean id="serviceProxyCreator"
+          class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="interceptorNames">
+            <list>
+                <value>interceptorChain</value>
+            </list>
+        </property>
+        <property name="beanNames">
+            <list>
+                <value>*Service</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="interceptorChain" class="com.winsmoney.platform.framework.core.aop.InterceptorChain">
+        <property name="chains">
+            <list>
+                <ref bean="serviceContextInitInterceptor"/>
+                <ref bean="logInitInterceptor" />
+                <ref bean="performanceMonitor" />
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- 摘要代理 -->
+    <bean id="logInitInterceptor"
+          class="com.winsmoney.platform.framework.log.aop.AnnotatedLogInterceptor" />
+    <!-- 环境代理 -->
+    <bean id="serviceContextInitInterceptor"
+          class="com.winsmoney.platform.framework.log.aop.ServiceContextInitInterceptor" />
+    <!-- 性能拦截 -->
+    <bean id="performanceMonitor"
+          class="com.winsmoney.platform.framework.log.aop.PerformanceMonitorInterceptor">
+        <property name="threshold">
+            <value>500</value>
+        </property>
+    </bean>
+
+    <!-- 定义DAO性能拦截 -->
+    <bean id="daoProxyCreator"
+          class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="proxyTargetClass" value="true"/>
+        <property name="interceptorNames">
+            <list>
+                <value>performanceInstrument</value>
+            </list>
+        </property>
+        <property name="beanNames">
+            <list>
+                <value>*Domain</value>
+<!--          <value>*Manager</value> -->
+            </list>
+        </property>
+    </bean>
+    <bean id="performanceInstrument"
+          class="com.winsmoney.platform.framework.log.aop.PerformanceInstrumentInterceptor" />
+</beans>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>编辑借款信息</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/validation/form.min.css" rel="stylesheet">
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+  <!-- 表单部分 开始 -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>编辑借款信息</h5>
+        </div>
+        <div class="ibox-content">
+          <form method="post" class="form-horizontal" id="borrowFrom">
+          	<input type="hidden" name="approveResult" id="approveResult"/>
+          	<!-- <input type="hidden" name="approver" id="approver" value="张三"/> -->
+          	<input type="hidden" name="status" id="status"/>
+            <table class="table table-bordered" id="table">
+              <tbody>
+              <tr>
+                <td class="input-group-addon" width="20%">借款 ID</td>
+                <td width="30%">
+                  <p class="form-control-static" id="borrowId"></p>
+                  <input type="hidden" name="id" id="borrowIdInput"/>
+                </td>
+                <td class="input-group-addon" width="20%">借 款 方</td>
+                <td width="30%">
+                  <p class="form-control-static" id="borrowUserName"></p>
+                  <input type="hidden" name="borrowUserCode" id="borrowUserCode">
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon"><em>*</em>借款名称</td>
+                <td>
+                  <input type="text" placeholder="输入借款名称" class="form-control validate[required]" data-errormessage-value-missing="借款名称不能为空"id="borrowTitle" name="borrowTitle">
+                </td>
+                <td class="input-group-addon"><em>*</em>资产类型</td>
+                <td>
+                  <select class="form-control validate[required]" title="" name="borrowType" id="borrowType">
+                    <option value="SUPPLYCHAIN">供应链借款</option>
+                    <option value="COMMON">普通借款</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon"><em>*</em>利    率</td>
+                <td>
+                  <div class="input-group">
+                    <input type="text" placeholder="输入合同利率" class="form-control validate[required,custom[onlyNumberdouble]]"  data-errormessage-custom-error="利率只能为数字或小数" data-errormessage-value-missing="利率不能为空" name="borrowRate" id="borrowRate"> <span class="input-group-addon">%</span>
+                  </div>
+                </td>
+                <td class="input-group-addon"><em>*</em>最后放款时间</td>
+                <td>
+                  <input placeholder="选择日期" class="laydate-icon form-control layer-date validate[required]" id="date1" name="lastReleaseTime">
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon"><em>*</em>最终还款日</td>
+                <td>
+                    <input placeholder="选择日期" class="laydate-icon form-control layer-date validate[required]" id="date2" name="lastRepayTime">
+                </td>
+                <td class="input-group-addon">借款时间</td>
+                <td>
+                  <p class="form-control-static" id="days"></p>
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon"><em>*</em>还款方式</td>
+                <td>
+                  <!-- <select class="form-control validate[required]" title="" name="repayType" id="repayType">
+                    <option value="ONETIMEDEBT">一次性还本付息</option>
+                    <option value="MATCHING">等额本息</option>
+                    <option value="MONTHLYPAYMENTDUE">按月付息到期还本</option>
+                  </select> -->
+                  <p class="form-control-static" id="repayType"></p>
+                  <input type="hidden" name="repayType" id="repayType">
+                </td>
+                <td class="input-group-addon"><em>*</em>借款总额</td>
+                <td>
+                <div class="input-group">
+                  <input type="text" placeholder="填写借款总额" class="form-control validate[required,custom[onlyNumberdouble]]"  data-errormessage-custom-error="借款总额只能为数字或小数" data-errormessage-value-missing="借款总额不能为空" name="borrowAmount" id="borrowAmount">
+                	<span class="input-group-addon">元</span>
+				</div>	
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon"><em>*</em>手续费</td>
+                <td>
+                <div class="input-group">
+                  <input type="text" placeholder="输入手续费金额" class="form-control validate[required,custom[onlyNumberdouble]]"  data-errormessage-custom-error="手续费只能为数字或小数" data-errormessage-value-missing="手续费不能为空" name="borrowFee" id="borrowFee">
+                	<span class="input-group-addon">元</span>
+				  </div>
+                </td>
+                
+                <td class="input-group-addon" width="100%"><em>*</em>合同号</td>
+                <td>
+                  <input type="text" placeholder="输入合同号" class="form-control validate[required,maxSize[32]]" data-errormessage-value-missing="合同号不能为空" data-errormessage-range-overflow="不能多于32位"  name="protocolId" id="protocolId">
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon"><em>*</em>借款用途</td>
+                <td colspan="3">
+                  <textarea type="text" placeholder="输入借款用途" class="form-control validate[required]" data-errormessage-value-missing="借款用途不能为空" style="height:200px;" name="purpose" id="purpose"></textarea>
+                  <input type="hidden" name="purposeId" id="purposeId"/>
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon"><em>*</em>风控措施</td>
+                <td colspan="3">
+                  <textarea type="text" placeholder="输入风控措施" class="form-control validate[required]" data-errormessage-value-missing="风控措施不能为空" style="height:200px;" name="risk" id="risk"></textarea>
+                  <input type="hidden" name="riskId" id="riskId"/>
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon"><em>*</em>编辑内容</td>
+                <td colspan="3">
+                  <textarea type="text" placeholder="输入编辑内容" class="form-control validate[required]" data-errormessage-value-missing="内容不能为空" style="height:200px;" name="approveContent"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td class="input-group-addon">审批人</td>
+                <td colspan="3">
+                  <p class="form-control-static" id="p">ZC0001</p>
+                  <input type="hidden" name="approver" id="approver"/>
+                </td>
+              </tr>
+              </tbody>
+              </table>
+
+            <div class="ibox-footer" style="text-align: center">
+              <!--操作按钮 开始-->
+              <div class="ibox-btns">
+                <button class="btn btn-primary" type="button" onclick="reApprove('y')">重新审批</button>
+                <button class="btn btn-danger" type="button" onclick="reApprove('n')">废弃借款</button>
+                <button class="btn btn-white" type="button" onclick="history.go(-1)">返回</button>
+              </div>
+              <!--操作按钮 开始-->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 表单部分 结束 -->
+
+
+
+</div>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/jquery.cookie.js"></script>
+<!-- 表单验证插件 -->
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+<!-- JS页面 -->
+<script src="../static/js/pages/logn_mgt/l_refuse_edit.js"></script>
+
+</body>
+</html>

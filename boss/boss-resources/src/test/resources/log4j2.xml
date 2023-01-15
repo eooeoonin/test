@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF" monitorInterval="1800">
+    <Properties>
+        <Property name="loggingRoot">/var/log</Property>
+        <Property name="loggingLevel">debug</Property>
+    </Properties>
+    <appenders>
+        <!-- ===== [公共Appender] ===== -->
+        <!-- [公共Appender] 默认日志输出(包含未分类日志输出) -->
+        <RollingFile name="DEFAULT-APPENDER" fileName="${loggingRoot}/common-default.log"
+                     filePattern="${loggingRoot}/common-default-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout
+                    pattern="%d [%t/%X{MDC_CLIENT_IP}/%X{MDC_SERVER_IP}/%X{MDC_REQUEST_ID}/%X{MDC_SESSION} - %X{requestURIWithQueryString}] %-5p %c{1.} %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250M"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- [公共Appender] 错误信息统计 -->
+        <RollingFile name="ERROR-APPENDER" fileName="${loggingRoot}/common-error.log"
+                     filePattern="${loggingRoot}/common-error-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout
+                    pattern="%d [%t/%X{MDC_CLIENT_IP}/%X{MDC_SERVER_IP}/%X{MDC_REQUEST_ID}/%X{MDC_SESSION} - %X{requestURIWithQueryString}] %-5p %c{1.} %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250M"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- [公共Appender] 警报信息统计 -->
+        <RollingFile name="WARN-APPENDER" fileName="${loggingRoot}/common-warn.log"
+                     filePattern="${loggingRoot}/common-warn-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout
+                    pattern="%d [%t/%X{MDC_CLIENT_IP}/%X{MDC_SERVER_IP}/%X{MDC_REQUEST_ID}/%X{MDC_SESSION} - %X{requestURIWithQueryString}] %-5p %c{1.} %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250M"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- [公共Appender] 性能统计 -->
+        <RollingFile name="PERF-APPENDER" fileName="${loggingRoot}/common-perf.log"
+                     filePattern="${loggingRoot}/common-perf-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout
+                    pattern="%d [%t/%X{MDC_CLIENT_IP}/%X{MDC_SERVER_IP}/%X{MDC_REQUEST_ID}/%X{MDC_SESSION} - %X{requestURIWithQueryString}] %-5p %c{1.} %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250M"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- [公共Appender] 数据访问 -->
+        <RollingFile name="DAO-APPENDER" fileName="${loggingRoot}/common-dao.log"
+                     filePattern="${loggingRoot}/common-dao-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout
+                    pattern="%d [%t/%X{MDC_CLIENT_IP}/%X{MDC_SERVER_IP}/%X{MDC_REQUEST_ID}/%X{MDC_SESSION} - %X{requestURIWithQueryString}] %-5p %c{1.} %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250M"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- [业务Appender] 业务日志输出 -->
+        <RollingFile name="DEFAULT-BIZ" fileName="${loggingRoot}/common-biz.log"
+                     filePattern="${loggingRoot}/common-biz-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout
+                    pattern="%d [%t/%X{MDC_CLIENT_IP}/%X{MDC_SERVER_IP}/%X{MDC_REQUEST_ID}/%X{MDC_SESSION} - %X{requestURIWithQueryString}] %-5p %c{1.} %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250M"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- [业务Appender] 摘要日志输出 -->
+        <RollingFile name="DEFAULT-DIG" fileName="${loggingRoot}/common-digest.log"
+                     filePattern="${loggingRoot}/common-digest%-d{yyyy-MM-dd}-%i.log">
+            <PatternLayout
+                    pattern="%d [%t/%X{MDC_CLIENT_IP}/%X{MDC_SERVER_IP}/%X{MDC_REQUEST_ID}/%X{MDC_SESSION} - %X{requestURIWithQueryString}] %-5p %c{1.} %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250M"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- MQ日志输出 -->
+        <RollingFile name="MQ-APPENDER" fileName="${loggingRoot}/mq-biz.log"
+                     filePattern="${loggingRoot}/mq-biz-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout
+                    pattern="%d [%t/%X{MDC_CLIENT_IP}/%X{MDC_SERVER_IP}/%X{MDC_REQUEST_ID}/%X{MDC_SESSION} - %X{requestURIWithQueryString}] %-5p %c{1.} %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250M"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- task日志输出 -->
+        <RollingFile name="TASK-APPENDER" fileName="${loggingRoot}/common-task.log"
+                     filePattern="${loggingRoot}/common-task-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout
+                    pattern="%d [%t/%X{MDC_CLIENT_IP}/%X{MDC_SERVER_IP}/%X{MDC_REQUEST_ID}/%X{MDC_SESSION} - %X{requestURIWithQueryString}] %-5p %c{1.} %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250M"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- APACHE日志输出 -->
+        <RollingFile name="APACHE-APPENDER" fileName="${loggingRoot}/common-apache.log"
+                     filePattern="${loggingRoot}/common-apache-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout
+                    pattern="%d [%t/%X{MDC_CLIENT_IP}/%X{MDC_SERVER_IP}/%X{MDC_REQUEST_ID}/%X{MDC_SESSION} - %X{requestURIWithQueryString}] %-5p %c{1.} %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250M"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- [开发使用] 控制台STDOUT -->
+        <Console name="STDOUT-APPENDER" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%d [%t/%X{MDC_CLIENT_IP}/%X{MDC_SERVER_IP}/%X{MDC_REQUEST_ID}/%X{MDC_SESSION} - %X{requestURIWithQueryString}] %-5p %c{1.} %m%n"/>
+        </Console>
+    </appenders>
+
+    <loggers>
+
+        <!-- ===== [公共Logger] ===== -->
+        <logger name="org.apache">
+            <level value="ERROR"/>
+            <appender-ref ref="APACHE-APPENDER"/>
+            <appender-ref ref="ERROR-APPENDER"/>
+        </logger>
+
+        <!-- [摘要日志] -->
+        <logger name="DEFAULT.DIG" additivity="false">
+            <level value="INFO"/>
+            <appender-ref ref="DEFAULT-DIG"/>
+        </logger>
+
+        <!-- 性能日志 -->
+        <logger name="com.winsmoney.platform.framework.web.performance.filter.PerformanceMonitorFilter"
+                additivity="false">
+            <level value="INFO"/>
+            <appender-ref ref="PERF-APPENDER"/>
+        </logger>
+        <logger name="com.winsmoney.platform.framework.log.aop.PerformanceMonitorInterceptor"
+                additivity="false">
+            <level value="INFO"/>
+            <appender-ref ref="PERF-APPENDER"/>
+        </logger>
+
+        <!-- [数据库] 数据访问 SQL -->
+        <logger name="java.sql" additivity="false">
+            <level value="${loggingLevel}"/>
+            <appender-ref ref="DAO-APPENDER"/>
+            <appender-ref ref="ERROR-APPENDER"/>
+        </logger>
+        <logger name="com.ibatis" additivity="false">
+            <level value="${loggingLevel}"/>
+            <appender-ref ref="DAO-APPENDER"/>
+            <appender-ref ref="ERROR-APPENDER"/>
+        </logger>
+        <logger name="org.mybatis" additivity="false">
+            <level value="${loggingLevel}"/>
+            <appender-ref ref="DAO-APPENDER"/>
+            <appender-ref ref="ERROR-APPENDER"/>
+        </logger>
+        <logger name="org.apache.ibatis" additivity="false">
+            <level value="${loggingLevel}"/>
+            <appender-ref ref="DAO-APPENDER"/>
+            <appender-ref ref="ERROR-APPENDER"/>
+        </logger>
+        <logger name="jdbc.sqltiming" additivity="false">
+            <level value="${loggingLevel}"/>
+            <appender-ref ref="DAO-APPENDER"/>
+        </logger>
+
+        <!-- mq日志输出 -->
+        <logger name="com.winsmoney.platform.framework.mq" additivity="false">
+            <level value="INFO"/>
+            <appender-ref ref="MQ-BIZ"/>
+        </logger>
+        <logger name="Rocketmq" additivity="false">
+            <level value="ERROR"/>
+            <appender-ref ref="MQ-BIZ"/>
+        </logger>
+        <logger name="com.alibaba.rocketmq" additivity="false">
+            <level value="ERROR"/>
+            <appender-ref ref="MQ-BIZ"/>
+        </logger>
+
+        <!-- [业务自己的dao] 数据 DAO -->
+        <logger name="com.winsmoney.jajaying.crowdfunding.dao" additivity="false">
+            <level value="${loggingLevel}"/>
+            <appender-ref ref="DAO-APPENDER"/>
+            <appender-ref ref="ERROR-APPENDER"/>
+            <appender-ref ref="WARN-APPENDER"/>
+        </logger>
+        <!-- [业务自己的service] biz -->
+        <logger name="com.winsmoney.jajaying.crowdfunding" additivity="false">
+            <level value="${loggingLevel}"/>
+            <appender-ref ref="DEFAULT-BIZ"/>
+            <appender-ref ref="ERROR-APPENDER"/>
+            <appender-ref ref="WARN-APPENDER"/>
+        </logger>
+
+        <root level="${loggingLevel}">
+            <appender-ref ref="DEFAULT-APPENDER"/>
+            <appender-ref ref="ERROR-APPENDER"/>
+        </root>
+    </loggers>
+</configuration>
+

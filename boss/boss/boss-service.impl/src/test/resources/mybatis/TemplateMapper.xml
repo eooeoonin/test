@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winsmoney.jajaying.boss.dao.mapper.TemplateMapper">
+    <resultMap id="BaseResultMap" type="com.winsmoney.jajaying.boss.dao.po.TemplatePo">
+        <id column="C_ID" jdbcType="VARCHAR" property="id" />
+        <id column="C_DELETED" jdbcType="INTEGER" property="deleted" />
+        <id column="C_STATUS" jdbcType="VARCHAR" property="status" />
+        <id column="C_CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+        <id column="C_EDITED_BY" jdbcType="VARCHAR" property="editedBy" />
+        <id column="C_CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+        <id column="C_MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+        <id column="C_NAME" jdbcType="VARCHAR" property="name" />
+        <id column="C_TYPE" jdbcType="VARCHAR" property="type" />
+        <id column="C_IMG_NUM" jdbcType="INTEGER" property="imgNum" />
+        <id column="C_FILE_NAME" jdbcType="VARCHAR" property="fileName" />
+    </resultMap>
+     <sql id="Base_Column_List">
+        `C_ID`,
+        `C_CREATED_BY`,
+        `C_NAME`,
+        `C_TYPE`,
+        `C_IMG_NUM`,
+        `C_FILE_NAME`,
+        `C_DELETED`,
+        `C_STATUS`,
+        `C_EDITED_BY`,
+        `C_CREATE_TIME`,
+        `C_MODIFY_TIME`
+    </sql>
+
+    <sql id="Base_Insert_Values">
+        #{id,jdbcType=VARCHAR},
+        #{createdBy,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR},
+        #{type,jdbcType=VARCHAR},
+        #{imgNum,jdbcType=INTEGER},
+        #{fileName,jdbcType=VARCHAR},
+        #{deleted,jdbcType=INTEGER},
+        #{status,jdbcType=VARCHAR},
+        #{editedBy,jdbcType=VARCHAR},
+        sysdate(),
+        sysdate()
+    </sql>
+
+    <sql id="Base_Where_Condition">
+            `C_DELETED` = 0
+        <if test="id != null">
+            AND `C_ID` = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND `C_STATUS` = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="createdBy != null">
+            AND `C_CREATED_BY` = #{createdBy,jdbcType=VARCHAR}
+        </if>
+        <if test="editedBy != null">
+            AND `C_EDITED_BY` = #{editedBy,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null">
+            AND `C_NAME` = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null">
+            AND `C_TYPE` = #{type,jdbcType=VARCHAR}
+        </if>
+        <if test="imgNum != null">
+            AND `C_IMG_NUM` = #{imgNum,jdbcType=INTEGER}
+        </if>
+        <if test="fileName != null">
+            AND `C_FILE_NAME` = #{fileName,jdbcType=VARCHAR}
+        </if>
+    </sql>
+
+    <!-- 根据id查找 -->
+    <select id="getById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_TEMPLATE
+        where `C_ID` = #{id,jdbcType=VARCHAR} AND `C_DELETED` = 0
+        LIMIT 1
+    </select>
+
+    <!-- 查询 -->
+    <select id="get" parameterType="com.winsmoney.jajaying.boss.dao.po.TemplatePo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_TEMPLATE
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+        LIMIT 1
+    </select>
+
+    <!-- 统计 -->
+    <select id="count" resultType="Integer" parameterType="com.winsmoney.jajaying.boss.dao.po.TemplatePo">
+        select count(*) from T_TEMPLATE
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+    </select>
+
+    <!-- 列表 -->
+    <select id="list" parameterType="com.winsmoney.jajaying.boss.dao.po.TemplatePo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_TEMPLATE
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+             ORDER BY C_CREATE_TIME DESC
+    </select>
+
+    <!-- 插入记录 -->
+    <insert id="insert" parameterType="com.winsmoney.jajaying.boss.dao.po.TemplatePo">
+        insert into T_TEMPLATE (<include refid="Base_Column_List" />)
+        values
+        (<include refid="Base_Insert_Values" />)
+    </insert>
+
+    <!-- 更新记录 -->
+    <update id="update" parameterType="com.winsmoney.jajaying.boss.dao.po.TemplatePo">
+        update T_TEMPLATE
+        <set>
+              <if test="deleted != null">
+                `C_DELETED` = #{deleted,jdbcType=INTEGER},
+            </if>
+             <if test="status != null">
+                `C_STATUS` = #{status,jdbcType=VARCHAR},
+            </if>
+             <if test="createdBy != null">
+                `C_CREATED_BY` = #{createdBy,jdbcType=VARCHAR},
+            </if>
+             <if test="editedBy != null">
+                `C_EDITED_BY` = #{editedBy,jdbcType=VARCHAR},
+            </if>
+             <if test="createTime != null">
+                `C_CREATE_TIME` = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+                `C_MODIFY_TIME` = now(),
+             <if test="name != null">
+                `C_NAME` = #{name,jdbcType=VARCHAR},
+            </if>
+             <if test="type != null">
+                `C_TYPE` = #{type,jdbcType=VARCHAR},
+            </if>
+             <if test="imgNum != null">
+                `C_IMG_NUM` = #{imgNum,jdbcType=INTEGER},
+            </if>
+             <if test="fileName != null">
+                `C_FILE_NAME` = #{fileName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where `C_ID` = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 删除记录 逻辑删除 -->
+    <update id="delete" parameterType="java.lang.String">
+        update T_TEMPLATE set `C_DELETED` = 1, `C_MODIFY_TIME` = now() where `C_ID` = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- ///自定义命令//// -->
+
+
+
+
+</mapper>

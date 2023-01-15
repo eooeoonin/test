@@ -1,0 +1,47 @@
+[
+    {
+        "accountType": "invest",
+        "accountTypeCn": "手气红包"
+    },
+    {
+        "accountType": "register",
+        "accountTypeCn": "注册红包"
+    },
+    {
+        "accountType": "system",
+        "accountTypeCn": "系统补偿红包"
+    },
+    {
+        "accountType": "invite1",
+        "accountTypeCn": "一级邀请红包"
+    },
+    {
+        "accountType": "invite2",
+        "accountTypeCn": "二级邀请红包"
+    },
+    {
+        "accountType": "invite3",
+        "accountTypeCn": "三级邀请红包"
+    },
+    {
+         "accountType": "lottery",
+         "accountTypeCn": "抽奖红包"
+    },
+    {
+        "accountType": "rollback",
+        "accountTypeCn": "退还红包"
+    },
+    {
+        "accountType": "beInvited",
+        "accountTypeCn": "受邀请红包"
+    },
+    {
+        "accountType": "consume",
+        "accountTypeCn": "使用红包"
+    },
+    {
+        "accountType": "expire",
+        "accountTypeCn": "过期红包"
+    }
+
+]

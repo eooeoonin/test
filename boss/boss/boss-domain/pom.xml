@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.winsmoney.jajaying</groupId>
+		<artifactId>boss</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<groupId>com.winsmoney.jajaying</groupId>
+	<artifactId>boss-domain</artifactId>
+	<version>${module.version}</version>
+	<name>${project.artifactId}</name>
+	<packaging>jar</packaging>
+	<dependencies>
+		<!-- base -->
+		<dependency>
+			<groupId>com.winsmoney.framework</groupId>
+			<artifactId>framework-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.framework</groupId>
+			<artifactId>framework-uuid</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.framework</groupId>
+			<artifactId>framework-page</artifactId>
+		</dependency>
+		<!-- project -->
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>boss-dao</artifactId>
+		</dependency>
+		<!--errorcode-->
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>basedata-service</artifactId>
+		</dependency>
+		<!-- withdraw -->
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>settlecore-service</artifactId>
+		</dependency>
+		<dependency>
+   <groupId>net.coobird</groupId>
+   <artifactId>thumbnailator</artifactId>
+</dependency>
+		<!-- 补单 -->
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>pay-service</artifactId>
+		</dependency>
+		<dependency>
+				<groupId>com.winsmoney.jajaying</groupId>
+				<artifactId>user-service</artifactId>
+		</dependency>
+				<dependency>
+				<groupId>com.winsmoney.jajaying</groupId>
+				<artifactId>deposit-service</artifactId>
+		</dependency>		
+		<!--trade-->
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>trade-service</artifactId>
+		</dependency>
+<!-- 		<dependency>
+  				<groupId>com.winsmoney.jajaying</groupId>
+  				<artifactId>account-service</artifactId>
+		</dependency> -->
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>msgcenter-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>redmoney-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>retail-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.jajaying</groupId>
+			<artifactId>retailgoods-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.jajaying.message</groupId>
+			<artifactId>message-api</artifactId>
+		</dependency>
+
+		<!-- Spring and Transactions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.winsmoney.framework</groupId>
+			<artifactId>framework-redis</artifactId>
+		</dependency>
+		
+		<!-- 引入elastic-job核心模块 -->
+		<dependency>
+			<groupId>com.dangdang</groupId>
+			<artifactId>elastic-job-lite-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.dangdang</groupId>
+			<artifactId>elastic-job-lite-lifecycle</artifactId>
+		</dependency>
+
+		<!-- 使用springframework自定义命名空间时引入 -->
+		<dependency>
+			<groupId>com.dangdang</groupId>
+			<artifactId>elastic-job-lite-spring</artifactId>
+		</dependency>
+		
+		<!--common-->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+		
+        <!-- test start -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+		</dependency>
+        <!-- test end -->
+		<!--custom -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

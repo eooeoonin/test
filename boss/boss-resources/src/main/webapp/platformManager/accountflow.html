@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家家盈－生活财富盈家</title>
+
+<!-- CSS核心 -->
+<link href="../static/css/bootstrap.min.css" rel="stylesheet">
+<link href="../static/css/font-awesome.min.css" rel="stylesheet">
+<link href="../static/css/animate.min.css" rel="stylesheet">
+
+<!-- CSS插件 -->
+<link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+<link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+<link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+<!-- CSS页面 -->
+<link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+	<div class="wrapper wrapper-content animated fadeIn">
+
+
+		<div class="row">
+			<div class="col-sm-12">
+				<h3>平台账户流水</h3>
+				<div class="tabs-container">
+
+					<div class="tab-content">
+						<div class="tab-pane active">
+							<div class="panel-body">
+
+								<!-- 查询部分 开始 -->
+								<div class="ibox-content" style="padding: 15px 0;">
+									<div class="row">
+										<div class="col-sm-12">
+											<form class="form-horizontal" id="selected" name="selected">
+											<table class="table table-bordered" style="margin-bottom: 0;"> 
+											   <tbody> 
+											   <tr>
+											     <td class="input-group-addon">账户</td>
+												<td> 
+											     <select class="form-control" name="transAccount" id="transAccount"> 
+											       <option value="">全部</option> 
+											     <option value="sys_generate_001">代偿金账户</option> 
+											     <option value="sys_generate_002">营销款账户</option> 
+											     <option value="sys_generate_005">派息账户</option>
+											     <option value="sys_generate_006">代充值账户</option>  
+											     </select> 
+											     </td> 
+											   
+											   
+											   
+											    <td class="input-group-addon">交易类型</td>
+												<td> 
+											     <select class="form-control" name="subTransCode" id="subTransCode"> 
+											      <option value="">全部</option> 
+											     <option value="ADD_RECHARGE">充值</option> 
+											     <option value="UNFREEZE_SUB_WITHDRAW">提现</option> 
+											     <option value="TRANSFER_SYSTEM">转账</option>
+												</select> 
+											     </td> 
+											     
+											     
+											      <td class="input-group-addon">目标账户</td>
+												<td> 
+											     <select class="form-control" name="otherAccount" id="otherAccount">
+											      <option value="">全部</option> 
+											     <option value="sys_generate_001">代偿金账户</option> 
+											     <option value="sys_generate_002">营销款账户</option> 
+											     <option value="sys_generate_005">派息账户</option>
+											     <option value="sys_generate_006">代充值账户</option>  
+											     </select> 
+											     </td> 
+											     
+											     
+											    
+											   </tr>
+											    <tr> 
+											     <td class="input-group-addon">交易时间从</td> 
+											     <td width="25%"><input placeholder="请输入" class="laydate-icon form-control validate[required] layer-date"  id="before" name="startTime" onchange="change1()" /></td> 
+											     <td class="input-group-addon">交易时间至</td> 
+											     <td width="25%"><input placeholder="请输入" class="laydate-icon form-control validate[required] layer-date"  id="after" name="endTime" onchange="change2()" /></td>
+											    
+											   
+											     <td class="input-group-addon">平台请求流水号</td> 
+											     <td><input placeholder="请输入" class="form-control" id="outOrderNo" name="outOrderNo"/></td>
+											   
+											    
+											    
+											     </tr>
+											     <tr> 
+											     
+											    </tr> 
+											    <tr> 
+											    </tr> 
+											   </tbody>  
+											  </table>
+											 <div class="ibox-btns pull-right" style="margin-top:10px;"> 
+											   <button class="btn btn-primary btn-xs" type="button" id="srhBtn" > <i class="fa fa-search-plus"></i>&nbsp;查询 </button> 
+											   <!-- <button class="btn btn-primary btn-xs" type="button" id="qingBtn"> <i class="fa fa-search-plus"></i>&nbsp;重置 </button> --> 
+											  </div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<!-- 查询部分 结束 -->
+
+
+								<div class="row">
+									<div class="ibox-content" style="padding-bottom:0;">
+										<div class="row">
+											<div class="col-sm-12">
+											<form method="post" class="form-horizontal">
+													<table id="table" class="table table-bordered">
+														<thead>
+														<!-- 输出表头 -->
+														<tr>						
+														
+														  <th>账户</th>
+										                  <th>交易类型</th>
+										                  <th>目标账户</th>
+										                  <th>平台交易流水号</th>
+										                  <th>交易金额</th>
+										           		  <th>交易时间</th>
+										                </tr>
+														</thead>
+														<tbody>
+														<!-- 输出数据-->
+														</tbody>
+													</table>
+													<!-- 表格部分 结束 -->		
+													<div class="ibox-footer clear">
+														<div class="pull-left">
+															<!--操作按钮 开始-->
+															
+															<!--操作按钮 开始-->
+														</div>
+														<div class="pull-right">
+															<!--分页 开始-->
+															<div class="tcdPageCode"></div>
+															<!--分页 结束-->
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- JS核心 -->
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/content.min.js"></script>
+
+	<!-- JS插件 -->
+	<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+	<script
+		src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script
+		src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script
+		src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../static/js/plugins/pages/jquery.page.js"></script>
+
+	<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+	<!-- JS页面 -->
+	<script src="../static/js/pages/platformManager/accountflow.js"></script>
+
+</body>
+</html>

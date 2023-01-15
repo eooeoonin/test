@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd 
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+       default-autowire="byName" default-lazy-init="false">
+
+    <dubbo:annotation package="com.winsmoney.jajaying.boss.service"/>
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="boss"/>
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry protocol="zookeeper" address="${boss.dubbo.registry}" file="dubbo-registry.cache"/>
+    <!-- 用dubbo协议暴露服务 -->
+    <dubbo:protocol name="dubbo" port="${boss.dubbo.service.port}" server="netty" client="netty" serialization="java"
+                    charset="UTF-8" threadpool="fixed" threads="200"/>
+
+    <dubbo:reference protocol="dubbo" id="errorCodeService" version="${basedata.dubbo.version}"
+                     interface="com.winsmoney.jajaying.basedata.service.IErrorCodeService" timeout="10000"
+                     check="false" retries="0"/>
+
+    <dubbo:reference protocol="dubbo" id="withDrawService" version="${settlecore.dubbo.version}"
+                     interface="com.winsmoney.jajaying.settlecore.service.IWithdrawService" timeout="10000"
+                     check="false" retries="0"/>
+
+    <dubbo:reference protocol="dubbo" id="auditLogService" version="${settlecore.dubbo.version}"
+                     interface="com.winsmoney.jajaying.settlecore.service.IAuditLogService" timeout="10000"
+                     check="false" retries="0"/>
+    <!-- 会员服务 -->
+    <dubbo:reference protocol="dubbo" id="enterpriseUserService" version="${dubbo.service.user.version}"
+                     interface="com.winsmoney.jajaying.user.service.IEnterpriseUserService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="enterpriseEditLogService" version="${dubbo.service.user.version}"
+                     interface="com.winsmoney.jajaying.user.service.IEnterpriseEditLogService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="userInfoService" version="${dubbo.service.user.version}"
+                     interface="com.winsmoney.jajaying.user.service.IUserInfoService" timeout="50000" check="false"
+                     retries="0"/>
+
+    <dubbo:reference protocol="dubbo" id="userAccountService" version="${dubbo.service.user.version}"
+                     interface="com.winsmoney.jajaying.user.service.IUserAccountService" timeout="10000" check="false"
+                     retries="0"/>
+
+	<dubbo:reference protocol="dubbo" id="bindBankCardService" version="${dubbo.service.user.version}"
+						 interface="com.winsmoney.jajaying.user.service.IBindBankCardService" timeout="10000" check="false" retries="0" />
+	
+	<dubbo:reference protocol="dubbo" id="wxInfoService" version="${dubbo.service.user.version}"
+						 interface="com.winsmoney.jajaying.user.service.IWxInfoService" timeout="10000" check="false" retries="0" />
+				
+	<dubbo:reference protocol="dubbo" id="userAuthService" version="${dubbo.service.user.version}"
+						 interface="com.winsmoney.jajaying.user.service.IUserAuthService" timeout="10000" check="false" retries="0" />
+						 
+	<dubbo:reference protocol="dubbo" id="realNameAuthService" version="${dubbo.service.user.version}"
+						 interface="com.winsmoney.jajaying.user.service.IRealNameAuthService" timeout="10000" check="false" retries="0" />	
+	
+	<dubbo:reference protocol="dubbo" id="userService" version="${dubbo.service.user.version}"
+							 interface="com.winsmoney.jajaying.user.service.IUserService" timeout="10000" check="false" retries="0" />
+	<dubbo:reference protocol="dubbo" id="iUserUnBandService" version="${dubbo.service.user.version}"
+							 interface="com.winsmoney.jajaying.user.service.IUnbindCardApplyService" timeout="10000" check="false" retries="0" />				 				
+
+    <dubbo:reference protocol="dubbo" id="extendInfoService" version="${dubbo.service.user.version}"
+                     interface="com.winsmoney.jajaying.user.service.IUserExtendInfoService" timeout="10000"
+                     check="false" retries="0"/>
+                     
+    <!-- 交易服务 -->
+    <dubbo:reference protocol="dubbo" id="borrowService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IBorrowService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="adjustmentRecordService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IAdjustmentRecordService" timeout="18000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="borrowFileService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IBorrowFileService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="borrowExtendService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IBorrowExtendService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="interestPlansService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IInterestPlansService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="payRecordService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IPayRecordService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="borrowRepayPlanService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IBorrowRepayPlanService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="loanOperService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.ILoanOperService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="loanService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.ILoanService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="loanInvestorService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.ILoanInvestorService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="loanExtendService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.ILoanExtendService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="loanFileService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.ILoanFileService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="inviteProfitService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IInviteProfitService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="killRecordService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IKillRecordService" timeout="10000"
+                     check="false" retries="0"/> 
+    <dubbo:reference protocol="dubbo" id="killRecordDetailService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IKillRecordDetailService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="repayRecordService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IRepayRecordService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="repayRecordDetailService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IRepayRecordDetailService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="releaseRecordService" version="${trade.dubbo.version}"
+                     interface="com.winsmoney.jajaying.trade.service.IReleaseRecordService" timeout="10000"
+                     check="false" retries="0"/>
+	<dubbo:reference protocol="dubbo" id="operationStatisticsService" version="${trade.dubbo.version}" 
+					 interface="com.winsmoney.jajaying.trade.service.IOperationStatisticsService" timeout="10000" 
+					 check="false" retries="0" />
+
+    <!-- 账务服务 -->
+
+    <dubbo:reference protocol="dubbo" id="accountLogService"
+                     version="${account.dubbo.version}"
+                     interface="com.winsmoney.jajaying.account.service.IAccountLogService"
+                     timeout="10000" check="false" retries="0"/>
+
+    <dubbo:reference protocol="dubbo" id="accountBusService"
+                     version="${account.dubbo.version}"
+                     interface="com.winsmoney.jajaying.account.service.IAccountBusService"
+                     timeout="10000" check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="accountInfoService"
+                     version="${account.dubbo.version}"
+                     interface="com.winsmoney.jajaying.account.service.IAccountInfoService"
+                     timeout="10000" check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="queryAccountService"
+                     version="${account.dubbo.version}"
+                     interface="com.winsmoney.jajaying.account.service.IQueryAccountService"
+                     timeout="10000" check="false" retries="0"/>
+
+
+    <!-- 红包交易相关-->
+    <dubbo:reference protocol="dubbo" id="redMoneyService"
+                     version="${redmoney.dubbo.version}"
+                     interface="com.winsmoney.jajaying.redmoney.service.IRedMoneyService"
+                     timeout="10000" check="false" retries="0"/>    <!-- 红包交易相关-->
+    <dubbo:reference protocol="dubbo" id="redmoneyTradeService"
+                     version="${redmoney.dubbo.version}"
+                     interface="com.winsmoney.jajaying.redmoney.service.IRedmoneyTradeService"
+                     timeout="10000" check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="bigRedmoneyStatisticsService"
+                     version="${redmoney.dubbo.version}"
+                     interface="com.winsmoney.jajaying.redmoney.service.IBigRedmoneyStatisticsService"
+                     timeout="10000" check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="redMoneyQueryService"
+                     version="${redmoney.dubbo.version}"
+                     interface="com.winsmoney.jajaying.redmoney.service.IRedMoneyQueryService"
+                     timeout="10000" check="false" retries="0"/>
+
+    <!-- 事件服务 -->
+    <dubbo:reference protocol="dubbo" id="eventValueMapService" version="${basedata.dubbo.version}"
+                     interface="com.winsmoney.jajaying.basedata.service.IEventValueMapService" timeout="10000"
+                     check="false" retries="0"/>
+
+    <dubbo:reference protocol="dubbo" id="eventMapService" version="${basedata.dubbo.version}"
+                     interface="com.winsmoney.jajaying.basedata.service.IEventMapService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="eventValueSupplyService" version="${basedata.dubbo.version}"
+                     interface="com.winsmoney.jajaying.basedata.service.IEventValueSupplyService " timeout="10000"
+                     check="false" retries="0"/>
+                     
+    <dubbo:reference protocol="dubbo" id="errorLogService" version="${basedata.dubbo.version}"
+                     interface="com.winsmoney.jajaying.basedata.service.IErrorLogService" timeout="10000"
+                     check="false" retries="0"/>
+
+    <!-- 公告信息 -->
+    <dubbo:reference protocol="dubbo" id="iNoticeService " version="${basedata.dubbo.version}"
+                     interface="com.winsmoney.jajaying.basedata.service.INoticeService" timeout="10000"
+                     check="false" retries="0"/>
+    <!-- 银行 -->
+    <dubbo:reference protocol="dubbo" id="bankAbilityService" version="${pay.dubbo.version}"
+                     interface="com.winsmoney.jajaying.pay.service.IBankAbilityService" timeout="10000"
+                     check="false" retries="0"/>
+    <dubbo:reference protocol="dubbo" id="transactionLogService" version="${pay.dubbo.version}"
+                     interface="com.winsmoney.jajaying.pay.service.ITransactionLogService" timeout="10000"
+                     check="false" retries="0"/>
+    <!-- 补单 -->                 
+	<dubbo:reference protocol="dubbo" id="iPayService" version="${pay.dubbo.version}"
+                     interface="com.winsmoney.jajaying.pay.service.IPayService" timeout="10000"
+                     check="false" retries="0"/>
+      <!--返回码 -->                 
+	<dubbo:reference protocol="dubbo" id="ireturnCodeService" version="${pay.dubbo.version}"
+                     interface="com.winsmoney.jajaying.pay.service.IReturnCodeService" timeout="10000"
+                     check="false" retries="0"/>
+    <!-- 银行转换码管理-->                 
+	<dubbo:reference protocol="dubbo" id="iChangeCodeService" version="${pay.dubbo.version}"
+                     interface="com.winsmoney.jajaying.pay.service.IChangeCodeService" timeout="10000"
+                     check="false" retries="0"/>                                  
+   <!-- 渠道管理-->                 
+	<dubbo:reference protocol="dubbo" id="iChannelConfigService" version="${pay.dubbo.version}"
+                     interface="com.winsmoney.jajaying.pay.service.IChannelConfigService" timeout="10000"
+                     check="false" retries="0"/> 
+	<!-- 实名认证记录-->                 
+	<dubbo:reference protocol="dubbo" id="IRealNameAuthService" version="${pay.dubbo.version}"
+                     interface="com.winsmoney.jajaying.pay.service.IRealNameAuthService" timeout="10000"
+                     check="false" retries="0"/> 
+
+    <!-- 用户绑卡记录查询-->                 
+	<dubbo:reference protocol="dubbo" id="iBindCardService" version="${pay.dubbo.version}"
+                     interface="com.winsmoney.jajaying.pay.service.IBindCardService" timeout="10000"
+    
+                     check="false" retries="0"/>                
+                     
+    <!-- 站内信-->                 
+	<dubbo:reference protocol="dubbo" id="innerMessageService" version="${message.dubbo.version}"
+                     interface="com.winsmoney.jajaying.msgcenter.service.IInnerMessageService" timeout="10000"
+                     check="false" retries="0"/>   
+                     
+           <!-- 发短信-->                 
+	<dubbo:reference protocol="dubbo" id="iMessageService" version="${message.dubbo.version} "
+                     interface="com.winsmoney.jajaying.msgcenter.service.IMessageService " timeout="50000"
+                     check="false" retries="0"/>
+    
+   <dubbo:reference protocol="dubbo" id="smsAgencyService"
+		version="${message.dubbo.version} " interface="com.winsmoney.jajaying.msgcenter.service.ISmsAgencyService"
+		timeout="60000" check="false" retries="0" />
+		                 
+       	<!-- 群发模板 -->
+	<dubbo:reference protocol="dubbo" id="ISpeInnerTemplateService" version="${message.dubbo.version}"
+                     interface="com.winsmoney.jajaying.msgcenter.service.ISpeInnerTemplateService" timeout="10000"
+                     check="false" retries="0"/>               
+     <!-- 奖励 -->
+     <dubbo:reference protocol="dubbo" id="awardActRequestService" version="${award.dubbo.version}"
+                     interface="com.winsmoney.jajaying.award.service.IAwardActRequestService" timeout="10000"
+                     check="false" retries="0"/> 
+      <dubbo:reference protocol="dubbo" id="awardPaySettingService" version="${award.dubbo.version}"
+                     interface="com.winsmoney.jajaying.award.service.IAwardPaySettingService" timeout="10000"
+                     check="false" retries="0"/> 
+        <dubbo:reference protocol="dubbo" id="awardPoolService" version="${award.dubbo.version}"
+                     interface="com.winsmoney.jajaying.award.service.IAwardPoolService" timeout="10000"
+                     check="false" retries="0"/>                                  
+        <dubbo:reference protocol="dubbo" id="awardRequestService" version="${award.dubbo.version}"
+                     interface="com.winsmoney.jajaying.award.service.IAwardRequestService" timeout="10000"
+                     check="false" retries="0"/>              
+        <dubbo:reference protocol="dubbo" id="awardService" version="${award.dubbo.version}"
+                     interface="com.winsmoney.jajaying.award.service.IAwardService" timeout="10000"
+                     check="false" retries="0"/>    
+        <dubbo:reference protocol="dubbo" id="awardStrategyService" version="${award.dubbo.version}"
+                    interface="com.winsmoney.jajaying.award.service.IAwardStrategyService" timeout="10000"
+                    check="false" retries="0"/>             
+        <dubbo:reference protocol="dubbo" id="lotteryChangesService" version="${award.dubbo.version}"
+                    interface="com.winsmoney.jajaying.award.service.ILotteryChangesService" timeout="10000"
+                    check="false" retries="0"/>             
+         <dubbo:reference protocol="dubbo" id="lotteryInfoService" version="${award.dubbo.version}"
+                    interface="com.winsmoney.jajaying.award.service.ILotteryInfoService" timeout="10000"
+                    check="false" retries="0"/>            
+         <dubbo:reference protocol="dubbo" id="lotteryService" version="${award.dubbo.version}"
+                     interface="com.winsmoney.jajaying.award.service.ILotteryService" timeout="10000"
+                     check="false" retries="0"/>          
+         <dubbo:reference protocol="dubbo" id="projectService" version="${award.dubbo.version}"
+                     interface="com.winsmoney.jajaying.award.service.IProjectService" timeout="10000"
+                     check="false" retries="0"/>
+          <dubbo:reference protocol="dubbo" id="userAddressService" version="${dubbo.service.user.version}"
+                     interface="com.winsmoney.jajaying.user.service.IUserAddressService" timeout="10000"
+                     check="false" retries="0"/>
+         <dubbo:reference protocol="dubbo" id="userAwardService" version="${award.dubbo.version}"
+                     interface="com.winsmoney.jajaying.award.service.IUserAwardService" timeout="10000"
+                     check="false" retries="0"/>
+        <dubbo:reference protocol="dubbo" id="voucherInfoService" version="${award.dubbo.version}"
+        
+                     interface="com.winsmoney.jajaying.award.service.IVoucherInfoService" timeout="10000"
+                     check="false" retries="0"/>
+                     <dubbo:reference protocol="dubbo" id="groupService" version="${dubbo.service.user.version}"
+                     interface="com.winsmoney.jajaying.user.service.IGroupService" timeout="10000"
+                     check="false" retries="0"/>   
+                                                                       
+      <!-- 众筹相关 -->                                                       
+      <dubbo:reference protocol="dubbo" id="productInfoService" version="${crowdfunding.dubbo.version}" interface="com.winsmoney.jajaying.crowdfunding.service.IProductInfoService" timeout="10000"
+		check="false" retries="0" />
+	
+	    <!-- 活动管理 -->
+    <dubbo:reference protocol="dubbo" id="activityRequestService"
+                     version="${activity.dubbo.version}"
+                     interface="com.winsmoney.jajaying.activity.service.IActivityRequestService"
+                     timeout="10000" check="false" retries="0"/>	                     
+    <dubbo:reference protocol="dubbo" id="activityService"
+                     version="${activity.dubbo.version}"
+                     interface="com.winsmoney.jajaying.activity.service.IActivityService"
+                     timeout="10000" check="false" retries="0"/>	                     
+    <dubbo:reference protocol="dubbo" id="awardDetailLogService"
+                     version="${activity.dubbo.version}"
+                     interface="com.winsmoney.jajaying.activity.service.IAwardDetailLogService"
+                     timeout="10000" check="false" retries="0"/>	                     
+    <dubbo:reference protocol="dubbo" id="awardDetailService"
+                     version="${activity.dubbo.version}"
+                     interface="com.winsmoney.jajaying.activity.service.IAwardDetailService"
+                     timeout="10000" check="false" retries="0"/>	                     
+    <dubbo:reference protocol="dubbo" id="awardRuleService"
+                     version="${activity.dubbo.version}"
+                     interface="com.winsmoney.jajaying.activity.service.IAwardRuleService"
+                     timeout="10000" check="false" retries="0"/>	                     
+    <dubbo:reference protocol="dubbo" id="awardSignRuleService"
+                     version="${activity.dubbo.version}"
+                     interface="com.winsmoney.jajaying.activity.service.IAwardSignRuleService"
+                     timeout="10000" check="false" retries="0"/>	                     
+    <dubbo:reference protocol="dubbo" id="channelService"
+                     version="${activity.dubbo.version}"
+                     interface="com.winsmoney.jajaying.activity.service.IChannelService"
+                     timeout="10000" check="false" retries="0"/>	                     
+    <dubbo:reference protocol="dubbo" id="channelTypeService"
+                     version="${activity.dubbo.version}"
+                     interface="com.winsmoney.jajaying.activity.service.IChannelTypeService"
+                     timeout="10000" check="false" retries="0"/>	                     
+    <dubbo:reference protocol="dubbo" id="linkService"
+                     version="${activity.dubbo.version}"
+                     interface="com.winsmoney.jajaying.activity.service.ILinkService"
+                     timeout="10000" check="false" retries="0"/>	                     
+    <dubbo:reference protocol="dubbo" id="templateService"
+                     version="${activity.dubbo.version}"
+                     interface="com.winsmoney.jajaying.activity.service.ITemplateService"
+                     timeout="10000" check="false" retries="0"/>	                     
+    <!-- 活动管理 -->
+		         
+     <import resource="classpath:/spring/basedata-client.xml"/> 
+
+
+</beans>

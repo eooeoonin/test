@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>家家盈－生活财富盈家</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+  <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+  <link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+  <link href="../static/css/plugins/validation/form.min.css" rel="stylesheet">
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+</div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="tabs-container">
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <div class="panel-body">
+             <h5>发送短信</h5>
+              <div class="row">
+              
+                <div class="ibox-content" style="padding-bottom:0;">
+                 
+                  <div class="row">
+                    <div class="col-sm-12">
+                     <form class="form-horizontal" id="selected" name="selected">
+                         <table>
+							  	 <tr>
+							  	 	<td>
+								  		<h6 class="box-title" style="font-weight:bold;">已经选择用户ID:</h6>
+								  	</td>
+								  	<td>	
+								  		<input class="box-title" id="uid" style="font-weight:bold;width:250px;border:none" readonly="readonly" />
+								  	</td>	
+							  	</tr>	
+							  </table>	
+                     
+                     
+<!--                      <div class="pull-right">   -->
+<!-- 					      <button class="btn btn-primary" type="button" id="srhBtn" > -->
+<!--                             <i class="fa fa-search-plus"></i>&nbsp;查询 -->
+<!--                           </button> -->
+<!--                           <button class="btn btn-primary" type="button" id="qingBtn"> -->
+<!--                             <i class="fa fa-search-plus"></i>&nbsp;清空 -->
+<!--                           </button>   -->
+<!--                           <a class="btn btn-primary" type="button" href="message_insert.html">新增</a>  -->
+<!--                      </div> -->
+						
+                     
+  
+                    </form>
+                    <form method="post" class="form-horizontal">
+                      <!-- 表格部分 开始 -->
+                      <table id="table"  class="table table-bordered" >
+                       <thead>
+                         <tr>
+                  			<th>渠道号</th>
+                  			<th>用户类型</th>
+                  			<th>用户姓名</th>
+                  			<th>手机号</th>
+                  			<th>注册时间</th>
+                  			<th>是否绑卡</th>
+                  			<th>用户ID</th>    
+                  			<th>操作</th>
+                		</tr>
+                       </thead>
+<!--                        <tbody id="tableContent"> -->
+                      
+                        <tbody>
+						<!-- JS输出JOSN数据 -->
+                        
+                        
+                        
+                        </tbody>
+                        
+                        
+                       
+                        
+                      </table>
+                    
+                      <!-- 表格部分 结束 -->
+                      
+                      
+                      <div class="ibox-footer clear" >
+                        <div class="pull-right">
+                          <!--分页 开始-->
+                          <div class="tcdPageCode" id="tcdPagehide"></div>           
+                          <!--分页 结束-->
+                         
+                        </div>
+                      </div>
+                    <div style="height:200px;line-height: 200px;">
+                    
+                    <em>*</em>短信内容:
+                	<textarea  style="width:90%;height:100%;float:right" id="content" name="content" class="form-control validate[required]" 
+                	data-errormessage-value-missing="短信内容不能为空"></textarea>
+                    </div>
+                	
+    		</tr>
+    		
+    		<div class="ibox-btns" style="text-align: center;">
+        	   <button  type="button"  class="btn btn-primary" id="sendMsg">立即发送</button>
+        	   <button  type="button"  class="btn btn-primary" style="margin-left:20px;" id="upperLevel">取消</button>
+              
+              </div>
+              <!--操作按钮 开始-->
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../static/js/plugins/pages/jquery.page.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+	<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+
+<!-- JS页面 -->
+<script src="../static/js/pages/basedata_mgt/selectuserid_sms.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winsmoney.jajaying.boss.dao.mapper.ActivityRequestMapper">
+    <resultMap id="BaseResultMap" type="com.winsmoney.jajaying.boss.dao.po.ActivityRequestPo">
+        <id column="C_ID" jdbcType="VARCHAR" property="id" />
+        <id column="C_DELETED" jdbcType="INTEGER" property="deleted" />
+        <id column="C_STATUS" jdbcType="VARCHAR" property="status" />
+        <id column="C_CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+        <id column="C_EDITED_BY" jdbcType="VARCHAR" property="editedBy" />
+        <id column="C_CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+        <id column="C_MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+        <id column="C_TRADE_TIME" jdbcType="TIMESTAMP" property="tradeTime" />
+        <id column="C_TRANS_VALUE" jdbcType="DECIMAL" property="transValue" />
+        <id column="C_REQUEST_ID" jdbcType="VARCHAR" property="requestId" />
+        <id column="C_PROJECT_ID" jdbcType="VARCHAR" property="projectId" />
+        <id column="C_ACTIVITY_ID" jdbcType="VARCHAR" property="activityId" />
+        <id column="C_USER_ID" jdbcType="VARCHAR" property="userId" />
+        <id column="C_HANDLE_STATUS" jdbcType="VARCHAR" property="handleStatus" />
+    </resultMap>
+     <sql id="Base_Column_List">
+        `C_ID`,
+        `C_CREATED_BY`,
+        `C_TRADE_TIME`,
+        `C_TRANS_VALUE`,
+        `C_REQUEST_ID`,
+        `C_PROJECT_ID`,
+        `C_ACTIVITY_ID`,
+        `C_USER_ID`,
+        `C_HANDLE_STATUS`,
+        `C_DELETED`,
+        `C_STATUS`,
+        `C_EDITED_BY`,
+        `C_CREATE_TIME`,
+        `C_MODIFY_TIME`
+    </sql>
+
+    <sql id="Base_Insert_Values">
+        #{id,jdbcType=VARCHAR},
+        #{createdBy,jdbcType=VARCHAR},
+        #{tradeTime,jdbcType=TIMESTAMP},
+        #{transValue,jdbcType=DECIMAL},
+        #{requestId,jdbcType=VARCHAR},
+        #{projectId,jdbcType=VARCHAR},
+        #{activityId,jdbcType=VARCHAR},
+        #{userId,jdbcType=VARCHAR},
+        #{handleStatus,jdbcType=VARCHAR},
+        #{deleted,jdbcType=INTEGER},
+        #{status,jdbcType=VARCHAR},
+        #{editedBy,jdbcType=VARCHAR},
+        sysdate(),
+        sysdate()
+    </sql>
+
+    <sql id="Base_Insert_List_Values">
+        #{item.id,jdbcType=VARCHAR},
+        #{item.createdBy,jdbcType=VARCHAR},
+        #{item.tradeTime,jdbcType=TIMESTAMP},
+        #{item.transValue,jdbcType=DECIMAL},
+        #{item.requestId,jdbcType=VARCHAR},
+        #{item.projectId,jdbcType=VARCHAR},
+        #{item.activityId,jdbcType=VARCHAR},
+        #{item.userId,jdbcType=VARCHAR},
+        #{item.handleStatus,jdbcType=VARCHAR},
+        #{item.deleted,jdbcType=INTEGER},
+        #{item.status,jdbcType=VARCHAR},
+        #{item.editedBy,jdbcType=VARCHAR},
+        sysdate(),
+        sysdate()
+    </sql>
+
+    <sql id="Base_Where_Condition">
+            `C_DELETED` = 0
+        <if test="id != null">
+            AND `C_ID` = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            AND `C_STATUS` = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="createdBy != null">
+            AND `C_CREATED_BY` = #{createdBy,jdbcType=VARCHAR}
+        </if>
+        <if test="editedBy != null">
+            AND `C_EDITED_BY` = #{editedBy,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+            AND `C_CREATE_TIME` = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="modifyTime != null">
+            AND `C_MODIFY_TIME` = #{modifyTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="tradeTime != null">
+            AND `C_TRADE_TIME` = #{tradeTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="transValue != null">
+            AND `C_TRANS_VALUE` = #{transValue,jdbcType=DECIMAL}
+        </if>
+        <if test="requestId != null">
+            AND `C_REQUEST_ID` = #{requestId,jdbcType=VARCHAR}
+        </if>
+        <if test="projectId != null">
+            AND `C_PROJECT_ID` = #{projectId,jdbcType=VARCHAR}
+        </if>
+        <if test="activityId != null">
+            AND `C_ACTIVITY_ID` = #{activityId,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null">
+            AND `C_USER_ID` = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="handleStatus != null">
+            AND `C_HANDLE_STATUS` = #{handleStatus,jdbcType=VARCHAR}
+        </if>
+    </sql>
+
+    <!-- 根据id查找 -->
+    <select id="getById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_ACTIVITY_REQUEST
+        where `C_ID` = #{id,jdbcType=VARCHAR} AND `C_DELETED` = 0
+        LIMIT 1
+    </select>
+
+    <!-- 查询 -->
+    <select id="get" parameterType="com.winsmoney.jajaying.boss.dao.po.ActivityRequestPo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_ACTIVITY_REQUEST
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+        LIMIT 1
+    </select>
+
+    <!-- 统计 -->
+    <select id="count" resultType="Integer" parameterType="com.winsmoney.jajaying.boss.dao.po.ActivityRequestPo">
+        select count(*) from T_ACTIVITY_REQUEST
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+    </select>
+
+    <!-- 列表 -->
+    <select id="list" parameterType="com.winsmoney.jajaying.boss.dao.po.ActivityRequestPo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from T_ACTIVITY_REQUEST
+        <where>
+            <include refid="Base_Where_Condition" />
+        </where>
+    </select>
+
+    <!-- 插入记录 -->
+    <insert id="insert" parameterType="com.winsmoney.jajaying.boss.dao.po.ActivityRequestPo">
+        INSERT INTO T_ACTIVITY_REQUEST (<include refid="Base_Column_List" />)
+        VALUES
+        (<include refid="Base_Insert_Values" />)
+    </insert>
+
+    <!-- 批量插入记录 -->
+    <insert id="insertList" parameterType="java.util.List">
+        INSERT INTO T_ACTIVITY_REQUEST (<include refid="Base_Column_List" />)
+        VALUES
+        <foreach collection="list" item="item" index="index" open="" separator="," close="">
+            (<include refid="Base_Insert_List_Values" />)
+        </foreach>
+    </insert>
+
+    <!-- 更新记录 -->
+    <update id="update" parameterType="com.winsmoney.jajaying.boss.dao.po.ActivityRequestPo">
+        update T_ACTIVITY_REQUEST
+        <set>
+              <if test="deleted != null">
+                `C_DELETED` = #{deleted,jdbcType=INTEGER},
+            </if>
+             <if test="status != null">
+                `C_STATUS` = #{status,jdbcType=VARCHAR},
+            </if>
+             <if test="createdBy != null">
+                `C_CREATED_BY` = #{createdBy,jdbcType=VARCHAR},
+            </if>
+             <if test="editedBy != null">
+                `C_EDITED_BY` = #{editedBy,jdbcType=VARCHAR},
+            </if>
+             <if test="createTime != null">
+                `C_CREATE_TIME` = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+                `C_MODIFY_TIME` = now(),
+             <if test="tradeTime != null">
+                `C_TRADE_TIME` = #{tradeTime,jdbcType=TIMESTAMP},
+            </if>
+             <if test="transValue != null">
+                `C_TRANS_VALUE` = #{transValue,jdbcType=DECIMAL},
+            </if>
+             <if test="requestId != null">
+                `C_REQUEST_ID` = #{requestId,jdbcType=VARCHAR},
+            </if>
+             <if test="projectId != null">
+                `C_PROJECT_ID` = #{projectId,jdbcType=VARCHAR},
+            </if>
+             <if test="activityId != null">
+                `C_ACTIVITY_ID` = #{activityId,jdbcType=VARCHAR},
+            </if>
+             <if test="userId != null">
+                `C_USER_ID` = #{userId,jdbcType=VARCHAR},
+            </if>
+             <if test="handleStatus != null">
+                `C_HANDLE_STATUS` = #{handleStatus,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where `C_ID` = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 批量更新记录 -->
+    <update id="updateList" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            UPDATE T_ACTIVITY_REQUEST
+            <set>
+                  <if test="deleted != null">
+                    `C_DELETED` = #{deleted,jdbcType=INTEGER},
+                </if>
+                 <if test="status != null">
+                    `C_STATUS` = #{status,jdbcType=VARCHAR},
+                </if>
+                 <if test="createdBy != null">
+                    `C_CREATED_BY` = #{createdBy,jdbcType=VARCHAR},
+                </if>
+                 <if test="editedBy != null">
+                    `C_EDITED_BY` = #{editedBy,jdbcType=VARCHAR},
+                </if>
+                 <if test="createTime != null">
+                    `C_CREATE_TIME` = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                `C_MODIFY_TIME` = now(),
+                 <if test="tradeTime != null">
+                    `C_TRADE_TIME` = #{tradeTime,jdbcType=TIMESTAMP},
+                </if>
+                 <if test="transValue != null">
+                    `C_TRANS_VALUE` = #{transValue,jdbcType=DECIMAL},
+                </if>
+                 <if test="requestId != null">
+                    `C_REQUEST_ID` = #{requestId,jdbcType=VARCHAR},
+                </if>
+                 <if test="projectId != null">
+                    `C_PROJECT_ID` = #{projectId,jdbcType=VARCHAR},
+                </if>
+                 <if test="activityId != null">
+                    `C_ACTIVITY_ID` = #{activityId,jdbcType=VARCHAR},
+                </if>
+                 <if test="userId != null">
+                    `C_USER_ID` = #{userId,jdbcType=VARCHAR},
+                </if>
+                 <if test="handleStatus != null">
+                    `C_HANDLE_STATUS` = #{handleStatus,jdbcType=VARCHAR},
+                </if>
+            </set>
+            where `C_ID` = #{item.id,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+
+    <!-- 删除记录 逻辑删除 -->
+    <update id="delete" parameterType="java.lang.String">
+        update T_ACTIVITY_REQUEST set `C_DELETED` = 1, `C_MODIFY_TIME` = now() where `C_ID` = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- ///自定义命令//// -->
+
+
+    <select id="getSum"  parameterType="java.lang.String" resultType="java.math.BigDecimal">
+        SELECT
+            IFNULL(SUM(c_trans_value),0) as c_trans_value
+        FROM
+            (SELECT DISTINCT
+                c_request_id, c_trans_value
+            FROM
+                T_ACTIVITY_REQUEST
+            WHERE
+                c_activity_id =  #{ activityId ,jdbcType=VARCHAR} ) t
+    </select>
+
+</mapper>

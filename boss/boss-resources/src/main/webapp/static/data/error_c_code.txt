@@ -1,0 +1,170 @@
+[
+    {
+        "systemCode": "",
+        "systemName": ""
+    },
+    {
+        "systemCode": "P01",
+        "systemName": "msgcenter"
+    },
+    {
+        "systemCode": "P02",
+        "systemName": "autocode"
+    },
+    {
+        "systemCode": "P03",
+        "systemName": "changecode"
+    },
+    {
+        "systemCode": "P04",
+        "systemName": "errorcode"
+    },
+    {
+        "systemCode": "P05",
+        "systemName": "basedata"
+    },
+    {
+        "systemCode": "P06",
+        "systemName": "autotest"
+    },
+    {
+        "systemCode": "P07",
+        "systemName": "eventCenter"
+    },
+    {
+        "systemCode": "C01",
+        "systemName": "api"
+    },
+    {
+        "systemCode": "C02",
+        "systemName": "core"
+    },
+    {
+        "systemCode": "C03",
+        "systemName": "mapp"
+    },
+    {
+        "systemCode": "C04",
+        "systemName": "financial"
+    },
+    {
+        "systemCode": "C05",
+        "systemName": "redmoney"
+    },
+    {
+        "systemCode": "C06",
+        "systemName": "user"
+    },
+    {
+        "systemCode": "C07",
+        "systemName": "pay"
+    },
+    {
+        "systemCode": "C08",
+    "systemName": "account"
+   },
+   {
+    "systemCode": "C09",
+    "systemName": "crowdfunding"
+   },
+   {
+    "systemCode": "C10",
+    "systemName": "protocol"
+   },
+   {
+    "systemCode": "C11",
+    "systemName": "datareport"
+   },
+   {
+    "systemCode": "C12",
+    "systemName": "trade"
+   },
+   {
+    "systemCode": "C13",
+    "systemName": "checkaccount"
+   },
+   {
+    "systemCode": "C14",
+    "systemName": ""
+   },
+   {
+    "systemCode": "C15",
+    "systemName": ""
+   },
+   {
+    "systemCode": "C16",
+    "systemName": "award"
+   },
+   {
+    "systemCode": "C17",
+    "systemName": ""
+   },
+   {
+    "systemCode": "C18",
+    "systemName": "offline"
+   },
+   {
+    "systemCode": "C20",
+    "systemName": "wapp"
+   },
+   {
+    "systemCode": "C21",
+    "systemName": "safegate"
+   },
+   {
+    "systemCode": "C22",
+    "systemName": "settlecore"
+   },
+   {
+    "systemCode": "C23",
+    "systemName": "grabredmoney"
+   },
+   {
+    "systemCode": "L01",
+    "systemName": "mgt"
+   },
+   {
+    "systemCode": "L02",
+    "systemName": "boss"
+   },
+   {
+    "systemCode": "L03",
+    "systemName": ""
+   },
+   {
+    "systemCode": "L04",
+    "systemName": ""
+   },
+   {
+    "systemCode": "W01",
+    "systemName": "app"
+   },
+   {
+    "systemCode": "W02",
+    "systemName": "h5"
+   },
+   {
+    "systemCode": "W03",
+    "systemName": "comp"
+   },
+   {
+    "systemCode": "W04",
+    "systemName": ""
+   },
+   {
+    "systemCode": "W05",
+    "systemName": ""
+   },
+   {
+    "systemCode": "W06",
+    "systemName": "marketing"
+   },
+   {
+    "systemCode": "C28",
+    "systemName": "retail"
+   },
+   {
+    "systemCode": "C29",
+    "systemName": "retailgoods"
+   }
+]

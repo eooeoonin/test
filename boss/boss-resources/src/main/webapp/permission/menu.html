@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>新增或编辑菜单</title>
+
+    <!-- CSS核心 -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../static/css/animate.min.css" rel="stylesheet">
+
+    <!-- CSS插件 -->
+ 	<link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+ 	<link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+  	<link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+    <link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+    
+    <!-- CSS页面 -->
+    <link href="../static/css/style.min.css" rel="stylesheet">
+    <link href="../static/css/roles.css" rel="stylesheet">
+     <link href="../static/css/menu.css" rel="stylesheet">
+    
+
+</head>
+<!-- <body> -->
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <!-- 表单部分 开始 -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>菜单管理</h5>
+                </div>
+                <div class="ibox-content">
+                <div  class="fixed-sidebar full-height-layout">
+        
+        
+	<div style="width:200px;float:left;">        
+	<!--左侧导航开始-->
+ 	 <nav class="navbar-default navbar-static-side" style="background: #eee" role="navigation">
+    	<div class="nav-close"><i class="fa fa-times-circle"></i></div>
+    	<div class="sidebar-collapse" >
+      	<ul class="nav" id="side-menu1">  
+      	</ul>
+    </div>
+  </nav>
+  <!--左侧导航结束-->
+  	</div>
+  
+	<div class="col-sm-5" style="margin-left:50px;">
+  	<div class="ibox-btns" id="">
+  	<button class="btn btn-primary" type="button" id="inserInser">新增菜单</button>
+  	</div>
+<!--   	<div class="ibox-btns" id="delete1"> -->
+<!--   	<button class="btn btn-primary" type="button" onclick="submitdelete1()">删除导航菜单</button> -->
+<!--   	</div> -->
+<!--   	<div class="ibox-btns" id="delete2"> -->
+<!--   	<button class="btn btn-primary" type="button" onclick="submitdelete2()">删除功能菜单</button> -->
+<!--   	</div> -->
+     <div id="rank">
+    	 <table class="table table-bordered">
+         <tbody>
+           <tr> 
+            <td class="aa">请选择菜单级别:</td>
+            <td class="bb">
+              <select class="form-control" name="inserstyle" id="inserstyle">
+                 <option></option>
+                 <option value="1">功能导航</option>
+                 <option value="2">功能菜单</option>
+              </select>
+            </td>
+           </tr>
+          </tbody>
+       </table>
+     </div>
+    <form method="post" class="form-horizontal" id="form1">
+	<!-- 一级菜单开始 -->
+	<div id="rank1">
+    <table class="table table-bordered">
+    	<tbody>
+    		<tr style="margin:10px;">
+    			<td class="aa">
+    				菜单名称
+    			</td>
+    			<td class="cc">
+                   <input type="text" name="text" class="form-control validate[required]" data-errormessage-value-missing="菜单名称不能为空"  placeholder="请输入名称" id="text1" >  
+                    <input type="hidden" name="id" class="form-control"  id="menID" >       
+               		<label id="label_text1"></label>          		
+               </td>
+    		</tr>
+    		<tr>
+    			<td class="aa">
+    				页面地址
+    			</td>
+    			<td class="cc">
+<!--                   
+<input type="text" name="url" class="form-control" placeholder="请输入页面地址" id="url1" onblur="checkMer2()"> 
+ -->
+               	<input type="text" name="url" class="form-control validate[required]" data-errormessage-value-missing="页面地址不能为空" placeholder="请输入页面地址" id="url1" onkeyup="zidong1()" >
+				<label id="label_url1"></label>
+               	</td>
+    		</tr>
+    		<tr>
+    			<td class="aa">
+    				权限标识
+    			</td>
+    			<td class="cc">
+    				<!-- onblur="checkMerquan1()" -->
+                   <input type="text" name="permissionFlag" class="form-control validate[required]" data-errormessage-value-missing="权限标识不能为空" placeholder="请输入权限标识" id="permissionFlag1" >     
+               		<label id="label_permissionFlag1"></label>
+               	</td>
+    		</tr>
+<!--     		<tr> -->
+<!--     			<td> -->
+<!--     		输入框：<input type="text" name="a" id="a" onkeyup="document.getElementById('b').value=this.value" onblur="document.getElementById('b').value=this.value"> -->
+<!-- 			自动赋值框：<input type="text" name="b" id="b"> -->
+<!-- 				</td> -->
+<!-- 			</tr> -->
+    	</tbody>
+    </table>
+    <div class="pull-left">
+        <!--操作按钮 开始-->
+        <div class="ibox-btns" style="margin: 0px 250px;">
+          <button class="btn btn-primary" type="button" onclick="submitedit1()" id="insertMenu1">保存</button>
+          <button class="btn btn-white" type="button" onclick="fanhui()">取消</button>
+        </div>
+        <!--操作按钮 开始-->
+    </div>
+    </div>
+    
+    
+    </form>	
+    <!-- 一级菜单结束 --> 
+    
+    <!-- 二级菜单开始 -->
+    <form method="post" class="form-horizontal" id="form2">
+    <div id="rank2">
+    	<table class="table table-bordered">
+    	<tbody>         
+    		<tr >
+    			<td class="aa">请选择导航菜单</td>
+    			<td class="bb">
+                  <select class="form-control" name="style" id="style1" onchange="parentid()">
+                    
+                  </select>
+               </td>
+    		</tr>
+    		<tr style="margin:10px;">
+    			<td class="aa">
+    				菜单名称
+    			</td>
+    			<td class="cc">
+    				<!-- onblur="checkMer3()" -->
+                   <input type="text" name="text" class="form-control validate[required]" data-errormessage-value-missing="菜单名称不能为空"  placeholder="请输入名称" id="text2" >
+                   <label id="label_text2"></label>  
+                   <input type="hidden" name="id" class="form-control"  id="menID2" >    
+               </td>
+    		</tr>
+    		<tr>
+    			<td class="aa">
+    				页面地址
+    			</td>
+    			<td class="cc">
+    			<!-- onblur="checkMer4()" -->
+                   <input type="text" name="ur2" class="form-control validate[required,custom[url]]" data-errormessage-value-missing="页面地址不能为空"
+						data-errormessage="页面地址不合法" placeholder="请输入地址" id="url2" onkeyup="zidong2()"> 
+                   <label id="label_url2"></label>    
+               </td>
+    		</tr>
+    		<tr>
+    			<td class="aa">
+    				权限标识
+    			</td>
+    			<td class="cc">
+    			<!-- onblur="checkMerquan2()" -->
+                   <input type="text" name="permissionFlag" class="form-control validate[required]" data-errormessage-value-missing="权限标识不能为空"
+						placeholder="请输入权限标识" id="permissionFlag2">     
+               		<label id="label_permissionFlag2"></label>
+               	</td>
+    		</tr>
+    	</tbody>
+    </table>
+    <div class="pull-left">
+        <!--操作按钮 开始-->
+        <div class="ibox-btns" style="margin: 0px 250px;">
+          <button class="btn btn-primary" type="button"  id="insertMenu2">保存</button>
+          <button class="btn btn-white" type="button" onclick="fanhui()">取消</button>
+        </div>
+        <!--操作按钮 开始-->
+    </div>
+    </div>
+    
+  </form>
+    <!-- 插入二级菜单结束 -->
+    
+     <!-- 编辑一级菜单开始 -->
+    <form method="post" class="form-horizontal" id="form3">
+    <div id="rank3">
+    	<table class="table table-bordered">
+    	<tbody>     
+    		<tr style="margin:10px;">
+    		
+    			<td class="aa">
+    				菜单名称
+    			</td>
+    			<td class="cc">
+    				<input type="hidden" name="id" class="form-control" id="menuid">
+    				<!-- onblur="checkMer5()" -->
+                   <input type="text" name="text" class="form-control validate[required]" data-errormessage-value-missing="菜单名称不能为空" id="text3" >   
+                   	
+                      <label id="label_text3"></label>    
+               </td>
+    		</tr>
+    		<tr>
+    			<td class="aa">
+    				页面地址
+    			</td>
+    			<td class="cc">
+    			<!-- onblur="checkMer6()" -->
+                   <input type="text" name="url"  class="form-control validate[required]" data-errormessage-value-missing="页面地址不能为空" id="url3"  onkeyup="zidong3()">  
+                      <label id="label_url3"></label>  
+               </td>
+    		</tr>
+    		<tr>
+    			<td class="aa">
+    				权限标识
+    			</td>
+    			<td class="cc">
+    				<!-- onblur="checkMerquan3()" -->
+                   <input type="text" name="permissionFlag" class="form-control validate[required]" data-errormessage-value-missing="权限标识不能为空" id="permissionFlag3" >     
+               		<label id="label_permissionFlag3"></label>
+               	</td>
+    		</tr>
+<!--     		<tr> -->
+<!--     			<td class="aa"> -->
+<!--     				删除该导航 -->
+<!--     			</td> -->
+<!--     			<td class="cc"> -->
+<!--                		<button class="btn btn-primary" type="button" onclick="submitdelete1()">删除</button> -->
+<!--                	</td> -->
+<!--     		</tr> -->
+    	</tbody>
+    </table>
+    <div class="pull-left">
+        <!--操作按钮 开始-->
+        <div class="ibox-btns" style="margin: 0px 250px;">
+          <button class="btn btn-primary" type="button" onclick="submitedit3()" id="insertMenu2">保存</button>
+          <button class="btn btn-white" type="button" onclick="fanhui()">取消</button>
+        </div>
+        <!--操作按钮 开始-->
+    </div>
+    </div>
+    
+  </form>
+    <!-- 编辑一级菜单结束 -->
+    
+    <!-- 编辑二级菜单开始 -->
+    <form method="post" class="form-horizontal" id="form4">
+    <div id="rank4">
+    	<table class="table table-bordered">
+    	<tbody>     
+    		<tr style="margin:10px;">
+    		
+    			<td class="aa">
+    				菜单名称
+    			</td>
+    			<td class="cc">
+    			<!-- onblur="checkMer7()" -->
+    				<input type="hidden" name="id" class="form-control" id="menuid2">
+                   <input type="text" name="text" class="form-control validate[required]" data-errormessage-value-missing="菜单名称不能为空" id="text4" >     
+                    <label id="label_text4"></label>  
+               </td>
+    		</tr>
+    		<tr>
+    			<td class="aa">
+    				页面地址
+    			</td>
+    			<td class="cc">
+    			<!-- onblur="checkMer8()" -->
+                   <input type="text" name="url" class="form-control validate[required,custom[url]]" data-errormessage-value-missing="页面地址不能为空"
+						data-errormessage="页面地址不合法" id="url4" onkeyup="zidong4()">   
+                      <label id="label_url4"></label>  
+               </td>
+    		</tr>
+    		<tr>
+    			<td class="aa">
+    				权限标识
+    			</td>
+    			<td class="cc">
+    			<!-- onblur="checkMerquan4()" -->
+                   <input type="text" name="permissionFlag" class="form-control validate[required]" data-errormessage-value-missing="权限标识不能为空" id="permissionFlag4" >     
+               		<label id="label_permissionFlag4"></label>
+               	</td>
+    		</tr>   		
+    	</tbody>
+    </table>
+    <div class="pull-left">
+        <!--操作按钮 开始-->
+        <div class="ibox-btns" style="margin: 0px 250px;">
+          <button class="btn btn-primary" type="button" onclick="submitedit4()" id="insertMenu2">保存</button>
+          <button class="btn btn-white" type="button" onclick="fanhui()">取消</button>
+        </div>
+        <!--操作按钮 开始-->
+    </div>
+    </div>
+    
+  </form>
+    <!-- 编辑二级菜单结束 -->
+                </div>
+                </div>
+             <div class="clear"></div>
+             </div>
+             </div>
+               
+         </div>
+     </div> 
+</div>
+
+					
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../static/js/plugins/pages/jquery.page.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+
+<!-- JS页面 -->
+<script src="../static/js/pages/permission/menu_edit.js"></script>
+
+</body>
+</html>

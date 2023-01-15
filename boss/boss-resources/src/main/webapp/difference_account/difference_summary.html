@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+   <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+  <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+  <link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+  <link href="../static/css/plugins/validation/form.min.css" rel="stylesheet">
+
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+</head>
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <!-- 表单部分 开始 -->
+    <div class="row">
+        <div class="col-sm-12">
+        
+        <div class="ibox-title">
+	        <form class="form-horizontal" id="selected" name="selected">
+					<table class="table table-bordered" style="margin-bottom: 0;"> 
+					   <tbody> 
+					    <tr> 
+					     <td class="input-group-addon">清算时间</td> 
+					     <td width="30%">
+					     	<input class="laydate-icon form-control validate[required] layer-date" id="clearDate" name="clearDate">
+					     </td> 
+					     <td class="input-group-addon">业务类型</td> 
+					     <td width="30%">
+					     	<select class="form-control" id="type_select">
+					     			<option value="0">全部</option>
+					     			<option value="1">交易差异帐</option>
+					     			<option value="2">账务差异帐</option>
+					     	</select>
+					     </td>
+					      <td class="input-group-addon">状态</td> 
+					     <td width="30%">
+					     	<select class="form-control" id="inStatus">
+					     			<option value="1">未处理</option>
+					     			<option value="2">已处理</option>
+					     	</select>
+					     </td>  
+					     <td style="width:120px"> <button class="btn btn-primary btn-xs"  type="button" onclick="search()" id="sousuo"> <i class="fa fa-search-plus"></i>&nbsp;查询 </button> </td>
+					    </tr> 
+					    <tr> 
+					    </tr> 
+					   </tbody>  
+					  </table>
+				</form>
+        </div>
+        
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                        <table class="table table-bordered" id="check_count">
+					  		<tr>
+					  			<td class="input-group-addon" style="font-weight:bold;text-align:center;">差异账类型</td>
+					  			<td class="input-group-addon" style="font-weight:bold;text-align:center;">子分类</td>
+					  			<td class="input-group-addon" style="font-weight:bold;text-align:center;">数量</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">交易差异账</td>
+					  			<td class="input-group-addon" style="font-weight:bold;text-align:center;">充值</td>
+					  			<td>
+					  				<p class="form-control-static" style="text-align:center;"  id="recharge" />
+					  			</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon"></td>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">提现</td>
+				          		<td>
+				          			<p class="form-control-static" style="text-align:center;"  id="withdraw" />
+				          		</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon"></td>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">出借</td>
+				          		<td>
+									<p class="form-control-static" style="text-align:center;" id="invest" />
+								</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon"></td>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">流标</td>
+				          		<td>
+				          			<p class="form-control-static" style="text-align:center;"  id="killloan" />
+				          		</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon"></td>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">放款</td>
+				          		<td>
+				          			<p class="form-control-static" style="text-align:center;" id="release" />
+				          		</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon"></td>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">还款</td>
+				          		<td>
+				          			<p class="form-control-static" style="text-align:center;" id="repay" />
+				          		</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon"></td>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">邀请收益</td>
+				          		<td>
+				          			<p class="form-control-static" style="text-align:center;" id="inviteprofit" />
+				          		</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon"></td>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">手动调账</td>
+				          		<td>
+				          			<p class="form-control-static" style="text-align:center;"  id="adjustment" />
+				          		</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">账务差异账</td>
+					  			<td class="input-group-addon" style="font-weight:bold;text-align:center;">账务流水</td>
+					  			<td>
+					  				<p class="form-control-static" style="text-align:center;" id="accountingWater" />
+					  			</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon"></td>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">账务冻结</td>
+				          		<td>
+				          			<p class="form-control-static" style="text-align:center;" id="accountingFreeze" />
+				          		</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon"></td>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">红包流水</td>
+				          		<td>
+				          			<p class="form-control-static" style="text-align:center;" id="redWater" />
+				          		</td>
+				          	</tr>
+				          	<tr>
+				          		<td class="input-group-addon"></td>
+				          		<td class="input-group-addon" style="font-weight:bold;text-align:center;">红包冻结</td>
+				          		<td>
+				          			<p class="form-control-static" style="text-align:center;" id="redFreeze" />
+				          		</td>
+				          	</tr>
+	            		</table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 表单部分 结束 -->
+</div>
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/pages/jquery.page.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+<!-- JS页面 -->
+<script src="../static/js/pages/difference_account/difference_summary.js"></script>
+</body>
+</html>

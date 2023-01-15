@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>模板管理</title>
+
+<!-- CSS核心 -->
+<link href="../static/css/bootstrap.min.css" rel="stylesheet">
+<link href="../static/css/font-awesome.min.css" rel="stylesheet">
+<link href="../static/css/animate.min.css" rel="stylesheet">
+
+<!-- CSS插件 -->
+<link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+<link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+<link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+
+<!-- CSS页面 -->
+<link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+	<div class="wrapper wrapper-content animated fadeIn">
+
+		<!-- 表单部分 开始 -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>模板管理</h5>
+					</div>
+					<!-- 查询部分 开始 -->
+					<div class="ibox-content" style="padding: 0; border-top: none;">
+						<div class="tab-pane active">
+							<div class="panel-body">
+								<!-- 查询部分 开始 -->
+								<div class="ibox-content" style="padding: 15px 0;">
+									<div class="row">
+										<div class="col-sm-12">
+											<form class="form-horizontal" name="selected" id="form">
+												<div class="panel-footer clear">
+													<div class="pull-right">									
+														<button class="btn btn-primary btn-xs" type="button" id="addBtn">
+															新增
+														</button>
+
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+
+								<div class="ibox-content" style="padding-bottom: 0; word-wrap: normal">
+									<div class="row">
+										<form method="post" class="form-horizontal">
+											<table class="table table-bordered" id="table">
+												<thead>
+													<tr>
+														<th>模板ID</th>
+														<th>模板名称</th>
+														<th>模板类型</th>
+														<th>编辑人</th>
+														<th>编辑时间</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+												</tbody>
+											</table>
+											<!-- 表格部分 结束 -->
+											<div class="ibox-footer clear">
+												<div class="pull-right">
+													<!--分页 开始-->
+													<div class="tcdPageCode" id="tcdPageCode"></div>
+													<!--分页 结束-->
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 表单部分 结束 -->
+	</div>
+
+	<div class="modal inmodal fade" id="ChannelTypeModal" tabindex="-1"
+			role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg" >
+				<div class="modal-content"  >
+					<div class="modal-header"  >
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title" >模板管理</h4>
+					</div>
+					<div class="modal-body" >
+						<!-- 表格部分 开始 -->
+						<form id="modal_form" method="post" >
+						<table id="modaltable">
+							<tbody >
+								<tr>
+									<td class="input-group-addon">模板名称:</td>
+									<td ><input type="text" placeholder="输入模板名称" class="form-control validate[required]" data-errormessage-value-missing="模板名称不能为空" id="name" name="name"></td>
+								</tr>	
+								<tr>
+									<td class="input-group-addon">模板类型:</td>
+									<td >
+										<select class="form-control" name="type" id="type">
+											<option value="0">礼包类</option>
+											<option value="1">抽奖类</option>
+											<option value="2">邀请减免类</option>
+											<option value="3">集采类</option>
+											<option value="4">扫码活动</option>
+											<option value="5">砸蛋活动</option>
+										</select>
+									</td>
+								</tr>	
+								<tr>
+									<td class="input-group-addon">文件存储路径:</td>
+									<td ><input type="text" placeholder="输入文件存储路径" class="form-control validate[required]" data-errormessage-value-missing="文件存储路径不能为空" id="fileName" name="fileName"></td>
+								</tr>	
+								<tr>
+									<td class="input-group-addon">模板图片数量:</td>
+									<td ><input type="text" placeholder="输入模板图片数量" class="form-control validate[required,custom[integer],min[1]]]" data-errormessage-value-missing="模板图片数量不能为空" id="imgNum" name="imgNum"></td>
+								</tr>												
+							</tbody>
+						</table>
+						<!-- 表格部分 结束 -->
+						</form>
+					</div>
+					<div class="modal-footer clear">
+						<div class="pull-right">
+							<button type="button" class="btn btn-primary" id="subTran">确认</button>
+							<input type="button" class="btn btn-white" data-dismiss="modal" value="取消">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- JS核心 -->
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/content.min.js"></script>
+
+	<!-- JS插件 -->
+	<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+	<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../static/js/plugins/pages/jquery.page.js"></script>
+	<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+	<script src="../static/js/plugins/date/moment.js"></script>
+	<script src="../static/js/jquery.cookie.js"></script>
+	<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+	<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+
+
+	<!-- JS页面 -->
+	<script src="../static/js/pages/activity/template_list.js"></script>
+
+</body>
+</html>

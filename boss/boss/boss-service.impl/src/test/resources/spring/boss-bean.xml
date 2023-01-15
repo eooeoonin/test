@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+	default-lazy-init="false">
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/META-INF/config.properties</value>
+				<value>classpath:/META-INF/rocketmq.properties</value>
+			</list>
+		</property>
+	</bean>
+  
+	<context:annotation-config />
+	<!-- 扫描注解，除controller以外 -->
+	<context:component-scan base-package="com.winsmoney.jajaying.boss">
+		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" /> -->
+	</context:component-scan>
+	<!-- 数据库配置 -->
+	<import resource="spring-datasource-master.xml"/>
+	<import resource="spring-datasource-slave.xml"/>
+	<!-- dubbo服务配置 -->
+	<import resource="dubbo-service.xml"/>
+<!-- 	<import resource="boss-job.xml"/> -->
+	<!-- -->
+	<import resource="rocketmq-context.xml"/>
+	<import resource="uuid-bean.xml"/>
+	<!-- redis 配置 -->
+	<import resource="classpath:/bean/framework-redis-bean.xml"/>
+	<import resource="classpath:/bean/framework-web-session-bean.xml"/>
+	<!-- 日志配置 -->
+	<import resource="framework-aop.xml"/>
+
+</beans>

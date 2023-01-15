@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新增手动转账</title>
+
+<!-- CSS核心 -->
+<link href="../static/css/bootstrap.min.css" rel="stylesheet">
+<link href="../static/css/font-awesome.min.css" rel="stylesheet">
+<link href="../static/css/animate.min.css" rel="stylesheet">
+
+<!-- CSS插件 -->
+<link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+<link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+<link href="../static/css/plugins/validation/form.min.css" rel="stylesheet">
+
+<!-- CSS页面 -->
+<link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+	<div class="wrapper wrapper-content animated fadeIn">
+
+		<!-- 表单部分 开始 -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>新增手动转帐</h5>
+					</div>
+					<!-- 查询部分 开始 -->
+					<div class="ibox-content" style="padding: 0; border-top: none;">
+						<div class="tab-pane active">
+							<div class="panel-body">
+								<!-- 查询部分 开始 -->
+								<div class="ibox-content" style="padding: 15px 0;">
+									<div class="row">
+										<div class="col-sm-12">
+											<form class="form-horizontal" name="selected" id="selected">
+												<table class="table table-bordered">
+													<tbody>
+														<tr>
+															<td class="input-group-addon" width="20%">用户编号</td>
+															<td width="30%"><input type="text" class="form-control" id="userId" name="id">
+															</td>
+															<td class="input-group-addon" width="20%">手机号</td>
+															<td width="30%"><input type="text"
+																class="form-control" id="registerMobile"
+																name="registerMobile"></td>
+															<td class="input-group-addon" width="20%">真实姓名/企业名称</td>
+															<td width="30%"><input type="text"
+																class="form-control" id="realName" name="realName">
+															</td>
+															<!-- <td class="input-group-addon" width="20%">用户类型</td>
+															<td width="30%"><select class="form-control"
+																name="userType" id="userType">
+																	<option value="" selected="selected">全部</option>
+																	<option value="Person">个人用户</option>
+																	<option value="Enterprise">企业用户</option>
+															</select></td> -->
+														</tr>
+													</tbody>
+												</table>
+												<div class="panel-footer clear">
+													<div class="pull-right">
+														<button class="btn btn-primary btn-xs" type="button"
+															id="srhBtn">
+															<i class="fa fa-search-plus"></i>&nbsp;搜索
+														</button>
+
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+
+								<div class="ibox-content"
+									style="padding-bottom: 0; word-wrap: normal">
+									<div class="row">
+										<form method="post" class="form-horizontal">
+											<table class="table table-bordered" id="table">
+												<thead>
+													<tr>
+														<th>用户类型</th>
+														<th>真实姓名</th>
+														<th>手机号</th>
+														<th>证件类型</th>
+														<th>证件号</th>
+														<th>注册时间</th>
+														<th>操作</th>
+													</tr>
+												</thead>
+												<tbody>
+
+												</tbody>
+											</table>
+											<!-- 表格部分 结束 -->
+											<div class="ibox-footer clear">
+												<div class="pull-right">
+													<!--分页 开始-->
+													<div class="tcdPageCode"></div>
+													<!--分页 结束-->
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 表单部分 结束 -->
+
+		<!-- 手动调帐－模态窗口 开始 -->
+		<div class="modal inmodal fade" id="myModal" tabindex="-1"
+			role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">手动转账</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 表格部分 开始 -->
+						<form id="modal_form" method="post">
+						<input type="hidden" id="systemUserId" name="systemUserId"></input>
+						<table id="modaltable">
+							<tbody>
+							  <tr style="display: none">
+									<td class="input-group-addon" width="30%">id</td>
+									<td width="30%">
+										<input type="text" class="form-control"
+										id="modal_id" name="modal_id">
+									</td>
+								</tr>
+								<tr style="display: none">
+									<td class="input-group-addon" width="30%">手机号</td>
+									<td width="30%">
+										<input type="text" class="form-control"
+										id="modal_registerMobile" name="modal_registerMobile">
+									</td>
+								</tr>
+								<tr>
+									<td class="input-group-addon" width="30%">转账类型</td>
+									<td width="30%"><select class="form-control validate[required]"
+										name="modal_adjustmentType" id="modal_adjustmentType">
+											<option value=""></option>
+											<option value="ADD">手工加帐</option>
+<!-- 										<option value="SUB">手工减账</option> -->
+									</select></td>
+								</tr>
+								<tr>
+									<td class="input-group-addon" width="30%">转账金额</td>
+									<td width="30%">
+										<input type="text" class="form-control validate[required,custom[number]]" placeholder="单位(元)" data-errormessage-value-missing="转账金额不能为空"
+										data-errormessage="转账金额为整数" id="modal_adjustmentAmount" name="modal_adjustmentAmount">
+									</td>
+								</tr>
+<!-- 								<tr>
+									<td class="input-group-addon" width="30%">备注</td>
+									<td width="30%">
+										<input style="height:111px;" type="text" class="form-control"
+										id="modal_mark" name="modal_mark">
+									</td>
+								</tr> -->
+							</tbody>
+						</table>
+						</form>
+						<!-- 表格部分 结束 -->
+					</div>
+
+					<div class="modal-footer clear">
+						<div class="pull-right">
+							<input type="button" class="btn btn-white" data-dismiss="modal" value="取消">
+							<button type="button" class="btn btn-primary" id="modal_save">确定</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 手动调帐－模态窗口 结束 -->
+
+
+	</div>
+
+	<!-- JS核心 -->
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/content.min.js"></script>
+
+	<!-- JS插件 -->
+	<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+	<script
+		src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script
+		src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script
+		src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../static/js/plugins/pages/jquery.page.js"></script>
+	<script src="../static/js/jquery.cookie.js"></script>
+	<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+	<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+
+
+	<!-- JS页面 -->
+	<script
+		src="../static/js/pages/capital/manualregulateaccount_add.js"></script>
+
+</body>
+</html>

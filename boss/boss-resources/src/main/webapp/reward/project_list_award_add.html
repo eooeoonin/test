@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>企业基本信息</title>
+
+  <!-- CSS核心 -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/css/animate.min.css" rel="stylesheet">
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+  <!-- CSS插件 -->
+  <link href="../static/js/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+  <link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+  <link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+
+  <!-- CSS插件 -->
+  <link href="../static/css/plugins/fileinput/fileinput.min.css" rel="stylesheet">
+  <link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+  <!-- CSS页面 -->
+  <link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+  <!-- 表单部分 开始 -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="tabs-container">
+        <!-- 切换标签 开始 -->
+        <div class="col-sm-12">
+        <div class="col-sm-11">
+        <ul class="nav nav-tabs">
+            <li id="activ">
+                <a  href="#" aria-expanded="true" style="cursor: default;">奖品类型：</a>
+            </li>
+          <li id="activetab1" class="active">
+            <a data-toggle="tab" href="#tab1" aria-expanded="true">红包</a>
+          </li >
+          <li id="activetab2">
+            <a data-toggle="tab" href="#tab2" aria-expanded="true">分享红包</a>
+          </li>
+          <li id="activetab3">
+            <a data-toggle="tab" href="#tab3" aria-expanded="true">抽奖券</a>
+          </li >
+          <li id="activetab4">
+            <a data-toggle="tab" href="#tab4" aria-expanded="true">提现券</a>
+          </li>
+          <li id="activetab5">
+            <a data-toggle="tab" href="#tab5" aria-expanded="true">加息券</a>
+          </li>
+          <li id="activetab6">
+            <a data-toggle="tab" href="#tab6" aria-expanded="true">现金券</a>
+          </li>
+          <li id="activetab7">
+            <a data-toggle="tab" href="#tab7" aria-expanded="true">实物券</a>
+          </li>
+          <li id="activetab8">
+            <a data-toggle="tab" href="#tab8" aria-expanded="true">H5使用代金券</a>
+          </li>
+          <li id="activetab9">
+            <a data-toggle="tab" href="#tab9" aria-expanded="true">系统内部使用代金券</a>
+          </li>
+          <li id="activetab10">
+            <a data-toggle="tab" href="#tab10" aria-expanded="true">线下代金券</a>
+          </li>
+          <li id="activetab11">
+            <a data-toggle="tab" href="#tab11" aria-expanded="true">卡密代金券</a>
+          </li>
+        </ul>
+        </div>
+        </div>
+
+        <div class="col-sm-12">
+        <!-- 切换标签 结束 -->
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+            <form method="post"  id="tab1_form" class="validateForm">
+            <div class="panel-body">
+              <div class="row">
+                <div class="ibox-content" style="padding-bottom:0;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered">
+                        <tbody>
+                        <input type="hidden"  name="type" value="REDMONEY">
+                        <tr>
+                          <td colspan="4"> <span><b>前台显示:</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>名称</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空" name="name" id="tab1_name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值描述</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="价值描述不能为空" name="descValue" id="tab1_descValue">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>使用描述</td>
+                          <td colspan="3">
+                            <textarea name="remark" class="form-control validate[required]" data-errormessage-value-missing="使用描述不能为空"  id="tab1_remark" style="margin: 0px; width: 748px; height: 81px;"></textarea>
+                          </td>
+                        </tr>
+                        <tr><td colspan="4"><span><b>后台使用：</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="showProjectClass" colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品描述</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="奖品描述不能为空" name="descName" id="tab1_descName">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="价值只能为数字或小数" data-errormessage-value-missing="价值不能为空" name="value" id="tab1_value">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"><em>*</em>成本</td>
+                          <td>
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="成本只能为数字或小数" data-errormessage-value-missing="成本不能为空" name="cost" id="tab1_cost">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品个数</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[number]]" data-errormessage-value-missing="奖品个数不能为空" name="number" id="tab1_number">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>全局过期时间</td>
+                          <td>
+                            <input placeholder="选择日期" name="limitedDate" class="laydate-icon form-control layer-date validate[required]" data-errormessage-value-missing="全局过期时间不能为空" id="tab1_limitedDate">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>过期天数</td>
+                          <td>
+                            <input  name="expiredDay" class="form-control validate[required, custom[onlyNumberSp]]" data-errormessage-value-missing="过期天数不能为空" id="tab1_expiredDay">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab1_SEND_INNER_MESSAGE" value="SEND_INNER_MESSAGE" name="poolMsgReqVos[0].msgType">&nbsp;&nbsp;站内信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control "  name="poolMsgReqVos[0].msgKey" id="tab1_msgKey1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab1_SEND_SMS" value="SEND_SMS" name="poolMsgReqVos[1].msgType">&nbsp;&nbsp;短信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control "  name="poolMsgReqVos[1].msgKey" id="tab1_msgKey2">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab1_SEND_PUSH" value="SEND_PUSH" name="poolMsgReqVos[2].msgType">&nbsp;&nbsp;push</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control "  name="poolMsgReqVos[2].msgKey" id="tab1_msgKey3">
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+
+                      <input type = "hidden" name = "projectId" class="projectIdHidden"/>
+                      <input type = "hidden" name = "id" class="idHidden"/>
+                      <div class="ibox-footer" style="text-align: center">
+                        <!--操作按钮 开始-->
+                        <div class="ibox-btns">
+                          <button class="btn btn-primary tabSubmit" type="button" id="tab1_jackpotSubmit" title="tab1">添加奖品</button>
+                          <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                        </div>
+                        <!--操作按钮 开始-->
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+
+          <div class="tab-pane" id="tab2">
+            <form method="post"  id="tab2_form" class="validateForm">
+            <div class="panel-body">
+              <div class="row">
+                <div class="ibox-content" style="padding-bottom:0;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered">
+                        <tbody>
+                        <input type="hidden"  name="type" value="SHAREREDMONEY">
+                        <tr>
+                          <td colspan="4"> <span><b>前台显示:</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>名称</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空" name="name" id="tab2_name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值描述</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="价值描述不能为空" name="descValue" id="tab2_descValue">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>使用描述</td>
+                          <td colspan="3">
+                            <textarea name="remark" class="form-control validate[required]" data-errormessage-value-missing="使用描述不能为空"  id="tab2_remark" style="margin: 0px; width: 748px; height: 81px;"></textarea>
+                          </td>
+                        </tr>
+                        <tr><td colspan="4"><span><b>后台使用：</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="showProjectClass" colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品描述</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="奖品描述不能为空" name="descName" id="tab2_descName">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="价值只能为数字或小数" data-errormessage-value-missing="价值不能为空" name="value" id="tab2_value">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品个数</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[number]]" data-errormessage-value-missing="奖品个数不能为空" name="number" id="tab2_number">
+                          </td>
+                          <td class="input-group-addon"><em>*</em>成本</td>
+                          <td>
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="成本只能为数字或小数" data-errormessage-value-missing="成本不能为空" name="cost" id="tab2_cost">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>全局过期时间</td>
+                          <td>
+                            <input placeholder="选择日期" name="limitedDate" class="laydate-icon form-control layer-date validate[required]" data-errormessage-value-missing="全局过期时间不能为空" id="tab2_limitedDate">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>过期天数</td>
+                          <td>
+                            <input  name="expiredDay" class="form-control validate[required, custom[onlyNumberSp]]" data-errormessage-value-missing="过期天数不能为空" id="tab2_expiredDay">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab2_SEND_INNER_MESSAGE" value="SEND_INNER_MESSAGE" name="poolMsgReqVos[0].msgType">&nbsp;&nbsp;站内信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control "  name="poolMsgReqVos[0].msgKey" id="tab2_msgKey1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab2_SEND_SMS" value="SEND_SMS" name="poolMsgReqVos[1].msgType">&nbsp;&nbsp;短信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control "  name="poolMsgReqVos[1].msgKey" id="tab2_msgKey2">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab2_SEND_PUSH" value="SEND_PUSH" name="poolMsgReqVos[2].msgType">&nbsp;&nbsp;push</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control "  name="poolMsgReqVos[2].msgKey" id="tab2_msgKey3">
+                          </td>
+                        </tr>
+
+                        </tbody>
+                      </table>
+                      <input type = "hidden" name = "projectId" class="projectIdHidden"/>
+                      <input type = "hidden" name = "id" class="idHidden"/>
+                      <div class="ibox-footer" style="text-align: center">
+                        <!--操作按钮 开始-->
+                        <div class="ibox-btns">
+                          <button class="btn btn-primary tabSubmit" type="button" id="tab2_jackpotSubmit" title="tab2">添加奖品</button>
+                          <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                        </div>
+                        <!--操作按钮 开始-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+
+          <div class="tab-pane" id="tab3">
+            <form method="post"  id="tab3_form" class="validateForm">
+            <div class="panel-body">
+              <div class="row">
+                <div class="ibox-content" style="padding-bottom:0;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered" id="tab3Table">
+                        <tbody>
+                        <input type="hidden"  name="type" value="LOTTERY">
+                        <tr>
+                          <td colspan="9"> <span><b>前台显示:</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>名称</td>
+                          <td colspan="8">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空" name="name" id="tab3_name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值描述</td>
+                          <td colspan="8">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="价值描述不能为空" name="descValue" id="tab3_descValue">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>使用描述</td>
+                          <td colspan="3">
+                            <textarea name="remark" class="form-control validate[required]" data-errormessage-value-missing="使用描述不能为空"  id="tab3_remark" style="margin: 0px; width: 748px; height: 81px;"></textarea>
+                          </td>
+                        </tr>
+                        <tr><td colspan="9"><span><b>后台使用：</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="showProjectClass" colspan="10"></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" > <em>*</em>奖品描述</td>
+                          <td  colspan="4" width="30%">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="奖品描述不能为空" name="descName" id="tab3_descName">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品个数</td>
+                          <td colspan="3" width="30%">
+                            <input type="text"  class="form-control validate[required,custom[number]]" data-errormessage-value-missing="奖品个数不能为空" name="number" id="tab3_number">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>全局过期时间</td>
+                          <td colspan="4">
+                            <input placeholder="选择日期" name="limitedDate" class="laydate-icon form-control layer-date validate[required]" data-errormessage-value-missing="全局过期时间不能为空" id="tab3_limitedDate">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>过期天数</td>
+                          <td colspan="4">
+                            <input  name="expiredDay" class="form-control validate[required, custom[onlyNumberSp]]" data-errormessage-value-missing="过期天数不能为空" id="tab3_expiredDay">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>外链地址</td>
+                          <td colspan="4">
+                            <input type="text" class="form-control validate[required]" name="lotteryInfoReqVo.hperLink" id="tab3_link">
+                          </td>
+                          <td class="input-group-addon"><em>*</em>成本</td>
+                          <td colspan="4">
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="成本只能为数字或小数" data-errormessage-value-missing="成本不能为空" name="cost" id="tab3_cost">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab3_SEND_INNER_MESSAGE" value="SEND_INNER_MESSAGE" name="poolMsgReqVos[0].msgType">&nbsp;&nbsp;站内信</td>
+                          <td colspan="9">
+                            <input type="text"  class="form-control "  name="poolMsgReqVos[0].msgKey" id="tab3_msgKey1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab3_SEND_SMS" value="SEND_SMS" name="poolMsgReqVos[1].msgType">&nbsp;&nbsp;短信</td>
+                          <td colspan="9">
+                            <input type="text"  class="form-control "  name="poolMsgReqVos[1].msgKey" id="tab3_msgKey2">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab3_SEND_PUSH" value="SEND_PUSH" name="poolMsgReqVos[2].msgType">&nbsp;&nbsp;push</td>
+                          <td colspan="9">
+                            <input type="text"  class="form-control "  name="poolMsgReqVos[2].msgKey" id="tab3_msgKey3">
+                          </td>
+                        </tr>
+
+                        <tr><td colspan="10" align="right"><button class="btn btn-primary" type="button" id="addChanges"> <i class="fa fa-plus"></i></button></td> </tr>
+                        <tr class="lotteryChanges">
+                          <td class="input-group-addon" width="10%"> <em>*</em>奖品码</td>
+                          <td width="15%">
+                            <input type="text" class="form-control validate[required]" name="lotteryChangesReqVos[0].actCode" id="actCode0">
+                          </td>
+                          <td class="input-group-addon" width="10%"> <em>*</em>最小中奖概率</td>
+                          <td width="15%">
+                            <input type="text" class="form-control validate[required]" name="lotteryChangesReqVos[0].chMini" id="chMini0">
+                          </td>
+                          <td class="input-group-addon" width="10%"> <em>*</em>最大中奖概率</td>
+                          <td width="15%">
+                            <input type="text" class="form-control validate[required]" name="lotteryChangesReqVos[0].chMax" id="chMax0">
+                          </td>
+                          <td class="input-group-addon" width="10%"> <em>*</em>起始中奖位</td>
+                          <td width="15%">
+                            <input type="text" class="form-control validate[required]" name="lotteryChangesReqVos[0].startLimit" id="startLimit0">
+                          </td>
+                          <td colspan="2" align="right"><button class="btn btn-primary subChanges" type="button"> <i class="fa fa-minus"></i></button></td>
+                        </tr>
+
+                        </tbody>
+                      </table>
+                      <input type = "hidden" name = "projectId" class="projectIdHidden"/>
+                      <input type = "hidden" name = "id" class="idHidden"/>
+                      <div class="ibox-footer" style="text-align: center">
+                        <!--操作按钮 开始-->
+                        <div class="ibox-btns">
+                          <button class="btn btn-primary tabSubmit" type="button" id="tab3_jackpotSubmit" title="tab3">添加奖品</button>
+                          <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                        </div>
+                        <!--操作按钮 开始-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+
+
+          <div class="tab-pane" id="tab4">
+            <form method="post"  id="tab4_form" class="validateForm">
+            <div class="panel-body">
+              <div class="row">
+                <div class="ibox-content" style="padding-bottom:0;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered">
+                        <tbody>
+                        <input type="hidden"  name="type" value="VOUCHER">
+                        <input type="hidden"  name="voucherInfoReqVo.seneCode" value="WITHDRAW">
+                        <tr>
+                          <td colspan="4"> <span><b>前台显示:</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>名称</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空" name="name" id="tab4_name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值描述</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="价值描述不能为空" name="descValue" id="tab4_descValue">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>使用描述</td>
+                          <td colspan="3">
+                            <textarea name="remark" class="form-control validate[required]" data-errormessage-value-missing="使用描述不能为空"  id="tab4_remark" style="margin: 0px; width: 748px; height: 81px;"></textarea>
+                          </td>
+                        </tr>
+                        <tr><td colspan="4"><span><b>后台使用：</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="showProjectClass" colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品个数</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[number]]" data-errormessage-value-missing="奖品个数不能为空" name="number" id="tab4_number">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品描述</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="奖品描述不能为空" name="descName" id="tab4_descName">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>全局过期时间</td>
+                          <td>
+                            <input placeholder="选择日期" name="limitedDate" class="laydate-icon form-control layer-date validate[required]" data-errormessage-value-missing="全局过期时间不能为空" id="tab4_limitedDate">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>过期天数</td>
+                          <td>
+                            <input  name="expiredDay" class="form-control validate[required, custom[onlyNumberSp]]" data-errormessage-value-missing="过期天数不能为空" id="tab4_expiredDay">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" ><em>*</em>成本</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="成本只能为数字或小数" data-errormessage-value-missing="成本不能为空" name="cost" id="tab4_cost">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>描述</td>
+                          <td colspan="3">
+                            <input type="text" class="form-control validate[required]" name="voucherInfoReqVo.useLimitDesc" id="tab4_voucher_interest_useLimitDesc">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab4_SEND_INNER_MESSAGE" value="SEND_INNER_MESSAGE" name="poolMsgReqVos[0].msgType">&nbsp;&nbsp;站内信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[0].msgKey" id="tab4_msgKey1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab4_SEND_SMS" value="SEND_SMS" name="poolMsgReqVos[1].msgType">&nbsp;&nbsp;短信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[1].msgKey" id="tab4_msgKey2">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab4_SEND_PUSH" value="SEND_PUSH" name="poolMsgReqVos[2].msgType">&nbsp;&nbsp;push</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[2].msgKey" id="tab4_msgKey3">
+                          </td>
+                        </tr>
+
+                        </tbody>
+                      </table>
+                      <input type = "hidden" name = "projectId" class="projectIdHidden"/>
+                      <input type = "hidden" name = "id" class="idHidden"/>
+                      <div class="ibox-footer" style="text-align: center">
+                        <!--操作按钮 开始-->
+                        <div class="ibox-btns">
+                          <button class="btn btn-primary tabSubmit" type="button" id="tab4_jackpotSubmit" title="tab4">添加奖品</button>
+                          <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                        </div>
+                        <!--操作按钮 开始-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+
+
+          <div class="tab-pane" id="tab5">
+            <form method="post"  id="tab5_form" class="validateForm">
+            <div class="panel-body">
+              <div class="row">
+                <div class="ibox-content" style="padding-bottom:0;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered">
+                        <tbody>
+                        <input type="hidden"  name="type" value="VOUCHER">
+                        <input type="hidden"  name="voucherInfoReqVo.seneCode" value="INTEREST">
+                        <tr>
+                          <td colspan="4"> <span><b>前台显示:</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>名称</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空" name="name" id="tab5_name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值描述</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="价值描述不能为空" name="descValue" id="tab5_descValue">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>使用描述</td>
+                          <td colspan="3">
+                            <textarea name="remark" class="form-control validate[required]" data-errormessage-value-missing="使用描述不能为空"  id="tab5_remark" style="margin: 0px; width: 748px; height: 81px;"></textarea>
+                          </td>
+                        </tr>
+                        <tr><td colspan="4"><span><b>后台使用：</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="showProjectClass" colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品个数</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[number]]" data-errormessage-value-missing="奖品个数不能为空" name="number" id="tab5_number">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>加息价值</td>
+                          <td width="30%">
+                            <div class="input-group">
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="价值只能为数字或小数" data-errormessage-value-missing="价值不能为空" name="value" id="tab5_value">
+                            <span class="input-group-addon">‱</span>
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品描述</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="奖品描述不能为空" name="descName" id="tab5_descName">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>过期天数</td>
+                          <td>
+                            <input  name="expiredDay" class="form-control validate[required, custom[onlyNumberSp]]" data-errormessage-value-missing="过期天数不能为空" id="tab5_expiredDay">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>最小出借额</td>
+                          <td>
+                            <input type="text" class="form-control validate[required,custom[onlyNumberdouble]]" name="voucherInfoReqVo.useLimitMin" id="tab5_voucher_interest_useLimitMin">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>最大出借额</td>
+                          <td>
+                            <input type="text" class="form-control validate[required,custom[onlyNumberdouble]]" name="voucherInfoReqVo.useLimitMax" id="tab5_voucher_interest_useLimitMax">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>最小标的出借期限</td>
+                          <td>
+                            <input type="text" class="form-control validate[required,custom[onlyNumberSp]]" name="voucherInfoReqVo.useDayLimitMin" id="tab5_voucher_interest_useDayLimitMin">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>最大标的出借期限</td>
+                          <td>
+                            <input type="text" class="form-control validate[required,custom[onlyNumberSp]]" name="voucherInfoReqVo.useDayLimitMax" id="tab5_voucher_interest_useDayLimitMax">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>描述</td>
+                          <td colspan="3">
+                            <input type="text" class="form-control validate[required]" name="voucherInfoReqVo.useLimitDesc" id="tab5_voucher_interest_useLimitDesc">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>全局过期时间</td>
+                          <td>
+                            <input placeholder="选择日期" name="limitedDate" class="laydate-icon form-control layer-date validate[required]" data-errormessage-value-missing="全局过期时间不能为空" id="tab5_limitedDate">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab5_SEND_INNER_MESSAGE" value="SEND_INNER_MESSAGE" name="poolMsgReqVos[0].msgType">&nbsp;&nbsp;站内信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[0].msgKey" id="tab5_msgKey1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab5_SEND_SMS" value="SEND_SMS" name="poolMsgReqVos[1].msgType">&nbsp;&nbsp;短信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[1].msgKey" id="tab5_msgKey2">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab5_SEND_PUSH" value="SEND_PUSH" name="poolMsgReqVos[2].msgType">&nbsp;&nbsp;push</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[2].msgKey" id="tab5_msgKey3">
+                          </td>
+                        </tr>
+
+                        </tbody>
+                      </table>
+                      <input type = "hidden" name = "projectId" class="projectIdHidden"/>
+                      <input type = "hidden" name = "id" class="idHidden"/>
+                      <div class="ibox-footer" style="text-align: center">
+                        <!--操作按钮 开始-->
+                        <div class="ibox-btns">
+                          <button class="btn btn-primary tabSubmit" type="button" id="tab5_jackpotSubmit" title="tab5">添加奖品</button>
+                          <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                        </div>
+                        <!--操作按钮 开始-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+
+
+          <div class="tab-pane" id="tab6">
+            <form method="post"  id="tab6_form" class="validateForm">
+            <div class="panel-body">
+              <div class="row">
+                <div class="ibox-content" style="padding-bottom:0;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered">
+                        <tbody>
+                        <input type="hidden"  name="type" value="VOUCHER">
+                        <input type="hidden"  name="voucherInfoReqVo.seneCode" value="INVEST">
+                        <tr>
+                          <td colspan="4"> <span><b>前台显示:</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>名称</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空" name="name" id="tab6_name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值描述</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="价值描述不能为空" name="descValue" id="tab6_descValue">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>使用描述</td>
+                          <td colspan="3">
+                            <textarea name="remark" class="form-control validate[required]" data-errormessage-value-missing="使用描述不能为空"  id="tab6_remark" style="margin: 0px; width: 748px; height: 81px;"></textarea>
+                          </td>
+                        </tr>
+                        <tr><td colspan="4"><span><b>后台使用：</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="showProjectClass" colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品描述</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="奖品描述不能为空" name="descName" id="tab6_descName">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品个数</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[number]]" data-errormessage-value-missing="奖品个数不能为空" name="number" id="tab6_number">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="价值只能为数字或小数" data-errormessage-value-missing="价值不能为空" name="value" id="tab6_value">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>过期天数</td>
+                          <td>
+                            <input  name="expiredDay" class="form-control validate[required, custom[onlyNumberSp]]" data-errormessage-value-missing="过期天数不能为空" id="tab6_expiredDay">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>全局过期时间</td>
+                          <td>
+                            <input placeholder="选择日期" name="limitedDate" class="laydate-icon form-control layer-date validate[required]" data-errormessage-value-missing="全局过期时间不能为空" id="tab6_limitedDate">
+                          </td>
+                          <td class="input-group-addon"><em>*</em>成本</td>
+                          <td>
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="成本只能为数字或小数" data-errormessage-value-missing="成本不能为空" name="cost" id="tab6_cost">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>最小出借额</td>
+                          <td>
+                            <input type="text" class="form-control validate[required,custom[onlyNumberdouble]]" name="voucherInfoReqVo.useLimitMin" id="tab6_voucher_interest_useLimitMin">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>最大出借额</td>
+                          <td>
+                            <input type="text" class="form-control validate[required,custom[onlyNumberdouble]]" name="voucherInfoReqVo.useLimitMax" id="tab6_voucher_interest_useLimitMax">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>最小标的出借期限</td>
+                          <td>
+                            <input type="text" class="form-control validate[required,custom[onlyNumberSp]]" name="voucherInfoReqVo.useDayLimitMin" id="tab6_voucher_interest_useDayLimitMin">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>最大标的出借期限</td>
+                          <td>
+                            <input type="text" class="form-control validate[required,custom[onlyNumberSp]]" name="voucherInfoReqVo.useDayLimitMax" id="tab6_voucher_interest_useDayLimitMax">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>描述</td>
+                          <td colspan="3">
+                            <input type="text" class="form-control validate[required]" name="voucherInfoReqVo.useLimitDesc" id="tab6_voucher_interest_useLimitDesc">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab6_SEND_INNER_MESSAGE" value="SEND_INNER_MESSAGE" name="poolMsgReqVos[0].msgType">&nbsp;&nbsp;站内信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[0].msgKey" id="tab6_msgKey1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab6_SEND_SMS" value="SEND_SMS" name="poolMsgReqVos[1].msgType">&nbsp;&nbsp;短信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[1].msgKey" id="tab6_msgKey2">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab6_SEND_PUSH" value="SEND_PUSH" name="poolMsgReqVos[2].msgType">&nbsp;&nbsp;push</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[2].msgKey" id="tab6_msgKey3">
+                          </td>
+                        </tr>
+
+                        </tbody>
+                      </table>
+                      <input type = "hidden" name = "projectId" class="projectIdHidden"/>
+                      <input type = "hidden" name = "id" class="idHidden"/>
+                      <div class="ibox-footer" style="text-align: center">
+                        <!--操作按钮 开始-->
+                        <div class="ibox-btns">
+                          <button class="btn btn-primary tabSubmit" type="button" id="tab6_jackpotSubmit" title="tab6">添加奖品</button>
+                          <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                        </div>
+                        <!--操作按钮 开始-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+
+
+
+          <div class="tab-pane" id="tab7">
+            <form method="post"  id="tab7_form" class="validateForm">
+            <div class="panel-body">
+              <div class="row">
+                <div class="ibox-content" style="padding-bottom:0;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered">
+                        <tbody>
+                        <input type="hidden"  name="type" value="PHYSICAL">
+                        <tr>
+                          <td colspan="4"> <span><b>前台显示:</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>名称</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空" name="name" id="tab7_name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值描述</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="价值描述不能为空" name="descValue" id="tab7_descValue">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>使用描述</td>
+                          <td colspan="3">
+                            <textarea name="remark" class="form-control validate[required]" data-errormessage-value-missing="使用描述不能为空"  id="tab7_remark" style="margin: 0px; width: 748px; height: 81px;"></textarea>
+                          </td>
+                        </tr>
+                        <tr><td colspan="4"><span><b>后台使用：</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="showProjectClass" colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品描述</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="奖品描述不能为空" name="descName" id="tab7_descName">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品个数</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[number]]" data-errormessage-value-missing="奖品个数不能为空" name="number" id="tab7_number">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>全局过期时间</td>
+                          <td>
+                            <input placeholder="选择日期" name="limitedDate" class="laydate-icon form-control layer-date validate[required]" data-errormessage-value-missing="全局过期时间不能为空" id="tab7_limitedDate">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="价值只能为数字或小数" data-errormessage-value-missing="价值不能为空" name="value" id="tab7_value">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" > <em>*</em>过期天数</td>
+                          <td>
+                            <input  name="expiredDay" class="form-control validate[required, custom[onlyNumberSp]]" data-errormessage-value-missing="过期天数不能为空" id="tab7_expiredDay">
+                          </td>
+                          <td class="input-group-addon"><em>*</em>成本</td>
+                          <td>
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="成本只能为数字或小数" data-errormessage-value-missing="成本不能为空" name="cost" id="tab7_cost">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab7_SEND_INNER_MESSAGE" value="SEND_INNER_MESSAGE" name="poolMsgReqVos[0].msgType">&nbsp;&nbsp;站内信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[0].msgKey" id="tab7_msgKey1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab7_SEND_SMS" value="SEND_SMS" name="poolMsgReqVos[1].msgType">&nbsp;&nbsp;短信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[1].msgKey" id="tab7_msgKey2">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab7_SEND_PUSH" value="SEND_PUSH" name="poolMsgReqVos[2].msgType">&nbsp;&nbsp;push</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[2].msgKey" id="tab7_msgKey3">
+                          </td>
+                        </tr>
+
+                        </tbody>
+                      </table>
+                      <input type = "hidden" name = "projectId" class="projectIdHidden"/>
+                      <input type = "hidden" name = "id" class="idHidden"/>
+                      <div class="ibox-footer" style="text-align: center">
+                        <!--操作按钮 开始-->
+                        <div class="ibox-btns">
+                          <button class="btn btn-primary tabSubmit" type="button" id="tab7_jackpotSubmit" title="tab7">添加奖品</button>
+                          <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                        </div>
+                        <!--操作按钮 开始-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+
+
+          <div class="tab-pane" id="tab8">
+            <form method="post"  id="tab8_form" class="validateForm">
+            <div class="panel-body">
+              <div class="row">
+                <div class="ibox-content" style="padding-bottom:0;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered">
+                        <tbody>
+                        <input type="hidden"  name="type" value="VOUCHERH5">
+                        <tr>
+                          <td colspan="4"> <span><b>前台显示:</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>名称</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空" name="name" id="tab8_name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值描述</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="价值描述不能为空" name="descValue" id="tab8_descValue">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>使用描述</td>
+                          <td colspan="3">
+                            <textarea name="remark" class="form-control validate[required]" data-errormessage-value-missing="使用描述不能为空"  id="tab8_remark" style="margin: 0px; width: 748px; height: 81px;"></textarea>
+                          </td>
+                        </tr>
+                        <tr><td colspan="4"><span><b>后台使用：</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="showProjectClass" colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品描述</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="奖品描述不能为空" name="descName" id="tab8_descName">
+                          </td>
+
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品个数</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[number]]" data-errormessage-value-missing="奖品个数不能为空" name="number" id="tab8_number">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" > <em>*</em>过期天数</td>
+                          <td>
+                            <input  name="expiredDay" class="form-control validate[required, custom[onlyNumberSp]]" data-errormessage-value-missing="过期天数不能为空" id="tab8_expiredDay">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="价值只能为数字或小数" data-errormessage-value-missing="价值不能为空" name="value" id="tab8_value">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"><em>*</em>成本</td>
+                          <td>
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="成本只能为数字或小数" data-errormessage-value-missing="成本不能为空" name="cost" id="tab8_cost">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>全局过期时间</td>
+                          <td>
+                            <input placeholder="选择日期" name="limitedDate" class="laydate-icon form-control layer-date validate[required]" data-errormessage-value-missing="全局过期时间不能为空" id="tab8_limitedDate">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>外链地址</td>
+                          <td>
+                            <input type="text" class="form-control validate[required]" name="voucherInfoReqVo.hperLink" id="tab8_link">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab8_SEND_INNER_MESSAGE" value="SEND_INNER_MESSAGE" name="poolMsgReqVos[0].msgType">&nbsp;&nbsp;站内信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[0].msgKey" id="tab8_msgKey1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab8_SEND_SMS" value="SEND_SMS" name="poolMsgReqVos[1].msgType">&nbsp;&nbsp;短信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[1].msgKey" id="tab8_msgKey2">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab8_SEND_PUSH" value="SEND_PUSH" name="poolMsgReqVos[2].msgType">&nbsp;&nbsp;push</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[2].msgKey" id="tab8_msgKey3">
+                          </td>
+                        </tr>
+
+                        </tbody>
+                      </table>
+                      <input type = "hidden" name = "projectId" class="projectIdHidden"/>
+                      <input type = "hidden" name = "id" class="idHidden"/>
+                      <div class="ibox-footer" style="text-align: center">
+                        <!--操作按钮 开始-->
+                        <div class="ibox-btns">
+                          <button class="btn btn-primary tabSubmit" type="button" id="tab8_jackpotSubmit" title="tab8">添加奖品</button>
+                          <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                        </div>
+                        <!--操作按钮 开始-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+
+
+          <div class="tab-pane" id="tab9">
+            <form method="post"  id="tab9_form" class="validateForm">
+            <div class="panel-body">
+              <div class="row">
+                <div class="ibox-content" style="padding-bottom:0;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered">
+                        <tbody>
+                        <input type="hidden"  name="type" value="VOUCHER">
+                        <tr>
+                          <td colspan="4"> <span><b>前台显示:</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>名称</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空" name="name" id="tab9_name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值描述</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="价值描述不能为空" name="descValue" id="tab9_descValue">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>使用描述</td>
+                          <td colspan="3">
+                            <textarea name="remark" class="form-control validate[required]" data-errormessage-value-missing="使用描述不能为空"  id="tab9_remark" style="margin: 0px; width: 748px; height: 81px;"></textarea>
+                          </td>
+                        </tr>
+                        <tr><td colspan="4"><span><b>后台使用：</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="showProjectClass" colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品描述</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="奖品描述不能为空" name="descName" id="tab9_descName">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="价值只能为数字或小数" data-errormessage-value-missing="价值不能为空" name="value" id="tab9_value">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品个数</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[number]]" data-errormessage-value-missing="奖品个数不能为空" name="number" id="tab9_number">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>过期天数</td>
+                          <td>
+                            <input  name="expiredDay" class="form-control validate[required, custom[onlyNumberSp]]" data-errormessage-value-missing="过期天数不能为空" id="tab9_expiredDay">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon"><em>*</em>成本</td>
+                          <td>
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="成本只能为数字或小数" data-errormessage-value-missing="成本不能为空" name="cost" id="tab9_cost">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>全局过期时间</td>
+                          <td>
+                            <input placeholder="选择日期" name="limitedDate" class="laydate-icon form-control layer-date validate[required]" data-errormessage-value-missing="全局过期时间不能为空" id="tab9_limitedDate">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>外链地址</td>
+                          <td colspan="4">
+                            <input type="text" class="form-control validate[required]" name="voucherInfoReqVo.hperLink" id="tab9_link">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab9_SEND_INNER_MESSAGE" value="SEND_INNER_MESSAGE" name="poolMsgReqVos[0].msgType">&nbsp;&nbsp;站内信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[0].msgKey" id="tab9_msgKey1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab9_SEND_SMS" value="SEND_SMS" name="poolMsgReqVos[1].msgType">&nbsp;&nbsp;短信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[1].msgKey" id="tab9_msgKey2">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab9_SEND_PUSH" value="SEND_PUSH" name="poolMsgReqVos[2].msgType">&nbsp;&nbsp;push</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[2].msgKey" id="tab9_msgKey3">
+                          </td>
+                        </tr>
+
+                        </tbody>
+                      </table>
+                      <input type = "hidden" name = "projectId" class="projectIdHidden"/>
+                      <input type = "hidden" name = "id" class="idHidden"/>
+                      <div class="ibox-footer" style="text-align: center">
+                        <!--操作按钮 开始-->
+                        <div class="ibox-btns">
+                          <button class="btn btn-primary tabSubmit" type="button" id="tab9_jackpotSubmit" title="tab9">添加奖品</button>
+                          <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                        </div>
+                        <!--操作按钮 开始-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+
+
+          <div class="tab-pane" id="tab10">
+            <form method="post"  id="tab10_form" class="validateForm">
+            <div class="panel-body">
+              <div class="row">
+                <div class="ibox-content" style="padding-bottom:0;">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered">
+                        <tbody>
+                        <input type="hidden"  name="type" value="VOUCHEROFFLINE">
+                        <tr>
+                          <td colspan="4"> <span><b>前台显示:</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>名称</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空" name="name" id="tab10_name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值描述</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="价值描述不能为空" name="descValue" id="tab10_descValue">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>使用描述</td>
+                          <td colspan="3">
+                            <textarea name="remark" class="form-control validate[required]" data-errormessage-value-missing="使用描述不能为空"  id="tab10_remark" style="margin: 0px; width: 748px; height: 81px;"></textarea>
+                          </td>
+                        </tr>
+                        <tr><td colspan="4"><span><b>后台使用：</b></span></td>
+                        </tr>
+                        <tr>
+                          <td class="showProjectClass" colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品描述</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="奖品描述不能为空" name="descName" id="tab10_descName">
+                          </td>
+                          <td class="input-group-addon" width="20%"> <em>*</em>价值</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="价值只能为数字或小数" data-errormessage-value-missing="价值不能为空" name="value" id="tab10_value">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"> <em>*</em>奖品个数</td>
+                          <td width="30%">
+                            <input type="text"  class="form-control validate[required,custom[number]]" data-errormessage-value-missing="奖品个数不能为空" name="number" id="tab10_number">
+                          </td>
+                          </td>
+                          <td class="input-group-addon"><em>*</em>成本</td>
+                          <td>
+                            <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="成本只能为数字或小数" data-errormessage-value-missing="成本不能为空" name="cost" id="tab10_cost">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon"> <em>*</em>全局过期时间</td>
+                          <td>
+                            <input placeholder="选择日期" name="limitedDate" class="laydate-icon form-control layer-date validate[required]" data-errormessage-value-missing="全局过期时间不能为空" id="tab10_limitedDate">
+                          </td>
+                          <td class="input-group-addon"> <em>*</em>过期天数</td>
+                          <td>
+                            <input  name="expiredDay" class="form-control validate[required, custom[onlyNumberSp]]" data-errormessage-value-missing="过期天数不能为空" id="tab10_expiredDay">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab10_SEND_INNER_MESSAGE" value="SEND_INNER_MESSAGE" name="poolMsgReqVos[0].msgType">&nbsp;&nbsp;站内信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[0].msgKey" id="tab10_msgKey1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab10_SEND_SMS" value="SEND_SMS" name="poolMsgReqVos[1].msgType">&nbsp;&nbsp;短信</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[1].msgKey" id="tab10_msgKey2">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="input-group-addon" width="20%"><input type="checkbox" id="tab10_SEND_PUSH" value="SEND_PUSH" name="poolMsgReqVos[2].msgType">&nbsp;&nbsp;push</td>
+                          <td colspan="3">
+                            <input type="text"  class="form-control"  name="poolMsgReqVos[2].msgKey" id="tab10_msgKey3">
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                      <input type = "hidden" name = "projectId" class="projectIdHidden"/>
+                      <input type = "hidden" name = "id" class="idHidden"/>
+                      <div class="ibox-footer" style="text-align: center">
+                        <!--操作按钮 开始-->
+                        <div class="ibox-btns">
+                          <button class="btn btn-primary tabSubmit" type="button" id="tab10_jackpotSubmit" title="tab10">添加奖品</button>
+                          <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                        </div>
+                        <!--操作按钮 开始-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+
+          <div class="tab-pane" id="tab11">
+            <form method="post"  id="tab11_form" class="validateForm">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="ibox-content" style="padding-bottom:0;">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <table class="table table-bordered">
+                          <tbody>
+                          <input type="hidden"  name="type" value="VOUCHERPWD">
+                          <tr>
+                            <td colspan="4"> <span><b>前台显示:</b></span></td>
+                          </tr>
+                          <tr>
+                            <td class="input-group-addon" width="20%"> <em>*</em>名称</td>
+                            <td colspan="3">
+                              <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="名称不能为空" name="name" id="tab11_name">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="input-group-addon" width="20%"> <em>*</em>价值描述</td>
+                            <td colspan="3">
+                              <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="价值描述不能为空" name="descValue" id="tab11_descValue">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="input-group-addon" width="20%"> <em>*</em>使用描述</td>
+                            <td colspan="3">
+                              <textarea name="remark" class="form-control validate[required]" data-errormessage-value-missing="使用描述不能为空"  id="tab11_remark" style="margin: 0px; width: 748px; height: 81px;"></textarea>
+                            </td>
+                          </tr>
+                          <tr><td colspan="4"><span><b>后台使用：</b></span></td>
+                          </tr>
+                          <tr>
+                            <td class="showProjectClass" colspan="4"></td>
+                          </tr>
+                          <tr>
+                            <td class="input-group-addon" width="20%"> <em>*</em>奖品描述</td>
+                            <td width="30%">
+                              <input type="text"  class="form-control validate[required]" data-errormessage-value-missing="奖品描述不能为空" name="descName" id="tab11_descName">
+                            </td>
+                            <td class="input-group-addon" width="20%"> <em>*</em>价值</td>
+                            <td width="30%">
+                              <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="价值只能为数字或小数" data-errormessage-value-missing="价值不能为空" name="value" id="tab11_value">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td class="input-group-addon" width="20%"> <em>*</em>奖品个数</td>
+                            <td width="30%">
+                              <input type="text"  class="form-control validate[required,custom[number]]" data-errormessage-value-missing="奖品个数不能为空" name="number" id="tab11_number">
+                            </td>
+                            </td>
+                            <td class="input-group-addon"><em>*</em>成本</td>
+                            <td>
+                              <input type="text"  class="form-control validate[required,custom[onlyNumberdouble]]" data-errormessage-custom-error="成本只能为数字或小数" data-errormessage-value-missing="成本不能为空" name="cost" id="tab11_cost">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td class="input-group-addon"> <em>*</em>全局过期时间</td>
+                            <td>
+                              <input placeholder="选择日期" name="limitedDate" class="laydate-icon form-control layer-date validate[required]" data-errormessage-value-missing="全局过期时间不能为空" id="tab11_limitedDate">
+                            </td>
+                            <td class="input-group-addon"> <em>*</em>过期天数</td>
+                            <td>
+                              <input  name="expiredDay" class="form-control validate[required, custom[onlyNumberSp]]" data-errormessage-value-missing="过期天数不能为空" id="tab11_expiredDay">
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td class="input-group-addon" width="20%"><input type="checkbox" id="tab11_SEND_INNER_MESSAGE" value="SEND_INNER_MESSAGE" name="poolMsgReqVos[0].msgType">&nbsp;&nbsp;站内信</td>
+                            <td colspan="3">
+                              <input type="text"  class="form-control"  name="poolMsgReqVos[0].msgKey" id="tab11_msgKey1">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="input-group-addon" width="20%"><input type="checkbox" id="tab11_SEND_SMS" value="SEND_SMS" name="poolMsgReqVos[1].msgType">&nbsp;&nbsp;短信</td>
+                            <td colspan="3">
+                              <input type="text"  class="form-control"  name="poolMsgReqVos[1].msgKey" id="tab11_msgKey2">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="input-group-addon" width="20%"><input type="checkbox" id="tab11_SEND_PUSH" value="SEND_PUSH" name="poolMsgReqVos[2].msgType">&nbsp;&nbsp;push</td>
+                            <td colspan="3">
+                              <input type="text"  class="form-control"  name="poolMsgReqVos[2].msgKey" id="tab11_msgKey3">
+                            </td>
+                          </tr>
+
+                          <tr id="h5File">
+                            <td id="td6" colspan="4">
+                              <form class="form-horizontal" enctype="multipart/form-data" method="post" id="fake"></form>
+                              <form enctype="multipart/form-data" method="post"  id="uploadForm">
+                                <input type="file" name="file" id="myfile" style="display: none;" onchange="input1.value=this.value"><br>
+                                <input type="button" value="上传卡密" onclick="myfile.click()">
+                                <input type="text" id="input1">
+                              </form>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                        <input type = "hidden" name = "projectId" class="projectIdHidden"/>
+                        <input type = "hidden" name = "id" class="idHidden"/>
+                        <div class="ibox-footer" style="text-align: center">
+                          <!--操作按钮 开始-->
+                          <div class="ibox-btns">
+                            <button class="btn btn-primary tabSubmit" type="button" id="tab11_jackpotSubmit" title="tab11">添加奖品</button>
+                            <button class="btn btn-white" type="button" onclick="history.go(-1)">取消</button>
+                          </div>
+                          <!--操作按钮 开始-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+        </div>
+        </div>
+
+      </div>
+      </div>
+
+    </div>
+  <!-- 表单部分 结束 -->
+
+
+
+</div>
+</body>
+
+
+<!-- JS核心 -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/content.min.js"></script>
+
+<!-- JS插件 -->
+<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../static/js/plugins/fancybox/jquery.fancybox.js"></script>
+<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<!-- JS插件 -->
+<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+<script src="../static/js/plugins/date/moment.js"></script>
+<script src="../static/js/jquery.cookie.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+<!-- file上传插件 -->
+<script src="../static/js/plugins/fileinput/fileinput.min.js"></script>
+<script src="../static/js/plugins/fileinput/zh.js"></script>
+
+<!-- JS页面 -->
+<script src="../static/js/pages/reward/project_list_award_add.js"></script>
+
+</body>
+</html>

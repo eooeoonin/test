@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>印模图片</title>
+
+<!-- CSS核心 -->
+<link href="../static/css/bootstrap.min.css" rel="stylesheet">
+<link href="../static/css/font-awesome.min.css" rel="stylesheet">
+<link href="../static/css/animate.min.css" rel="stylesheet">
+<link href="../static/css/style.min.css" rel="stylesheet">
+
+
+<!-- CSS插件 -->
+<link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="/static/css/plugins/validation/form.min.css"
+	rel="stylesheet">
+<link href="../static/css/plugins/fileinput/fileinput.min.css"
+	rel="stylesheet">
+<link href="../static/js/plugins/fancybox/jquery.fancybox.css"
+	rel="stylesheet">
+
+<!-- CSS页面 -->
+<link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+	<div class="tab-pane">
+		<div class="panel-body">
+			<div class="row">
+				<div class="ibox-content" style="padding-bottom: 0;">
+					<div class="row">
+						<div class="col-sm-12">
+							<form method="post" class="form-horizontal" id="moulageEditForm">
+								<input hidden="true" id="preRequestId" name="preRequestId" >
+								<input hidden="true" id="userName2" >
+								<input hidden="true" id="certNo2" >
+								<input hidden="true" id="userType2" >
+								<table class="table table-bordered" id="moulage_edit">
+									<tbody>
+										<tr>
+											<td colspan="4">印模图片信息</td>
+										</tr>
+										<tr>
+											<td class="input-group-addon">用户名称</td>
+											<td>
+												<input style="width: 350px;"readonly="readonly" id="userName" name="userName" >
+											</td>
+											<td class="input-group-addon">用户id</td>
+											<td>
+												<input style="width: 350px;" readonly="readonly" id="userId" name="userId" >
+											</td>
+										</tr>
+										<tr>
+											<td class="input-group-addon">用户角色</td>
+											<td>
+												<input style="width: 350px;"readonly="readonly" id="userRole" name="userRole">
+											</td>
+										</tr>
+										<tr>
+											<td class="input-group-addon">用户类型</td>
+											<td>
+												<input style="width: 350px;"readonly="readonly" id="userType" name="userType">
+											</td>
+											<td class="input-group-addon">其它系统请求id</td>
+											<td>
+												<input style="width: 350px;" readonly="readonly" id="requestId" name="requestId">
+											</td>
+										</tr>
+										<tr>
+											<td class="input-group-addon">证件类型</td>
+											<td>
+												<input style="width: 350px;"readonly="readonly" id="certType" name="certType">
+											</td>
+											<td class="input-group-addon">证件号码/统一企业信用代码</td>
+											<td>
+												<input style="width: 350px;" readonly="readonly" id="certNo" name="certNo">
+											</td>
+										</tr>
+										<tr>
+											<td class="input-group-addon">银行手机号/企业法人手机号</td>
+											<td> 
+												<input style="width: 350px;"readonly="readonly" id="bankMobile" name="bankMobile">
+											</td>
+											<td class="input-group-addon">业务码</td>
+											<td>
+												<input style="width: 350px;"readonly="readonly" id="businessCode" name="businessCode">
+											</td>
+										</tr>
+										<tr>
+											<td class="input-group-addon">渠道编码</td>
+											<td>
+												<input style="width: 350px;"readonly="readonly" id="channelCode" name="channelCode">
+											</td>
+											<td class="input-group-addon">操作员编码/机构号</td>
+											<td>
+												<input style="width: 350px;"readonly="readonly" id="operatorCode" name="operatorCode">
+											</td>
+										</tr>
+										<tr>
+											<td class="input-group-addon">业务流水号</td>
+											<td>
+												<input style="width: 350px;"readonly="readonly" id="sequenceId" name="sequenceId">
+											</td>
+											<td class="input-group-addon">印模保存路径</td>
+											<td>
+												<input style="width: 350px;"readonly="readonly" id="savePath" name="savePath">
+											</td>
+										</tr>
+										<tr>
+											<td class="input-group-addon">印模图片</td>
+											<td >
+												<div class="file-box">
+													<div class="file">
+														<span class="corner"></span>
+														<div class="image">
+															<!-- legalPersonIDcardShow -->
+															<a id="moulagePictureShow"
+																class="fancybox img-responsive"
+																href="../static/img/noimage.gif" title="印模图片"> <img
+																alt="image" src="../static/img/noimage.gif" />
+															</a>
+														</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+										<td class="input-group-addon">配置参数</td>
+										<td colspan="3">
+                                   	 	<textarea type="text" name="imageXml" id="imageXml" style="height:100px;width: 1200px;"></textarea>
+                                		</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="ibox-footer" style="text-align: center">
+									<!--操作按钮 开始-->
+									<div class="ibox-btns">
+										<button class="btn btn-primary" type="button" id="addSubmit" >生成</button>
+										<button class="btn btn-primary" type="button" id="editSubmit" >重新生成</button>
+										<button class="btn btn-primary" type="button" id="invalidateSubmit" >印模作废</button>
+										<button class="btn btn-white" type="button"
+											onclick="history.go(-1)">确认</button>
+									</div>
+									<!--操作按钮 开始-->
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- JS核心 -->
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/content.min.js"></script>
+
+	<!-- JS插件 -->
+	<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+	<script
+		src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+	<script
+		src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+	<script src="../static/js/plugins/date/moment.js"></script>
+	<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+	<!-- 编辑器配置文件 -->
+	<script src="../static/js/plugins/ueditor/ueditor.config.js"></script>
+	<script src="../static/js/plugins/ueditor/ueditor.all.js"></script>
+	<!-- file上传插件 -->
+	<script src="../static/js/plugins/fileinput/fileinput.min.js"></script>
+	<script src="../static/js/plugins/fileinput/zh.js"></script>
+	<script src="../static/js/plugins/fancybox/jquery.fancybox.js"></script>
+
+	<!-- JS页面 -->
+	<script src="../static/js/pages/signet/moulage_edit.js"></script>
+</body>
+</html>

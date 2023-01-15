@@ -1,0 +1,5 @@
+ul,li{ list-style: none;}
+.permissions ul{ clear:both;}
+.permissions li{ float:left; padding:10px 20px 10px 0; line-height:30px; vertical-align: middle; width:160px; overflow:hidden;}
+.form-horizontal .checkbox-inline{ padding-top:0;}
+.roles_tit{font-weight:bold;}

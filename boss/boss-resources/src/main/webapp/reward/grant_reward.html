@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>奖励发放</title>
+
+<!-- CSS核心 -->
+<link href="../static/css/bootstrap.min.css" rel="stylesheet">
+<link href="../static/css/font-awesome.min.css" rel="stylesheet">
+<link href="../static/css/animate.min.css" rel="stylesheet">
+
+<!-- CSS插件 -->
+<link href="../static/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+<link href="../static/css/plugins/pages/jquery.page.css" rel="stylesheet">
+<link href="/static/css/plugins/validation/form.min.css" rel="stylesheet">
+
+<!-- CSS页面 -->
+<link href="../static/css/style.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+	<div class="wrapper wrapper-content animated fadeIn">
+
+		<!-- 表单部分 开始 -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>奖励发放</h5>
+					</div>
+					<!-- 查询部分 开始 -->
+					<div class="ibox-content" style="padding: 0; border-top: none;">
+						<div class="tab-pane active">
+							<div class="panel-body">
+								<!-- 查询部分 开始 -->
+								<div class="ibox-content" style="padding: 15px 0;">
+									<div class="row">
+										<div class="col-sm-12">
+											<form method="post" class="form-horizontal" id="addProForm">
+												<table class="table table-bordered" id="table">
+													<tbody>
+														<tr>
+															<td class="input-group-addon">发放类型</td>
+															<td><select class="form-control" name="grantType" id="grantType">
+																	<option value="0">奖励单发</option>
+																	<option value="1">奖励群发</option>
+															</select></td>
+														</tr>
+														<tr hidden id="batch">
+															<td class="input-group-addon">群发类型</td>
+															<td><select class="form-control" name="batchType" id="batchType">
+																	<option value="0">用户ID</option>
+																	<option value="1">TAG</option>
+															</select></td>
+														</tr>
+
+														<tr hidden id="batchUser">
+															<td class="input-group-addon">用户ID</td>
+															<td><textarea  style="resize:none" id="bauserId" name="bauserId" placeholder="用户id之间用&quot;;&quot;号分隔（最后末尾不带&quot;;&quot;）" class="form-control validate[required]" data-errormessage-value-missing="用户id不能为空"></textarea></td>
+														</tr>
+
+
+														<tr hidden id="batchTag">
+															<td class="input-group-addon">TAG</td>
+															<td><select class="form-control" name="TAG" id="TAG">
+																	<option value="0">TAG1</option>
+																	<option value="1">TAG2</option>
+															</select></td>
+															</td>
+														</tr>
+
+														<tr  id="single">
+															<td class="input-group-addon">用户ID</td>
+															<td><input name="userId" id="userId" type="text" placeholder="输入用户ID" class="form-control validate[required]" data-errormessage-value-missing="用户ID不能为空"></td>
+														</tr>
+														<tr>
+															<td class="input-group-addon">奖励项目</td>
+															<td><select class="form-control" name="project" id="project">
+																	<option value="0">无</option>
+															</select></td>
+														</tr>
+														<!-- 														<tr>
+															<td class="input-group-addon">奖池选择</td>
+															<td class="input-group-addon">奖品个数</td>
+														</tr>
+														<tr id="first">
+															<td><select id="user" class="form-control"></select></td>
+															<td><input type="text" id="taskNum" style="width: 55px" type="text" class="form-control validate[required]" data-errormessage-value-missing="奖品个数不能为空" /></td>
+														</tr> -->
+													</tbody>
+												</table>
+
+												<table class="table table-bordered" id="modaltable">
+													<tbody>
+														<tr>
+															<td style="color: black">奖池选择</td>
+															<td style="color: black">奖品个数</td>
+														</tr>
+														<tr id="first">
+															<td><select id="jackpot" class="form-control"><option value="0">无</option></select></td>
+															<td><input type="text" id="jackpotNum" style="width: 55px" type="text" class="form-control validate[required]" data-errormessage-value-missing="奖品个数不能为空" /></td>
+															<td style="padding-left: 20px;"><a style="font-size: x-large;" onclick="firstAdd()">+</a> &nbsp;&nbsp;<a style="font-size: x-large;" onclick="firstMin()">-</a></td>
+														</tr>
+
+													</tbody>
+												</table>
+
+												<div class="ibox-footer" style="text-align: center">
+													<!--操作按钮 开始-->
+													<div class="ibox-btns">
+														<button class="btn btn-primary " type="button" id="addSubmit">发放</button>
+														<button class="btn btn-white" type="button" onclick="history.go(-1)">返回</button>
+													</div>
+													<!--操作按钮 开始-->
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 表单部分 结束 -->
+	</div>
+	<!-- JS核心 -->
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/content.min.js"></script>
+
+	<!-- JS插件 -->
+	<script src="../static/js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../static/js/plugins/layer/laydate/laydate.js"></script>
+	<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="../static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script src="../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../static/js/plugins/pages/jquery.page.js"></script>
+	<script src="../static/js/plugins/bootbox/bootbox.js"></script>
+	<script src="../static/js/plugins/date/moment.js"></script>
+	<script src="../static/js/jquery.cookie.js"></script>
+	<script src="../static/js/plugins/validation/jquery.validationEngine.min.js"></script>
+	<script src="../static/js/plugins/validation/jquery.validationEngine-zh_CN.js"></script>
+
+	<!-- JS页面 -->
+	<script src="../static/js/pages/reward/grant_reward.js"></script>
+
+</body>
+</html>
